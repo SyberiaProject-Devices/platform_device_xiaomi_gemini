@@ -269,3 +269,6 @@
 /dev/block/platform/soc/624000.ufshc/by-name/frp                   0660   system     system
 
 /sys/devices/platform/kcal_ctrl.0/* 0666 system system
+
+# Kmsg device
+/dev/kmsg                 0620   root       system

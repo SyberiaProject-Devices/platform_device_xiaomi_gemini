@@ -109,6 +109,7 @@ on fs
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
     mount_all /vendor/etc/fstab.qcom
+    setprop sys.usb.ffs.aio_compat 1
 
 on late-fs
     # boot time fs tune

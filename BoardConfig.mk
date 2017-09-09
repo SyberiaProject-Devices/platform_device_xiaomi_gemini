@@ -189,7 +189,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 #PRODUCT_BOOT_JARS += tcmclient com.qti.dpmframework dpmapi com.qti.location.sdk
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true

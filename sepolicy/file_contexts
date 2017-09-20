@@ -78,6 +78,7 @@
 /system/vendor/bin/perfd         					 	 u:object_r:perfd_exec:s0
 =======
 # HALs
+/(vendor|system/vendor)/bin/hw/android\.hardware\.ir@1\.0-service.xiaomi_8996       u:object_r:hal_ir_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.xiaomi_8996    u:object_r:hal_light_default_exec:s0
 >>>>>>> bcb235c... msm8996-common: Convert lights HAL into a native binderized HAL
 

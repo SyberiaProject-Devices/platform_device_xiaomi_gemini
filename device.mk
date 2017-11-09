@@ -20,6 +20,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/gemini/gemini-vendor.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/msm8996-common/msm8996-common-vendor.mk)
 
+#Miui Apps
+$(call inherit-product-if-exists, vendor/miui/miui-apps.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -139,7 +142,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.diag.rc \
     ueventd.qcom.rc \
-    init.qcom.sh
+    init.qcom.sh \
+    init.spectrum.rc \
+    init.spectrum.sh
 
 # CMHW
 PRODUCT_PACKAGES += \
@@ -290,6 +295,10 @@ PRODUCT_PACKAGES += \
     readmac \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# Additional packages
+PRODUCT_PACKAGES += \
+    Spectrum
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \

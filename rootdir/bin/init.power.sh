@@ -13,6 +13,10 @@ function copy() {
 
 ################################################################################
 
+# if EAS is present, switch to sched governor (no effect if not EAS)
+write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "sched"
+write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "sched"
+
 # Enable bus-dcvs
 for cpubw in /sys/class/devfreq/*qcom,cpubw* ; do
     write $cpubw/governor "bw_hwmon"

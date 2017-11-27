@@ -17,7 +17,21 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Button settings -->
-  <string name="button_panel_title">Дополнительные кнопки</string>
+  <string name="button_panel_title">Дополнительные кнопкки и жесты</string>
   <string name="button_swap_title">Поменять кнопки местами</string>
   <string name="button_swap_summary">Поменять местами кнопки «Обзор» и «Назад»</string>
+
+ <!-- Fingeprint reader settings -->
+  <string name="fp_title">Сканер отпечатков пальца</string>
+  <string name="gestures_title">Жесты</string>
+
+  <string name="fp_home_title">Сканер отпечатков как кнопка</string>
+  <string name="fp_home_summary">Использовать сканер отпечатков пальца в качестве дополнительной кнопки</string>
+
+    <string name="dt2w_title">Включение нажатием</string>
+    <string name="dt2w_summary">Дважды нажмите в любом месте экрана, чтобы включить устройство</string>
+
+  <string name="fp_wakeup_title">Сканер отпечатков будит устройство</string>
+  <string name="fp_wakeup_summary">Позволить сканеру отпечатков пальца будить устройство при выключенном экране</string>
+
 </resources>

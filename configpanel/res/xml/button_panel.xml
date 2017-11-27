@@ -44,4 +44,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="gestures_key"
+        android:title="@string/gestures_title" >
+
+        <SwitchPreference
+            android:key="dt2w"
+            android:title="@string/dt2w_title"
+            android:summary="@string/dt2w_summary" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

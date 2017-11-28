@@ -283,10 +283,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshims_ims
 
-# VNDK-SP:
-PRODUCT_PACKAGES += \
-    vndk-sp \
-
 # WiFi
 PRODUCT_PACKAGES += \
     libwpa_client \

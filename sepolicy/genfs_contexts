@@ -19,3 +19,4 @@ genfscon sysfs /devices/soc/msm-bcl-19/power_supply                  u:object_r:
 genfscon sysfs /devices/soc/qpnp-fg-22/power_supply                  u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/soc/75b5000.i2c/i2c-7/7-001d/power_supply    u:object_r:sysfs_batteryinfo:s0
 genfscon sysfs /devices/soc/soc:qcom,bcl/power_supply                u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/soc/6a00000.ssusb/6a00000.dwc3/gadget/lun0/     u:object_r:sysfs_android_usb:s0

@@ -469,8 +469,8 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 5000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 5000
-    # Set BFQ I/O scheduler
-    setprop sys.io.scheduler "bfq"
+    # Set Deadline I/O scheduler
+    setprop sys.io.scheduler "deadline"
     # Set idle GPU to 133 Mhz
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
     # Set permissions for dumpstate nodes
@@ -478,10 +478,10 @@ on property:sys.boot_completed=1
     chmod 0644 /d/rpm_master_stats
     write /dev/kmsg "Boot completed "
     # end boot time fs tune
-    write /sys/block/sda/queue/read_ahead_kb 256
-    write /sys/block/sda/queue/nr_requests 256
-    write /sys/block/dm-0/queue/read_ahead_kb 256
-    write /sys/block/dm-1/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
     write /sys/block/sda/queue/iostats 1
 
     # CPE fw_name used by sound trigger HAL

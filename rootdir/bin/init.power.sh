@@ -13,9 +13,23 @@ function copy() {
 
 ################################################################################
 
+# bring back main cores CPU 0,2
+write /sys/devices/system/cpu/cpu0/online 1
+write /sys/devices/system/cpu/cpu2/online 1
+
 # if EAS is present, switch to sched governor (no effect if not EAS)
 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "sched"
 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "sched"
+
+# Setting b.L scheduler parameters
+write /proc/sys/kernel/sched_boost 0
+write /proc/sys/kernel/sched_migration_fixup 1
+write /proc/sys/kernel/sched_upmigrate 95
+write /proc/sys/kernel/sched_downmigrate 90
+write /proc/sys/kernel/sched_freq_inc_notify 400000
+write /proc/sys/kernel/sched_freq_dec_notify 400000
+write /proc/sys/kernel/sched_spill_nr_run 3
+write /proc/sys/kernel/sched_init_task_load 100
 
 # Enable bus-dcvs
 for cpubw in /sys/class/devfreq/*qcom,cpubw* ; do

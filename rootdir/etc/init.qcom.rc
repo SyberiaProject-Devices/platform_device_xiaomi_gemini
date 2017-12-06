@@ -457,7 +457,7 @@ service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
+    group net_admin diag
 
 service ipacm /system/bin/ipacm
     class main
@@ -468,7 +468,7 @@ service ipacm /system/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio qcom_diag usb
+    group radio diag usb
     writepid /dev/cpuset/system-background/tasks
 
 service sensors /system/bin/sensors.qcom
@@ -595,13 +595,13 @@ on property:sys.shutdown.requested=*
 service readfem /system/bin/readfem
     class main
     user root
-    group root qcom_diag
+    group root diag
     oneshot
 
 service readmac /system/bin/readmac
     class main
     user root
-    group root qcom_diag
+    group root diag
     oneshot
 
 service thermal-engine /system/vendor/bin/thermal-engine

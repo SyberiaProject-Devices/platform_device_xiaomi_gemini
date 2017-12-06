@@ -260,7 +260,7 @@ on post-fs-data
 
     mkdir /data/misc/ipa 0700 net_admin net_admin
 
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+    #mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/misc/seemp 0700 system system
@@ -426,7 +426,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag
+    group bluetooth diag
     disabled
 
 on property:wc_transport.start_root=true
@@ -438,7 +438,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag system
+    group bluetooth diag system
     disabled
 
 service config_bt_addr /system/bin/btnvtool -O
@@ -516,7 +516,7 @@ on property:sys.shutdown.requested=*
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet qcom_diag wifi
+    group gps inet diag wifi
     writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /system/bin/sh /init.qcom.sh

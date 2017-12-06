@@ -25,8 +25,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import init.qcom.power.rc
 import init.qcom.usb.rc
-import init.qcom.usb.diag.rc
+import init.target.rc
 import init.spectrum.rc
 
 on early-init
@@ -37,6 +38,9 @@ on early-init
     mkdir /bt_firmware 0771 system system
     mkdir /dsp 0771 media media
     symlink /data/tombstones /tombstones
+
+    # Setup zram options
+    write /sys/block/zram0/comp_algorithm lz4
 
 on init
     export LD_SHIM_LIBS /system/vendor/lib64/lib-imsvt.so|libshims_ims.so:/system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so
@@ -54,16 +58,11 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
-    write /sys/module/lpm_levels/parameters/sleep_disabled Y
-
-    # Setup ZRAM
-    write /sys/block/zram0/comp_algorithm lz4
-    write /proc/sys/vm/page-cluster 0
 
 on late-fs
     # boot time fs tune
     write /sys/block/sda/queue/iostats 0
-#    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sda/queue/scheduler cfq
     write /sys/block/sda/queue/iosched/slice_idle 0
     write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/nr_requests 256
@@ -86,67 +85,7 @@ on early-boot
     write /sys/bus/msm_subsys/devices/subsys4/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys5/restart_level "related"
 
-    # Access permission for secure touch
-    chmod 0660 /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch_enable
-    chmod 0440 /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch
-    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch_enable
-    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch
-
 on boot
-    # from init.power.sh
-    # disable thermal hotplug to switch governor
-    write /sys/module/msm_thermal/core_control/enabled 0
-
-    # bring back main cores CPU 0,2
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-
-    # EAS: Capping the max frequency of silver core to 1.6GHz
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
-
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
-
-    # if EAS is present, switch to sched governor (no effect if not EAS)
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "sched"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "sched"
-
-    # re-enable thermal hotplug
-    write /sys/module/msm_thermal/core_control/enabled 1
-
-    # Setting b.L scheduler parameters
-    write /proc/sys/kernel/sched_migration_fixup 1
-    write /proc/sys/kernel/sched_upmigrate 95
-    write /proc/sys/kernel/sched_downmigrate 90
-    write /proc/sys/kernel/sched_freq_inc_notify 400000
-    write /proc/sys/kernel/sched_freq_dec_notify 400000
-    write /proc/sys/kernel/sched_spill_nr_run 3
-    write /proc/sys/kernel/sched_init_task_load 100
-
-    # Add a cpuset for the camera daemon
-    # we want all cores for camera
-    mkdir /dev/cpuset/camera-daemon
-    write /dev/cpuset/camera-daemon/cpus 0-3
-    write /dev/cpuset/camera-daemon/mems 0
-    chown system system /dev/cpuset/camera-daemon
-    chown system system /dev/cpuset/camera-daemon/tasks
-    chmod 0664 /dev/cpuset/camera-daemon/tasks
-
-    # Set permissions by node reads by dumpstate
-    chmod 0644 /sys/devices/system/cpu/present
-    chmod 0644 /sys/devices/system/cpu/online
-
-    # set default schedTune value for foreground/top-app (only affects EAS)
-    write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 10
-    write /dev/stune/top-app/schedtune.prefer_idle 1
-    write /dev/stune/rt/schedtune.boost 20
-    write /dev/stune/rt/schedtune.prefer_idle 1
-
-    # Enable sched boost
-    write /proc/sys/kernel/sched_boost 1
-
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
@@ -162,6 +101,12 @@ on boot
     chown system system /sys/devices/soc/soc:fpc_fpc1020/enable_key_events
     chown system system /sys/devices/soc/soc:fpc_fpc1020/enable_wakeup
     chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+
+    # Access permission for secure touch
+    chmod 0660 /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch_enable
+    chmod 0440 /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch
+    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch_enable
+    chown system drmrpc /sys/devices/soc/75ba000.i2c/i2c-12/12-0020/secure_touch
 
     # Access permission for smartPA
     chmod 0666 /dev/i2c-3
@@ -250,8 +195,16 @@ on boot
     chmod 0664 /sys/class/graphics/fb0/mode
     chmod 0664 /sys/class/graphics/fb0/msm_cmd_autorefresh_en
 
-    # Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
+    # SSC/SLPI sensors
+    mkdir /persist/sensors
+    chmod 0775 /persist/sensors
+    chown sensors sensors /persist/sensors
+    chmod 0664 /persist/sensors/sensors_settings
+    chown system root /persist/sensors/sensors_settings
+    chmod 0600 /persist/PRSensorData.txt
+    chown system system /persist/PRSensorData.txt
+    chmod 0600 /persist/PSensor3cm_ct.txt
+    chown system system /persist/PSensor3cm_ct.txt
 
     # Assign TCP buffer thresholds to be ceiling value of technology maximums
     # Increased technology maximums should be reflected here.
@@ -275,31 +228,14 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
-on charger
-    wait /dev/block/bootdevice/by-name/system
-    mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "userspace"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed 300000
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "userspace"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_setspeed 300000
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/module/msm_thermal/parameters/enabled "N"
-    write /sys/module/lpm_levels/parameters/sleep_disabled N
-    start hvdcp_opti
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
     mount_all fstab.qcom
+    swapon_all fstab.qcom
 
 on post-fs-data
-    chown system system /dev/sysmatdrv
-    chmod 0660 /dev/sysmatdrv
-
     # Create directories for fingerprint
     mkdir /data/misc/stargate 0770 system system
     mkdir /data/misc/stargate/bg_estimation 0770 system system
@@ -324,6 +260,8 @@ on post-fs-data
 
     mkdir /data/misc/ipa 0700 net_admin net_admin
 
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/misc/seemp 0700 system system
     mkdir /data/misc/qvop 0660 system system
@@ -331,7 +269,6 @@ on post-fs-data
     mkdir /data/audio_cal 0771 system system
 
     # Create the directories used by the Wireless subsystem
-    mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
@@ -370,20 +307,9 @@ on post-fs-data
     # We chown/chmod /persist again so because mount is run as root + defaults
     chown root system /persist
     chmod 0771 /persist
-    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # Chown polling nodes as needed from UI running on system server
-    chown system system /sys/devices/platform/msm_sdcc.1/polling
-    chown system system /sys/devices/platform/msm_sdcc.2/polling
-    chown system system /sys/devices/platform/msm_sdcc.3/polling
-    chown system system /sys/devices/platform/msm_sdcc.4/polling
 
     # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
-    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
     # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
@@ -401,6 +327,9 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
+    # Create directory for SSC/SLPI sensors
+    mkdir /data/misc/sensors 0775 system system
+
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
@@ -415,12 +344,9 @@ on post-fs-data
     mkdir /data/misc/SelfHost/socket/ 2770 system system
 
     # Create PERFD deamon related dirs
-    setprop ro.min_freq_0 384000
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
+    mkdir /data/system/perfd 2770 root system
     rm /data/system/perfd/default_values
-    chmod 2770 /data/system/perfd
+    start perfd
 
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
@@ -446,36 +372,7 @@ on post-fs-data
     mkdir /data/system/swap 0770 root system
     chmod 2770 /data/system/swap
 
-on property:sys.post_boot.parsed=1
-    start perfd
-
 on property:sys.boot_completed=1
-    # Enable ZRAM on boot_complete
-    swapon_all fstab.qcom
-    start power_sh
-    # Disable boosting
-    write /proc/sys/kernel/sched_boost 0
-    # Update foreground and background cpusets
-    write /dev/cpuset/foreground/cpus 0-2
-    write /dev/cpuset/background/cpus 0
-    write /dev/cpuset/system-background/cpus 0-2
-    write /dev/cpuset/top-app/cpus 0-3
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 5000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 5000
-    # Set Deadline I/O scheduler
-    setprop sys.io.scheduler "deadline"
-    # Set idle GPU to 133 Mhz
-    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
-    # Set permissions for dumpstate nodes
-    chmod 0644 /d/rpm_stats
-    chmod 0644 /d/rpm_master_stats
-    write /dev/kmsg "Boot completed "
     # end boot time fs tune
     write /sys/block/sda/queue/read_ahead_kb 128
     write /sys/block/sda/queue/nr_requests 128
@@ -486,19 +383,6 @@ on property:sys.boot_completed=1
     # CPE fw_name used by sound trigger HAL
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
-    # Set RT bandwidth
-    copy /dev/cpuctl/cpu.rt_runtime_us /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us
-
-    write /sys/module/lpm_levels/parameters/sleep_disabled N
-
-    # Set Misc
-
-    write /sys/kernel/sched/arch_power 1
-    write /sys/kernel/sched/gentle_fair_sleepers 0
-    
-    # Disable FSync
-    write /sys/module/sync/parameters/fsync_enabled N
-
 on property:vold.decrypt=trigger_restart_framework
     start config_bt_addr
 
@@ -506,10 +390,10 @@ on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
 service cnd /system/bin/cnd
-    user root
-    group root inet wakelock
-    class late_start
+    class main
     socket cnd stream 660 root inet
+    group root wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service dpmd /system/bin/dpmd
     class late_start
@@ -525,6 +409,7 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+    group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service tftp_server /system/bin/tftp_server
@@ -541,7 +426,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag
+    group bluetooth qcom_diag
     disabled
 
 on property:wc_transport.start_root=true
@@ -553,7 +438,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag system
+    group bluetooth qcom_diag system
     disabled
 
 service config_bt_addr /system/bin/btnvtool -O
@@ -572,7 +457,7 @@ service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin diag
+    group net_admin qcom_diag
 
 service ipacm /system/bin/ipacm
     class main
@@ -583,19 +468,13 @@ service ipacm /system/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio diag usb
+    group radio qcom_diag usb
     writepid /dev/cpuset/system-background/tasks
 
-service sensor-sh /system/bin/sh /init.qcom.sensors.sh
-    class main
-    user root
-    oneshot
-
 service sensors /system/bin/sensors.qcom
-    class main
+    class core
     user root
     group root
-    disabled
     writepid /dev/cpuset/system-background/tasks
 
 on property:ro.use_data_netmgrd=false
@@ -637,7 +516,7 @@ on property:sys.shutdown.requested=*
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet diag wifi
+    group gps inet qcom_diag wifi
     writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /system/bin/sh /init.qcom.sh
@@ -657,7 +536,7 @@ on property:ro.data.large_tcp_window_size=true
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio log readproc wakelock
+    group radio cache inet misc audio log readproc wakelock oem_2901
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service qseecomd /system/bin/qseecomd
@@ -716,13 +595,13 @@ on property:sys.shutdown.requested=*
 service readfem /system/bin/readfem
     class main
     user root
-    group root diag
+    group root qcom_diag
     oneshot
 
 service readmac /system/bin/readmac
     class main
     user root
-    group root diag
+    group root qcom_diag
     oneshot
 
 service thermal-engine /system/vendor/bin/thermal-engine
@@ -786,45 +665,6 @@ service ppd /system/vendor/bin/mm-pp-dpps
     group system graphics
     socket pps stream 0660 system system
     disabled
-
-service charger /charger
-    class charger
-    group log
-    seclabel u:r:charger:s0
-    writepid /dev/cpuset/system-background/tasks
-
-service energy-awareness /system/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
-
-service hvdcp_opti /system/bin/hvdcp_opti
-    class main
-    user root
-    group root
-
-service iop /system/bin/iop
-    class main
-    user root
-    group root
-    disabled
-    socket iop seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
-
-service perfd /system/vendor/bin/perfd
-    class main
-    user root
-    group root system
-    writepid /dev/cpuset/system-background/tasks
-    disabled
-
-service power_sh /system/vendor/bin/init.power.sh
-    class main
-    user root
-    group root system
-    disabled
-    oneshot
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd

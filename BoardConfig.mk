@@ -51,10 +51,10 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-#TARGET_KERNEL_CONFIG := gemini_defconfig
-#TARGET_KERNEL_SOURCE := kernel/xiaomi/hmp_msm8996
-TARGET_KERNEL_CONFIG := mod_defconfig
-TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
+TARGET_KERNEL_CONFIG := gemini_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/hmp_msm8996
+#TARGET_KERNEL_CONFIG := mod_defconfig
+#TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
 
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/kernel-tc/android-toolchain-arm64/bin
 

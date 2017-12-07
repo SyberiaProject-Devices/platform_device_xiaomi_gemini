@@ -59,6 +59,20 @@ on init
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
+    # Set up the BFQIO hierarchy
+    mkdir /dev/bfqio 0755 root system
+    mount cgroup none /dev/bfqio bfqio
+    chown root system /dev/bfqio/tasks
+    chmod 0664 /dev/bfqio/tasks
+    chmod 0220 /dev/bfqio/cgroup.event_control
+
+    # Soft realtime class for display service
+    mkdir /dev/bfqio/rt-display 0755 root system
+    write /dev/bfqio/rt-display/bfqio.ioprio_class 1
+    chown system system /dev/bfqio/rt-display/tasks
+    chmod 0664 /dev/bfqio/rt-display/tasks
+    chmod 0220 /dev/bfqio/rt-display/cgroup.event_control
+
 on late-fs
     # boot time fs tune
     write /sys/block/sda/queue/iostats 0
@@ -438,7 +452,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag system
+    group bluetooth oem_2950 system
     disabled
 
 service config_bt_addr /system/bin/btnvtool -O
@@ -457,7 +471,7 @@ service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
+    group net_admin diag
 
 service ipacm /system/bin/ipacm
     class main
@@ -468,7 +482,7 @@ service ipacm /system/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio qcom_diag usb
+    group radio oem_2950 usb
     writepid /dev/cpuset/system-background/tasks
 
 service sensors /system/bin/sensors.qcom
@@ -516,7 +530,7 @@ on property:sys.shutdown.requested=*
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet diag wifi
+    group gps inet oem_2950 wifi
     writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /system/bin/sh /init.qcom.sh
@@ -595,13 +609,13 @@ on property:sys.shutdown.requested=*
 service readfem /system/bin/readfem
     class main
     user root
-    group root qcom_diag
+    group root diag
     oneshot
 
 service readmac /system/bin/readmac
     class main
     user root
-    group root qcom_diag
+    group root diag
     oneshot
 
 service thermal-engine /system/vendor/bin/thermal-engine
@@ -645,13 +659,13 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
     class main
     user system
     socket ims_rtpd stream 0660 system radio
-    group radio diag inet log
+    group radio oem_2950 inet log
     disabled
 
 service imscmservice /system/bin/imscmservice
     class main
     user system
-    group radio diag log
+    group radio oem_2950 log
     writepid /dev/cpuset/system-background/tasks
     disabled
 

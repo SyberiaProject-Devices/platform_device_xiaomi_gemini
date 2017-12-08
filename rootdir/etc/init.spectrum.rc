@@ -42,7 +42,7 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
-    write /sys/kernel/cpu_input_boost/enabled 0
+    write /sys/kernel/cpu_input_boost/enabled 1
     # Set normal thermal restrictions
     write /sys/kernel/msm_thermal/enabled 0
     write /sys/kernel/msm_thermal/zone0 "1401600 1785600 40 38"
@@ -64,9 +64,9 @@ on property:persist.spectrum.profile=0
     write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 20
     write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 20
     write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 6000
-    write /sys/block/dm-0/queue/read_ahead_kb 256
-    write /sys/block/sda/queue/read_ahead_kb 256
-    write /sys/block/sde/queue/read_ahead_kb 256
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/read_ahead_kb 128
     write /sys/block/dm-0/queue/scheduler bfq
     write /sys/block/sda/queue/scheduler bfq
     write /sys/block/sde/queue/scheduler bfq
@@ -114,8 +114,8 @@ on property:persist.spectrum.profile=1
     write /sys/devices/system/cpu/cpu2/cpufreq/hyperx/timer_slack 80000
     write /sys/devices/system/cpu/cpu2/cpufreq/hyperx/use_migration_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/hyperx/use_shed_load 1
-    write /sys/kernel/cpu_input_boost/ib_freqs "1363200 1363200"
-    write /sys/kernel/cpu_input_boost/ib_duration_ms 1000
+    #write /sys/kernel/cpu_input_boost/ib_freqs "1363200 1363200"
+    #write /sys/kernel/cpu_input_boost/ib_duration_ms 1000
     write /sys/kernel/cpu_input_boost/enabled 1
     # Set light thermal restrictions for performance mode
     write /sys/kernel/msm_thermal/enabled 0
@@ -240,8 +240,8 @@ on property:persist.spectrum.profile=3
     write /sys/devices/system/cpu/cpu2/cpufreq/blu_active/fastlane 0
     write /sys/devices/system/cpu/cpu2/cpufreq/blu_active/align_windows 0
     write /sys/devices/system/cpu/cpu2/cpufreq/blu_active/io_is_busy 1
-    write /sys/kernel/cpu_input_boost/ib_freqs "960000 1363200"
-    write /sys/kernel/cpu_input_boost/ib_duration_ms 1000
+    #write /sys/kernel/cpu_input_boost/ib_freqs "960000 1363200"
+    #write /sys/kernel/cpu_input_boost/ib_duration_ms 1000
     write /sys/kernel/cpu_input_boost/enabled 1
     # Set light thermal restrictions for performance mode
     write /sys/kernel/msm_thermal/enabled 0

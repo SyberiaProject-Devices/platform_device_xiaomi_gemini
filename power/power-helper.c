@@ -417,11 +417,11 @@ void power_hint(power_hint_t hint, void *data)
                 return;
             }
 
-            int duration = 1500; // 1.5s by default
+            int duration = 500; // 500ms by default
             if (data) {
-                int input_duration = *((int*)data) + 750;
+                int input_duration = *((int*)data) + 500;
                 if (input_duration > duration) {
-                    duration = (input_duration > 5750) ? 5750 : input_duration;
+                    duration = (input_duration > 1000) ? 1000 : input_duration;
                 }
             }
 

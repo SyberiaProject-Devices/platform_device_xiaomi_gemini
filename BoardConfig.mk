@@ -56,6 +56,8 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/hmp_msm8996
 #TARGET_KERNEL_CONFIG := mod_defconfig
 #TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
 
+ALLOW_MISSING_DEPENDENCIES=true
+
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/kernel-tc/android-toolchain-arm64/bin
 
 # Platform
@@ -203,7 +205,7 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 # RIL
 BOARD_RIL_CLASS := ../../../$(DEVICE_PATH)/ril
 PROTOBUF_SUPPORTED := true
-TARGET_RIL_VARIANT := caf
+#TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk

@@ -1,2 +1,13 @@
 allow init debugfs:file write;
 allow init proc_kernel_sched:file rw_file_perms;
+allow init qdsp_device:chr_file ioctl;
+allow init self:capability2 block_suspend;
+allow init self:netlink_kobject_uevent_socket read;
+allow init self:netlink_route_socket { bind create getattr nlmsg_read nlmsg_write read setopt write };
+allow init self:netlink_socket { read setopt write };
+allow init self:socket { read write };
+allow init self:udp_socket ioctl;
+allow init sensors_device:chr_file ioctl;
+allow init serial_device:chr_file ioctl;
+allow init socket_device:sock_file { create setattr unlink };
+allow init tee_device:chr_file ioctl;

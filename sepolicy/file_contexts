@@ -20,6 +20,7 @@
 /data/fpc(/.*)?                       u:object_r:fpc_data_file:s0
 /data/decrypt\.txt                    u:object_r:thermal_data_file:s0
 /data/misc/netmgr(/.*)?               u:object_r:netmgr_data_file:s0
+/data/misc/perfd(/.*)?                u:object_r:perfd_data_file:s0
 
 # Persist files
 /persist/audio/us_cal                 u:object_r:persist_usf_cal_file:s0
@@ -43,3 +44,4 @@
 # files in /vendor
 /system/vendor/bin/hw/android\.hardware\.dumpstate@1\.0-service.msm8996          u:object_r:hal_dumpstate_impl_exec:s0
 /system/vendor/bin/hw/android\.hardware\.power@1\.1-service.msm8996              u:object_r:hal_power_default_exec:s0
+/system/vendor/bin/perfd         					 	 u:object_r:perfd_exec:s0

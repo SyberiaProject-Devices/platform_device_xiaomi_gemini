@@ -1,1 +1,2 @@
 allow priv_app hal_memtrack_default:binder call;
+allow priv_app debugfs_kgsl:dir search;

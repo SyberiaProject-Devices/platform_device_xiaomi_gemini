@@ -4,3 +4,5 @@ allow hal_fingerprint_default mnt_user_file:lnk_file read;
 allow hal_fingerprint_default sdcardfs:dir search;
 allow hal_fingerprint_default sysfs_fpc:file { open read write };
 allow hal_fingerprint_default tee_device:chr_file ioctl;
+allow hal_fingerprint_default storage_file:dir search;
+allow hal_fingerprint_default storage_file:lnk_file read;

@@ -358,8 +358,12 @@ on post-fs-data
     mkdir /data/misc/SelfHost/socket/ 2770 system system
 
     # Create PERFD deamon related dirs
-    mkdir /data/system/perfd 2770 root system
+    setprop ro.min_freq_0 384000
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
     rm /data/system/perfd/default_values
+    chmod 2770 /data/system/perfd
     start perfd
 
     # NFC local data and nfcee xml storage
@@ -552,6 +556,14 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     user radio
     group radio cache inet misc audio log readproc wakelock oem_2901
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+
+service perfd /system/vendor/bin/perfd
+   class main
+   user root
+   group root system
+   writepid /dev/cpuset/system-background/tasks
+   # will be started init init.qcom.power.rc
+   disabled
 
 service qseecomd /system/bin/qseecomd
     class core

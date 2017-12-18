@@ -185,7 +185,7 @@ on class_start:late_start
     trigger enable-low-power
 
 on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "bfq"
+    setprop sys.io.scheduler "cfq"
 
 on property:init.svc.recovery=running
     trigger enable-low-power
@@ -213,12 +213,4 @@ service iop /system/bin/iop
     group root
     disabled
     socket iop seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
-
-service perfd /system/vendor/bin/perfd
-    class main
-    user root
-    group root readproc
-    disabled
-    socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks

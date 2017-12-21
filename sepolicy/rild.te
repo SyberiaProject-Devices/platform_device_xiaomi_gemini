@@ -1,6 +1,9 @@
-allow rild radio_data_file:file { getattr lock };
-allow rild radio_data_file:dir { add_name getattr write };
-allow rild radio_data_file:file { ioctl open read write };
+binder_use(rild)
 allow rild audioserver_service:service_manager find;
 allow rild servicemanager:binder call;
 allow rild default_android_service:service_manager find;
+
+allow rild radio_data_file:dir rw_dir_perms;
+allow rild radio_data_file:file create_file_perms;
+
+set_prop(rild, system_radio_prop)

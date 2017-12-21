@@ -74,7 +74,7 @@ on property:persist.spectrum.profile=0
     write /sys/block/sde/queue/iostats 0
     write /sys/module/workqueue/parameters/power_efficient Y
     write /sys/kernel/sched/arch_power 1
-    write /proc/sys/kernel/sched_boost 1
+    write /proc/sys/kernel/sched_boost 0
 
 # Performance 
 on property:persist.spectrum.profile=1

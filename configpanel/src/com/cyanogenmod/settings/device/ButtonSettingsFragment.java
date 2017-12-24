@@ -43,9 +43,6 @@ public class ButtonSettingsFragment extends PreferenceFragment
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.button_panel);
 
-        ListView lv = getListView();
-        lv.setDivider(new ColorDrawable(Color.TRANSPARENT));
-        lv.setDividerHeight(0);
     }
 
     @Override

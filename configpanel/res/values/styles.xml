@@ -16,6 +16,7 @@
 
 <resources>
     <style name="XiaomiPartsTheme" parent="@android:style/Theme.DeviceDefault.Settings">
+        <item name="preferenceTheme">@android:style/Theme.DeviceDefault.Settings</item>
         <item name="android:switchPreferenceStyle">@style/SettingsSwitchPreference</item>
         <item name="android:preferenceCategoryStyle">@style/SettingsPreferenceCategory</item>
         <item name="android:preferenceStyle">@style/SettingsPreference</item>

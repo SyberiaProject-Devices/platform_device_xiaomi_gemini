@@ -6,3 +6,6 @@ allow hal_fingerprint_default sysfs_fpc:file { open read write };
 allow hal_fingerprint_default tee_device:chr_file ioctl;
 allow hal_fingerprint_default storage_file:dir search;
 allow hal_fingerprint_default storage_file:lnk_file read;
+allow hal_fingerprint_default firmware_file:file { getattr open read };
+allow hal_fingerprint_default tee_device:chr_file { open read write };
+allow hal_fingerprint_default uhid_device:chr_file { ioctl open write };

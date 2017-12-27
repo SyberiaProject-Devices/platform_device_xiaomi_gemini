@@ -100,6 +100,8 @@ persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.radio.NO_STAPA=1
 persist.radio.VT_HYBRID_ENABLE=1
+persist.radio.sw_mbn_volte=1
+
 
 # NFC
 ro.nfc.port=I2C

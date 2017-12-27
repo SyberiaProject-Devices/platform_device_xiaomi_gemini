@@ -154,6 +154,8 @@ on enable-low-power
     write /sys/kernel/sched/arch_power 1
     write /sys/kernel/sched/gentle_fair_sleepers 0
 
+    write /sys/module/opchain/parameters/chain_on 1
+
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 2-3

@@ -344,6 +344,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
 
+# VNDK
+PRODUCT_PACKAGES += \
+    vndk-sp
+
 # WiFi
 PRODUCT_PACKAGES += \
     libqsap_sdk \

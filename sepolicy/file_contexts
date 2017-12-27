@@ -28,10 +28,10 @@
 /data/misc/perfd(/.*)?                u:object_r:perfd_data_file:s0
 
 # Dumpstate
-/(vendor|system/vendor)/bin/iop       u:object_r:dumpstate_exec:s0
+/system/vendor/bin/iop       u:object_r:dumpstate_exec:s0
 
 # DPM
-/(vendor|system/vendor)/bin/dpmd      u:object_r:dpmd_exec:s0
+/system/vendor/bin/dpmd      u:object_r:dpmd_exec:s0
 
 # HVDCP
 /sys/devices/soc/75b5000\.i2c/i2c-7/7-001d(/.*)?   u:object_r:sysfs_battery_supply:s0
@@ -39,7 +39,7 @@
 
 # IMS
 /dev/socket/ims_rtpd                  u:object_r:ims_socket:s0
-/(vendor|system/vendor)/bin/imscmservice   u:object_r:imscm_exec:s0
+/system/vendor/bin/imscmservice   u:object_r:imscm_exec:s0
 
 # IOP
 /data/misc/iop(/.*)?                  u:object_r:iop_data_file:s0

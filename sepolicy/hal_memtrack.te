@@ -17,3 +17,5 @@ allow hal_memtrack_default hal_power_default:file { getattr open read };
 allow hal_memtrack_default hal_usb_default:dir search;
 allow hal_memtrack_default hal_usb_default:file { getattr open read };
 allow hal_memtrack_default init:file read;
+allow hal_memtrack_default wcnss_service:dir search;
+allow hal_memtrack_default wcnss_service:file read;

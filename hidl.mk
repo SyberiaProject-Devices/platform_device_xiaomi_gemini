@@ -93,7 +93,8 @@ PRODUCT_PACKAGES += \
 
 # Power HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service.msm8996
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
 
 # RenderScript HIDL
 PRODUCT_PACKAGES += \
@@ -102,6 +103,11 @@ PRODUCT_PACKAGES += \
 # Sensors HIDL
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@1.0-impl \
+    android.hardware.health@1.0-service
 
 # USB HIDL
 PRODUCT_PACKAGES += \

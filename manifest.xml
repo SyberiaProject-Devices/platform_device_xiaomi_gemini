@@ -433,6 +433,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.wifi.hostapd</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IHostapd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.qdutils_disp</name>
         <transport>hwbinder</transport>
         <version>1.0</version>

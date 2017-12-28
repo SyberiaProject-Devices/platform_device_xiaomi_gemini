@@ -60,8 +60,6 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/hmp_msm8996
 #TARGET_KERNEL_CONFIG := mod_defconfig
 #TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
 
-ALLOW_MISSING_DEPENDENCIES=true
-
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/kernel-tc/android-toolchain-arm64/bin
 
 # Platform

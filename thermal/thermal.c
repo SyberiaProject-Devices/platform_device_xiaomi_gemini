@@ -34,7 +34,7 @@
 
 #define BATTERY_SENSOR_NUM            29
 #define GPU_SENSOR_NUM                14
-#define SKIN_SENSOR_NUM               18
+#define SKIN_SENSOR_NUM               24
 
 const int CPU_SENSORS[] = {4, 6, 9, 11};
 

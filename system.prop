@@ -92,12 +92,14 @@ sdm.perf_hint_window=50
 
 # GPS
 persist.gps.qc_nlp_in_use=1
-persist.loc.nlp_name=com.qualcomm.location
 ro.gps.agps_provider=1
 
 # IMS
 persist.dbg.volte_avail_ovr=1
-persist.dbg.vt_avail_ovr=1
+persist.dbg.ims_volte_enable=1
+persist.dbg.vt_avail_ovr=0
+persist.dbg.wfc_avail_ovr=0
+persist.data.iwlan.enable=true
 persist.radio.NO_STAPA=1
 persist.radio.VT_HYBRID_ENABLE=1
 persist.radio.sw_mbn_volte=1

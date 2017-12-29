@@ -165,4 +165,3 @@ mode: 0771
 user: AID_MEDIA
 group: AID_MEDIA
 caps: 0
->>>>>>> 7b96fc1... msm8996-common: Bring config.fs inline with CAF

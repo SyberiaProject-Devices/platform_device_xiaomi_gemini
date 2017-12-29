@@ -34,7 +34,7 @@
 
 #define BATTERY_SENSOR_NUM            29
 #define GPU_SENSOR_NUM                14
-#define SKIN_SENSOR_NUM               24
+#define SKIN_SENSOR_NUM               18
 
 const int CPU_SENSORS[] = {4, 6, 9, 11};
 
@@ -47,9 +47,9 @@ const int CPU_SENSORS[] = {4, 6, 9, 11};
 //qcom,freq-mitigation-temp
 #define CPU_THROTTLING_THRESHOLD      95
 #define BATTERY_SHUTDOWN_THRESHOLD    60
-// device/oneplus/oneplus3/configs/thermal-engine.conf
+// device/xiaomi/gemini/configs/thermal-engine.conf
 #define SKIN_THROTTLING_THRESHOLD     47
-#define SKIN_SHUTDOWN_THRESHOLD       65
+#define SKIN_SHUTDOWN_THRESHOLD       60
 #define VR_THROTTLED_BELOW_MIN        58
 
 #define GPU_LABEL                     "GPU"
@@ -99,7 +99,7 @@ static ssize_t read_temperature(int sensor_num, int type, const char *name, floa
         .current_value = temp * mult,
         .throttling_threshold = throttling_threshold,
         .shutdown_threshold = shutdown_threshold,
-        .vr_throttling_threshold = vr_throttling_threshold
+        .vr_throttling_threshold = UNKNOWN_TEMPERATURE
     };
 
     return 0;
@@ -272,7 +272,7 @@ thermal_module_t HAL_MODULE_INFO_SYM = {
         .module_api_version = THERMAL_HARDWARE_MODULE_API_VERSION_0_1,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = THERMAL_HARDWARE_MODULE_ID,
-        .name = "OnePlus 3 Thermal HAL",
+        .name = "Xiaomi MI5 Thermal HAL",
         .author = "The Android Open Source Project",
         .methods = &thermal_module_methods,
     },

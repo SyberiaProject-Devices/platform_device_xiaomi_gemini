@@ -330,3 +330,8 @@ $(call inherit-product, $(LOCAL_PATH)/hidl.mk)
 # HIDL manifest
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
+# TFA calibration
+PRODUCT_PACKAGES += \
+    init.tfa.sh \
+    tinyplay

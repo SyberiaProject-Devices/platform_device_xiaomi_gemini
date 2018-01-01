@@ -44,7 +44,14 @@ etc/acdbdata/Forte/Forte_Headset_cal.acdb
 etc/acdbdata/Forte/Forte_Speaker_cal.acdb
 etc/acdbdata/adsp_avs_config.acdb
 
+<<<<<<< HEAD
 # Audio amplifier
+=======
+# Audio amplifier calibration sound
+etc/silence_short.wav
+
+# Audio amplifier firmware
+>>>>>>> be74ad4... gemini: Implement on boot TFA98xx calibration
 etc/firmware/tfa98xx.cnt
 etc/firmware/tfa9891.cnt
 

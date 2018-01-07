@@ -287,6 +287,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.version=$(shell date -u +%Y%m%d) \
     ro.ota.manifest=https://romhut.com/roms/aosp-gemini-oreo/ota.xml
 
+# QCOM
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+
 # QMI
 PRODUCT_PACKAGES += \
     libjson \

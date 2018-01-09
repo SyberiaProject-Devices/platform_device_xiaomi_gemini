@@ -53,11 +53,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
 
-# Dumpstate HAL
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.msm8996
-
-
 # Fingerprint HIDL
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service

@@ -7,3 +7,4 @@ allow cnd self:capability {
     chown
     fsetid
 };
+allow cnd system_wpa_socket:sock_file unlink;

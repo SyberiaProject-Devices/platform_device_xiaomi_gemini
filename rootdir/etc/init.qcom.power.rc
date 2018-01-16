@@ -164,18 +164,11 @@ on enable-low-power
     # Set idle GPU to 133 MHz
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
 
-    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
-    write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 20
-    write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 20
-    write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 6000
-
     # Disable FSync
     write /sys/module/sync/parameters/fsync_enabled N
 
     write /sys/kernel/sched/arch_power 1
     write /sys/kernel/sched/gentle_fair_sleepers 0
-
-    write /sys/module/opchain/parameters/chain_on 1
 
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
@@ -183,19 +176,8 @@ on enable-low-power
     write /dev/cpuset/background/cpus 0
     write /dev/cpuset/system-background/cpus 0-2
 
-    # Set thermal restrictions
-    write /sys/kernel/msm_thermal/enabled 0
-    write /sys/kernel/msm_thermal/zone0 "1401600 1785600 40 38"
-    write /sys/kernel/msm_thermal/zone1 "1324800 1555200 41 40"
-    write /sys/kernel/msm_thermal/zone2 "1228800 1478400 42 41"
-    write /sys/kernel/msm_thermal/zone3 "1228800 1401600 43 42"
-    write /sys/kernel/msm_thermal/zone4 "1190400 1324800 44 43"
-    write /sys/kernel/msm_thermal/zone5 "1190400 1248000 46 44"
-    write /sys/kernel/msm_thermal/zone6 "1113600 1190400 48 46"
-    write /sys/kernel/msm_thermal/zone7 "1036800 940800 53 50"
-    write /sys/kernel/msm_thermal/zone8 "729600 729600 65 60"
-    write /sys/kernel/msm_thermal/sampling_ms 8000
-    write /sys/kernel/msm_thermal/enabled 1
+    write /sys/module/msm_thermal/vdd_restriction/enabled 0
+    write /sys/module/msm_thermal/core_control/enabled 1
 
     # Set nice Level to 9
     write /proc/sys/kernel/sched_upmigrate_min_nice 9

@@ -48,11 +48,13 @@ PRODUCT_PACKAGES += \
 
 # DRM HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
     android.hardware.dumpstate@1.0-service.msm8996
+
 
 # Fingerprint HIDL
 PRODUCT_PACKAGES += \
@@ -60,7 +62,8 @@ PRODUCT_PACKAGES += \
 
 # Gatekeeper HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
 
 # GPS HIDL
 PRODUCT_PACKAGES += \
@@ -75,7 +78,8 @@ PRODUCT_PACKAGES += \
 
 # Keymaster HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
 
 # Lights HIDL
 PRODUCT_PACKAGES += \
@@ -101,7 +105,8 @@ PRODUCT_PACKAGES += \
 
 # Sensors HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl
+    android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service
 
 # Health
 PRODUCT_PACKAGES += \

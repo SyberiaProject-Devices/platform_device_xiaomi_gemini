@@ -9,7 +9,10 @@
 /sys/kernel/debug/rmt_storage(/.*)?                                             u:object_r:debugfs_rmt:s0
 
 # Sys files
-/sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9]+/panel_(color|vendor)             u:object_r:sysfs_panel:s0
+/sys/devices/soc/75b7000\.i2c/i2c-9/9-[0-9a-f]+/leds(/.*)?    u:object_r:sysfs_leds:s0
+/sys/devices/soc/leds-qpnp-[0-9]+/leds(/.*)?                  u:object_r:sysfs_leds:s0
+
+/sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/panel_(color|vendor)                  u:object_r:sysfs_panel:s0
 
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-0020/input/input[0-9]+/reversed_keys    u:object_r:proc_touchpanel:s0
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-004a/reversed_keys                      u:object_r:proc_touchpanel:s0
@@ -57,6 +60,7 @@
 /(vendor|system/vendor)/bin/readfem   u:object_r:readfem_exec:s0
 /(vendor|system/vendor)/bin/readmac   u:object_r:readmac_exec:s0
 
+<<<<<<< HEAD
 # CPU tunable for EAS
 /sys/devices/system/cpu/cpu[0-3]/cpufreq/schedutil(/.*)?            u:object_r:sysfs_devices_system_cpu:s0
 
@@ -72,6 +76,10 @@
 /system/vendor/bin/hw/android\.hardware\.dumpstate@1\.0-service.msm8996          u:object_r:hal_dumpstate_impl_exec:s0
 /system/vendor/bin/hw/android\.hardware\.power@1\.1-service.msm8996              u:object_r:hal_power_default_exec:s0
 /system/vendor/bin/perfd         					 	 u:object_r:perfd_exec:s0
+=======
+# HALs
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.xiaomi_8996    u:object_r:hal_light_default_exec:s0
+>>>>>>> bcb235c... msm8996-common: Convert lights HAL into a native binderized HAL
 
 # Shell scripts
 /system/bin/init\.panel\.sh           u:object_r:init_panel_exec:s0

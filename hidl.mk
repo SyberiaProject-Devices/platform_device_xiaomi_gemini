@@ -85,8 +85,7 @@ PRODUCT_PACKAGES += \
 
 # Lights HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service
+    android.hardware.light@2.0-service.xiaomi_8996
 
 # Media HIDL
 PRODUCT_PACKAGES += \

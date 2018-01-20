@@ -54,8 +54,8 @@
 /persist/qc_senseid(/.*)?             u:object_r:persist_qc_senseid_file:s0
 
 # Binaries
-/system/bin/readfem                   u:object_r:readfem_exec:s0
-/system/bin/readmac                   u:object_r:readmac_exec:s0
+/(vendor|system/vendor)/bin/readfem   u:object_r:readfem_exec:s0
+/(vendor|system/vendor)/bin/readmac   u:object_r:readmac_exec:s0
 
 # CPU tunable for EAS
 /sys/devices/system/cpu/cpu[0-3]/cpufreq/schedutil(/.*)?            u:object_r:sysfs_devices_system_cpu:s0

@@ -1,2 +1,0 @@
-allow surfaceflinger perfd:unix_stream_socket connectto;
-allow surfaceflinger perfd_data_file:sock_file write;

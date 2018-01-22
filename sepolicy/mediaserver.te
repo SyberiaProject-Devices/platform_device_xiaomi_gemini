@@ -1,4 +1,0 @@
-allow mediaserver mpctl_data_file:dir search;
-allow mediaserver mpctl_data_file:sock_file write;
-allow mediaserver mpctl_socket:dir search;
-allow mediaserver mpctl_socket:sock_file write;

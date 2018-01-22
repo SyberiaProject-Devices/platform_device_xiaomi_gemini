@@ -1,6 +1,0 @@
-allow priv_app hal_memtrack_default:binder call;
-allow priv_app debugfs_kgsl:dir search;
-allow priv_app device:dir { open read };
-allow priv_app proc_interrupts:file { open read };
-allow priv_app rfs_system_file:dir getattr;
-

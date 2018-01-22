@@ -5,17 +5,13 @@
 /dev/pn548                            u:object_r:nfc_device:s0
 /dev/sysmatdrv                        u:object_r:sysmatdrv_device:s0
 
-# Debugfs files
-/sys/kernel/debug/rmt_storage(/.*)?                                             u:object_r:debugfs_rmt:s0
-
 # Sys files
 /sys/devices/soc/75b7000\.i2c/i2c-9/9-[0-9a-f]+/leds(/.*)?    u:object_r:sysfs_leds:s0
 /sys/devices/soc/leds-qpnp-[0-9]+/leds(/.*)?                  u:object_r:sysfs_leds:s0
 
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/panel_(color|vendor)                  u:object_r:sysfs_panel:s0
 
-/sys/devices/soc/75ba000\.i2c/i2c-12/12-0020/input/input[0-9]+/reversed_keys    u:object_r:proc_touchpanel:s0
-/sys/devices/soc/75ba000\.i2c/i2c-12/12-004a/reversed_keys                      u:object_r:proc_touchpanel:s0
+/sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+(/input/input[0-9]+)?/reversed_keys    u:object_r:proc_touchpanel:s0
 
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/input/input[0-9]+/wake_gesture        u:object_r:proc_touchpanel:s0
 /sys/devices/soc/75ba000\.i2c/i2c-12/12-[0-9a-f]+/wakeup_mode                           u:object_r:proc_touchpanel:s0
@@ -30,26 +26,6 @@
 # Data files
 /data/fpc(/.*)?                       u:object_r:fpc_data_file:s0
 /data/decrypt\.txt                    u:object_r:thermal_data_file:s0
-/data/misc/perfd(/.*)?                u:object_r:perfd_data_file:s0
-
-# Dumpstate
-/system/vendor/bin/iop       u:object_r:dumpstate_exec:s0
-
-# DPM
-/system/vendor/bin/dpmd      u:object_r:dpmd_exec:s0
-
-# HVDCP
-/sys/devices/soc/75b5000\.i2c/i2c-7/7-001d(/.*)?   u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc/[a-z0-9]+\.i2c/i2c-[0-9]/[0-9]-[a-z0-9]+/power_supply/usb-parallel(/.*)?   u:object_r:sysfs_battery_supply:s0
-
-# IMS
-/dev/socket/ims_rtpd                  u:object_r:ims_socket:s0
-/system/vendor/bin/imscmservice   u:object_r:imscm_exec:s0
-
-# IOP
-/data/misc/iop(/.*)?                  u:object_r:iop_data_file:s0
-
-# QFP
 /data/misc/stargate(/.*)?             u:object_r:qfp-daemon_data_file:s0
 
 # Persist files
@@ -60,27 +36,9 @@
 /(vendor|system/vendor)/bin/readfem   u:object_r:readfem_exec:s0
 /(vendor|system/vendor)/bin/readmac   u:object_r:readmac_exec:s0
 
-<<<<<<< HEAD
-# CPU tunable for EAS
-/sys/devices/system/cpu/cpu[0-3]/cpufreq/schedutil(/.*)?            u:object_r:sysfs_devices_system_cpu:s0
-
-# Init
-/system/bin/init\.power\.sh                                         u:object_r:init_power_exec:s0
-
-# debugfs
-/sys/kernel/debug/rpm_stats                      u:object_r:debugfs_rpm:s0
-/sys/kernel/debug/rpm_master_stats               u:object_r:debugfs_rpm:s0
-/sys/kernel/debug/kgsl(/.*)?                     u:object_r:debugfs_kgsl:s0
-
-# files in /vendor
-/system/vendor/bin/hw/android\.hardware\.dumpstate@1\.0-service.msm8996          u:object_r:hal_dumpstate_impl_exec:s0
-/system/vendor/bin/hw/android\.hardware\.power@1\.1-service.msm8996              u:object_r:hal_power_default_exec:s0
-/system/vendor/bin/perfd         					 	 u:object_r:perfd_exec:s0
-=======
 # HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.ir@1\.0-service.xiaomi_8996       u:object_r:hal_ir_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.xiaomi_8996    u:object_r:hal_light_default_exec:s0
->>>>>>> bcb235c... msm8996-common: Convert lights HAL into a native binderized HAL
 
 # Shell scripts
 /system/bin/init\.panel\.sh           u:object_r:init_panel_exec:s0

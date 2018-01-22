@@ -1,3 +1,0 @@
-allow dpmd self:capability dac_override;
-allow dpmd self:socket ioctl;
-allow dpmd self:udp_socket ioctl;

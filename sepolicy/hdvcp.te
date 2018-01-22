@@ -1,2 +1,0 @@
-allow hvdcp self:capability dac_override;
-allow hvdcp sysfs:file { open read };

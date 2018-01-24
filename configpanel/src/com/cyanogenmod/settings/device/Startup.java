@@ -28,8 +28,6 @@ import android.util.Log;
 
 import java.io.File;
 
-import com.android.internal.util.cm.FileUtils;
-
 public class Startup extends BroadcastReceiver {
 
     private static final String TAG = Startup.class.getSimpleName();

@@ -49,14 +49,6 @@ on boot
     chown system system /dev/cpuset/camera-daemon/tasks
     chmod 0664 /dev/cpuset/camera-daemon/tasks
 
-    #Set light thermal restrictions while optimizing apps
-    # [throttle_freq_LITTLE, throttle_freq_big, throttle_temp, unthrottle_temp]
-    write /sys/kernel/msm_thermal/zone0 "1228800 1632000 46 44"
-    write /sys/kernel/msm_thermal/zone1 "1228800 1555200 50 47"
-    write /sys/kernel/msm_thermal/zone2 "1036800 1248000 55 53"
-    write /sys/kernel/msm_thermal/zone3 "729600 729600 65 63"
-    write /sys/kernel/msm_thermal/enabled 1
-
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
 
@@ -81,6 +73,9 @@ on charger
     start hvdcp_opti
 
 on enable-low-power
+
+     # Disable thermal hotplug to switch governor
+    write /sys/module/msm_thermal/core_control/enabled 0
 
     # Set sync wakee policy tunable
     write /proc/sys/kernel/sched_prefer_sync_wakee_to_waker 1
@@ -123,6 +118,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
 
+    # Re-enable thermal hotplug
+    write /sys/module/msm_thermal/core_control/enabled 1
+
     # Input boost configuration
     write /sys/kernel/cpu_input_boost/ib_freqs "1228800 1324800"
     write /sys/kernel/cpu_input_boost/ib_duration_ms 1000
@@ -131,8 +129,8 @@ on enable-low-power
 
 # Set big.LITTLE scheduler parameters
     write /proc/sys/kernel/sched_boost 0
-    write /proc/sys/kernel/sched_upmigrate 95
-    write /proc/sys/kernel/sched_downmigrate 90
+    write /proc/sys/kernel/sched_upmigrate 45
+    write /proc/sys/kernel/sched_downmigrate 45
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
     write /proc/sys/kernel/sched_spill_nr_run 3
@@ -189,7 +187,7 @@ on property:sys.boot_completed=1
     trigger enable-low-power
 
     # Set I/O squeduler
-    setprop sys.io.scheduler "cfq"
+    setprop sys.io.scheduler "bfq"
 
     # Start I/O prefetcher service
     start iop

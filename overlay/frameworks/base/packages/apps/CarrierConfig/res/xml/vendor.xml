@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<carrier_config_list>
+    <carrier_config mcc="250" mnc="11">
+       <boolean name="carrier_wfc_ims_available_bool" value="false" />
+       <boolean name="carrier_volte_provisioning_required_bool" value="false" />
+       <boolean name="carrier_volte_available_bool" value="false" />
+    </carrier_config>
+</carrier_config_list>

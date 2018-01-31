@@ -90,8 +90,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1324800
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 30000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 6666
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 50000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 13000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
@@ -109,8 +110,9 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1996800
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 30000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 30000
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 6666
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 60000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 13000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif 1
@@ -165,18 +167,19 @@ on enable-low-power
     # Set idle GPU to 133 MHz
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
 
-    # Disable FSync
-    write /sys/module/sync/parameters/fsync_enabled N
-
-    write /sys/kernel/sched/arch_power 1
-    write /sys/kernel/sched/gentle_fair_sleepers 0
-
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
     write /dev/cpuset/foreground/boost/cpus 0-2
     write /dev/cpuset/foreground/cpus 0-2
     write /dev/cpuset/background/cpus 0
     write /dev/cpuset/system-background/cpus 0-2
+
+    write /sys/block/dm-0/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sde/queue/read_ahead_kb 256
+    write /sys/block/dm-0/queue/scheduler bfq
+    write /sys/block/sda/queue/scheduler bfq
+    write /sys/block/sde/queue/scheduler bfq
 
     write /sys/module/msm_thermal/core_control/enabled 1
 

@@ -151,6 +151,9 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 #Enable DRM plugins 64 bit compilation
 TARGET_ENABLE_MEDIADRM_64 := true
 
+# DRM
+TARGET_ENABLE_MEDIADRM_64 := true
+
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw

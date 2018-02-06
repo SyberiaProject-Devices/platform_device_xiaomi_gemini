@@ -291,9 +291,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ota.version=$(shell date -u +%Y%m%d) \
     ro.ota.manifest=https://romhut.com/roms/aosp-gemini-oreo/ota.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
-
 # QCOM
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml \

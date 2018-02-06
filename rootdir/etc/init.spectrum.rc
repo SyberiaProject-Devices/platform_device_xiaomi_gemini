@@ -34,6 +34,7 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 78000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 80000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
 
     # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200

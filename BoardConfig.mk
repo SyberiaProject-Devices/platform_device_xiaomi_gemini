@@ -60,7 +60,7 @@ TARGET_KERNEL_SOURCE := kernel/xiaomi/caf_msm8996
 #TARGET_KERNEL_CONFIG := mod_defconfig
 #TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
 
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/kernel-tc/android-toolchain-arm64/bin
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/kernel-tc/linaro-toolchain-arm64/bin
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996

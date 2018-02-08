@@ -16,11 +16,17 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Category title -->
+    <string name="buttons_title">Hadware Buttons</string>
+    <string name="graphics_title">Graphics</string>
+
     <!-- Application title -->
-    <string name="device_settings_app_name">Advanced settings</string>
+    <string name="device_settings_app_name">Device Features</string>
 
     <!-- Button settings -->
-    <string name="button_panel_title">Additional buttons</string>
+    <string name="button_panel_title">Device Features</string>
+    <string name="additional_buttons_title">Additional buttons</string>
 
     <string name="button_swap_title">Swap buttons</string>
     <string name="button_swap_summary">Swap the order of recents and back buttons</string>
@@ -37,4 +43,19 @@
 
     <string name="fp_wakeup_title">Fingerprint wakes device</string>
     <string name="fp_wakeup_summary">Allow fingerprint to wake the device while screen is off</string>
+
+    <string name="fingerprint_pocketmode_title">Prevent accidental wake-up</string>
+    <string name="fingerprint_pocketmode_summary">Check the proximity sensor prior to wake-ups triggered by the fingerprint sensor</string>
+
+    <!-- Kcal -->
+    <string name="kcal_title">Display color</string>
+    <string name="kcal_summary">Display color calibration using KCAL</string>
+    <string name="kcal_enabled_title">Enable KCAL</string>
+    <string name="kcal_enabled_summary">Turn on display calibration using KCAL</string>
+    <string name="kcal_red">Red</string>
+    <string name="kcal_green">Green</string>
+    <string name="kcal_blue">Blue</string>
+    <string name="kcal_saturation">Saturation</string>
+    <string name="kcal_contrast">Constrast</string>
+
 </resources>

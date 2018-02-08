@@ -19,12 +19,42 @@ package com.cyanogenmod.settings.device;
 
 import android.content.Context;
 import android.content.Intent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import android.content.SharedPreferences;
 import android.os.UserHandle;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.PreferenceManager;
 
 public class Utils {
+
+    /**
+     * Write a string value to the specified file.
+     * @param filename      The filename
+     * @param value         The value
+     */
+    public static void writeValue(String filename, String value) {
+        try {
+            FileOutputStream fos = new FileOutputStream(new File(filename));
+            fos.write(value.getBytes());
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean fileExists(String filename) {
+        return new File(filename).exists();
+    }
+
+    public static boolean fileWritable(String filename) {
+        return fileExists(filename) && new File(filename).canWrite();
+    }
 
     public static boolean isPreferenceEnabled(Context context, String key) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);

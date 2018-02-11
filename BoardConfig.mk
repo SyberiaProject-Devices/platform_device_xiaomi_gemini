@@ -67,8 +67,9 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64
 TARGET_BOARD_PLATFORM := msm8996
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno530
 
-# System properties
-TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
+# Properties
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+TARGET_VENDOR_PROP += $(VENDOR_PATH)/vendor.prop
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"

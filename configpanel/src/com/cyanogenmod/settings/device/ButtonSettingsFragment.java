@@ -46,14 +46,14 @@ public class ButtonSettingsFragment extends PreferenceFragment
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.button_panel);
         mKcalPref = findPreference("kcal");
-        mKcalPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-             @Override
-             public boolean onPreferenceClick(Preference preference) {
-                 Intent intent = new Intent(getActivity(), DisplayCalibration.class);
-                 startActivity(intent);
-                 return true;
-             }
-        });
+                mKcalPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                     @Override
+                     public boolean onPreferenceClick(Preference preference) {
+                         Intent intent = new Intent(getActivity(), DisplayCalibration.class);
+                         startActivity(intent);
+                         return true;
+                     }
+                });
     }
 
     @Override

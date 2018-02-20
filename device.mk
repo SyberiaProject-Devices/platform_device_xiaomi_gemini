@@ -283,10 +283,8 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # OTA Updates
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ota.romname=AOSP-GEMINI-OREO \
-    ro.ota.version=$(shell date -u +%Y%m%d) \
-    ro.ota.manifest=https://romhut.com/roms/aosp-gemini-oreo/ota.xml
+PRODUCT_PACKAGES += \
+    Updates
 
 # QCOM
 PRODUCT_COPY_FILES += \

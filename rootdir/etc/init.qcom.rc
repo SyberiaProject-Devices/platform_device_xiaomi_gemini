@@ -530,10 +530,10 @@ service cnss-daemon /vendor/bin/cnss-daemon -n -l
 on property:sys.powerctl=*
     stop cnss-daemon
 
-service loc_launcher /vendor/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
+service vendor.loc_launcher /vendor/bin/loc_launcher
     class late_start
-    group gps inet oem_2950 wifi
+    user gps
+    group gps
     writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /vendor/bin/init.qcom.sh

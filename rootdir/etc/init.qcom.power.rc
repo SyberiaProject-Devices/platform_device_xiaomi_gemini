@@ -87,39 +87,41 @@ on enable-low-power
 
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1478400
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 85
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 13000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 22000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 10000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 13000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 844800
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 20000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 307200:25 480000:30 556800:35 556800:40 729600:45 844800:50 844800:55 1036800:60 1036800:65 1036800:70 1228800:75 1228800:80 1228800:85 1478400:90 1478400:95 1478400:100"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 18000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 78000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 80000
-
+    
     # Bring CPU2 online
 
     write /sys/devices/system/cpu/cpu2/online 1
 
     # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "13000 1324800:13000 1632000:21000 1996800:21000"
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 10000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1036800
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 940800
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 3333
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads 85 "307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:20 307200:25 480000:30 806400:35 940800:40 1190400:45 1248000:50 1248000:55 1478400:60 1555200:65 1555200:70 1785600:75 1824000:80 1996800:85 2073600:90 2073600:95 2073600:100"
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 18000
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boost 0
@@ -143,7 +145,7 @@ on enable-low-power
     write /sys/module/msm_performance/parameters/touchboost 0
     write /sys/module/cpu_boost/parameters/sched_boost_on_input N
     write /sys/module/cpu_boost/parameters/input_boost_ms 30
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1190400 1:1190400 2:1632000 3:1632000"
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:844800 1:844800 2:940800 3:940800"
     write /sys/module/cpu_boost/parameters/input_boost_enabled 1
     write /sys/kernel/cpu_input_boost/ib_freqs "902400 748800"
     write /sys/kernel/cpu_input_boost/ib_duration_ms 100
@@ -151,8 +153,8 @@ on enable-low-power
 
 # Set big.LITTLE scheduler parameters
     write /proc/sys/kernel/sched_boost 0
-    write /proc/sys/kernel/sched_upmigrate 90
-    write /proc/sys/kernel/sched_downmigrate 85
+    write /proc/sys/kernel/sched_upmigrate 70
+    write /proc/sys/kernel/sched_downmigrate 65
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
     write /proc/sys/kernel/sched_spill_nr_run 3
@@ -184,7 +186,7 @@ on enable-low-power
     # Set idle GPU to 133 MHz
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
     write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 0
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
+    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_clock_mhz 133
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_clock_mhz 624
@@ -200,12 +202,12 @@ on enable-low-power
     write /dev/cpuset/system-background/cpus 0-2
     
 
-    write /sys/block/dm-0/queue/read_ahead_kb 256
-    write /sys/block/sda/queue/read_ahead_kb 256
-    write /sys/block/sde/queue/read_ahead_kb 256
-    write /sys/block/dm-0/queue/scheduler cfq
-    write /sys/block/sda/queue/scheduler cfq
-    write /sys/block/sde/queue/scheduler cfq
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/dm-0/queue/scheduler bfq
+    write /sys/block/sda/queue/scheduler bfq
+    write /sys/block/sde/queue/scheduler bfq
 
     write /sys/module/msm_thermal/core_control/enabled 1
 
@@ -219,7 +221,7 @@ on property:sys.boot_completed=1
     trigger enable-low-power
 
     # Set I/O squeduler
-    setprop sys.io.scheduler "cfq"
+    setprop sys.io.scheduler "bfq"
 
     # Start I/O prefetcher service
     start iop

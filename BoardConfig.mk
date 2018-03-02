@@ -32,7 +32,6 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := kryo
 
 TARGET_USES_64_BIT_BINDER := true
-TARGET_USE_SDCLANG := true
 
 # Assertions
 TARGET_BOARD_INFO_FILE ?= $(VENDOR_PATH)/board-info.txt
@@ -55,13 +54,12 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_CONFIG := gemini_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/caf_msm8996
 #TARGET_KERNEL_CONFIG := mod_defconfig
 #TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-8.0/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-8.x/bin
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996

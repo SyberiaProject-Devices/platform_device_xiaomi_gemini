@@ -381,3 +381,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.tfa.sh \
     tinyplay
+
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.power=gemini

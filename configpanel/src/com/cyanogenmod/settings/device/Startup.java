@@ -42,6 +42,9 @@ public class Startup extends BroadcastReceiver {
                 || Intent.ACTION_PRE_BOOT_COMPLETED.equals(action)) {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
+            VibratorStrengthPreference.restore(context);
+            DisplayCalibration.restore(context);
+
             // Disable button settings if needed
             if (!hasButtonProcs()) {
                 disableComponent(context, ButtonSettingsActivity.class.getName());

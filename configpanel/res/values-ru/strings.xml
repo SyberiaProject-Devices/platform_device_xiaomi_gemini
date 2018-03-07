@@ -49,4 +49,10 @@
     <string name="kcal_saturation">Насыщенность</string>
     <string name="kcal_contrast">Контрастность</string>
 
+ <!-- Vibrator -->
+    <string name="vibrator_category">Вибрация</string>
+    <string name="vibrator_title">Сила</string>
+    <string name="vibrator_summary">Установить силу вибрации</string>
+    <string name="vibrator_test">Тест</string>
+
 </resources>

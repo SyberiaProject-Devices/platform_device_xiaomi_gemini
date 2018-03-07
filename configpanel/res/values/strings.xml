@@ -58,4 +58,11 @@
     <string name="kcal_saturation">Saturation</string>
     <string name="kcal_contrast">Constrast</string>
 
+
+    <!-- Vibrator -->
+    <string name="vibrator_category">Vibrator</string>
+    <string name="vibrator_title">Strength</string>
+    <string name="vibrator_summary">Define the strength of the vibrator</string>
+    <string name="vibrator_test">Test</string>
+
 </resources>

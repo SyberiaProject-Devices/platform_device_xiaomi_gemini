@@ -71,4 +71,13 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/vibrator_category">
+        <com.cyanogenmod.settings.device.VibratorStrengthPreference
+            android:key="vibrator_key"
+            android:iconSpaceReserved="false"
+            android:title="@string/vibrator_title"
+            android:summary="@string/vibrator_summary" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

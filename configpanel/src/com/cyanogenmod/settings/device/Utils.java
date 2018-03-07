@@ -27,6 +27,8 @@ import android.content.SharedPreferences;
 import android.os.UserHandle;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.PreferenceManager;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Utils {
 
@@ -91,5 +93,36 @@ public class Utils {
         final Intent intent = new Intent(Constants.CUST_INTENT);
         intent.putExtra(Constants.CUST_INTENT_EXTRA, value);
         context.sendBroadcastAsUser(intent, UserHandle.CURRENT);
+    }
+
+    public static String getFileValue(String filename, String defValue) {
+        String fileValue = readLine(filename);
+        if(fileValue!=null){
+            return fileValue;
+        }
+        return defValue;
+    }
+
+    public static String readLine(String filename) {
+        if (filename == null) {
+            return null;
+        }
+        BufferedReader br = null;
+        String line = null;
+        try {
+            br = new BufferedReader(new FileReader(filename), 1024);
+            line = br.readLine();
+        } catch (IOException e) {
+            return null;
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
+        }
+        return line;
     }
 }

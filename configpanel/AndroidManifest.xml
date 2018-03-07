@@ -21,8 +21,11 @@
     android:versionName="2.5"
     android:sharedUserId="android.uid.system">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INJECT_EVENTS"/>
     <protected-broadcast android:name="com.cyanogenmod.settings.device.CUST_UPDATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <uses-sdk
         android:minSdkVersion="27" />
@@ -73,7 +76,7 @@
         <activity android:name=".KeyHandler" />
 
         <receiver android:name=".Startup" >
-            <intent-filter>
+            <intent-filter android:priority="100">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.PRE_BOOT_COMPLETED" />
             </intent-filter>

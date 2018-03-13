@@ -204,6 +204,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_HAS_NO_WIFI_STATS := true
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 TARGET_USES_INTERACTION_BOOST := true
+TARGET_USES_AOSP := true
 
 BOARD_HAL_STATIC_LIBRARIES := libdumpstate.gemini
 

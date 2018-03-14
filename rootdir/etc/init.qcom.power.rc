@@ -95,25 +95,6 @@ on enable-low-power
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled N
 
-    # Input boost configuration
-    write /sys/module/msm_performance/parameters/touchboost 0
-    write /sys/module/cpu_boost/parameters/sched_boost_on_input N
-    write /sys/module/cpu_boost/parameters/input_boost_ms 30
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:844800 1:844800 2:940800 3:940800"
-    write /sys/module/cpu_boost/parameters/input_boost_enabled 1
-    write /sys/kernel/cpu_input_boost/ib_freqs "902400 748800"
-    write /sys/kernel/cpu_input_boost/ib_duration_ms 100
-    write /sys/kernel/cpu_input_boost/enabled 0
-
-# Set big.LITTLE scheduler parameters
-    write /proc/sys/kernel/sched_boost 0
-    write /proc/sys/kernel/sched_upmigrate 70
-    write /proc/sys/kernel/sched_downmigrate 65
-    write /proc/sys/kernel/sched_freq_inc_notify 400000
-    write /proc/sys/kernel/sched_freq_dec_notify 400000
-    write /proc/sys/kernel/sched_spill_nr_run 3
-    write /proc/sys/kernel/sched_init_task_load 100
-
     # Enable bus-dcvs
     write /sys/class/devfreq/soc:qcom,cpubw/governor "bw_hwmon"
     write /sys/class/devfreq/soc:qcom,cpubw/polling_interval 50
@@ -156,12 +137,12 @@ on enable-low-power
     write /dev/cpuset/system-background/cpus 0-2
     
 
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sde/queue/read_ahead_kb 128
-    write /sys/block/dm-0/queue/scheduler bfq
-    write /sys/block/sda/queue/scheduler bfq
-    write /sys/block/sde/queue/scheduler bfq
+    write /sys/block/dm-0/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sde/queue/read_ahead_kb 256
+    write /sys/block/dm-0/queue/scheduler cfq
+    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sde/queue/scheduler cfq
 
     write /sys/module/msm_thermal/core_control/enabled 1
 
@@ -175,10 +156,7 @@ on property:sys.boot_completed=1
     trigger enable-low-power
 
     # Set I/O squeduler
-    setprop sys.io.scheduler "bfq"
-
-    # Start I/O prefetcher service
-    start iop
+    setprop sys.io.scheduler "cfq"
 
 on property:init.svc.recovery=running
     trigger enable-low-power
@@ -187,12 +165,6 @@ service charger /sbin/chargeonlymode
     class charger
     group system graphics
     seclabel u:r:charger:s0
-
-service energy-awareness /vendor/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
 
 service hvdcp_opti /vendor/bin/hvdcp_opti
     class main

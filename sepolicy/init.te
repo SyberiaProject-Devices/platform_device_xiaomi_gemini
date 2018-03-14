@@ -3,4 +3,10 @@ allow init debugfs:file write;
 allow init perfd:unix_stream_socket connectto;
 allow init perfd_data_file:sock_file write;
 allow init system_data_file:file { ioctl lock };
-#allow init vendor_file:file execute_no_trans;
+# symlink /sdcard to backing block
+allow init tmpfs:lnk_file create;
+allow init proc_kernel_sched:file w_file_perms;
+allow init sysfs_type:lnk_file read;
+allow init firmware_file:dir mounton;
+allow init persist_file:dir mounton;
+allow init userdata_block_device:blk_file { write };

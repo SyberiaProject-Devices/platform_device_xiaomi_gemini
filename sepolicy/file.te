@@ -21,6 +21,21 @@ type sysfs_power_management, sysfs_type, fs_type;
 type netmgr_data_file, file_type, data_file_type;
 type sysfs_rmtfs, sysfs_type, fs_type;
 
+# debugfs
+type debugfs_msm_core, debugfs_type, fs_type;
+type debugfs_rmt_storage, debugfs_type, fs_type;
+type debugfs_sps, debugfs_type, fs_type;
 type debugfs_wlan, debugfs_type, fs_type;
+type debugfs_kgsl, debugfs_type, fs_type;
+type debugfs_ipc, debugfs_type, fs_type;
+type debugfs_bufinfo, debugfs_type, fs_type;
+type debugfs_mdp, debugfs_type, fs_type;
+type debugfs_ion, debugfs_type, fs_type;
+type debugfs_qsee_log, debugfs_type, fs_type;
+type debugfs_usb, debugfs_type, fs_type;
+type debugfs_runtime_pm, debugfs_type, fs_type;
+type debugfs_cnss, debugfs_type, fs_type;
+type debugfs_ufs, debugfs_type, fs_type;
 
 type proc_kernel_sched, fs_type;
+type proc_irq, fs_type;

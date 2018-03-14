@@ -30,6 +30,8 @@
 /data/fpc(/.*)?                       u:object_r:fpc_data_file:s0
 /data/decrypt\.txt                    u:object_r:thermal_data_file:s0
 /data/misc/stargate(/.*)?             u:object_r:qfp-daemon_data_file:s0
+/data/misc/perfd(/.*)?                u:object_r:perfd_data_file:s0
+/data/system/perfd(/.*)?              u:object_r:perfd_data_file:s0
 
 # Persist files
 /persist/audio/us_cal                 u:object_r:persist_usf_cal_file:s0
@@ -38,10 +40,14 @@
 # Binaries
 /(vendor|system/vendor)/bin/readfem   u:object_r:readfem_exec:s0
 /(vendor|system/vendor)/bin/readmac   u:object_r:readmac_exec:s0
+/(vendor|system/vendor)/bin/perfd     u:object_r:perfd_exec:s0
 
 # HALs
 /(vendor|system/vendor)/bin/hw/android\.hardware\.ir@1\.0-service.xiaomi_8996       u:object_r:hal_ir_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.xiaomi_8996    u:object_r:hal_light_default_exec:s0
+/vendor/bin/hw/android\.hardware\.dumpstate@1\.0-service.gemini 		    u:object_r:hal_dumpstate_impl_exec:s0
+/vendor/bin/hw/android\.hardware\.power@1\.1-service.gemini          		    u:object_r:hal_power_default_exec:s0
+
 
 # Shell scripts
 /(vendor|system/vendor)/bin/init\.panel\.sh    u:object_r:init_panel_exec:s0

@@ -111,6 +111,7 @@ public class DisplayCalibration extends PreferenceActivity implements
        boolean storeEnabled = PreferenceManager
                 .getDefaultSharedPreferences(context).getBoolean(DisplayCalibration.KEY_KCAL_ENABLED, false);
        if (storeEnabled) {
+           Utils.writeValue(COLOR_FILE_ENABLE, "1");
            Utils.writeValue(COLOR_FILE, "1");
            int storedRed = PreferenceManager
                    .getDefaultSharedPreferences(context).getInt(DisplayCalibration.KEY_KCAL_RED, 256);
@@ -150,9 +151,13 @@ public class DisplayCalibration extends PreferenceActivity implements
             mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, 256));
             mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
             mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
+            String storedValue = ((String) String.valueOf(mRed)
+                   + " " + String.valueOf(mGreen) + " " +  String.valueOf(mBlue));
             String mSaturation = String.valueOf(mPrefs.getInt(KEY_KCAL_SATURATION, 256));
             String mContrast = String.valueOf(mPrefs.getInt(KEY_KCAL_CONTRAST, 256));
+
             Utils.writeValue(COLOR_FILE_ENABLE, enabled ? "1" : "0");
+            Utils.writeValue(COLOR_FILE, storedValue);
             Utils.writeValue(COLOR_FILE_SATURATION, mSaturation);
             Utils.writeValue(COLOR_FILE_CONTRAST, mContrast);
             return true;

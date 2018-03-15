@@ -18,6 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Application title -->
     <string name="device_settings_app_name">Расширенные настройки</string>
+    <string name="graphics_title">Дисплей</string>
 
   <!-- Button settings -->
 

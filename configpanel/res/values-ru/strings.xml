@@ -49,6 +49,7 @@
     <string name="kcal_blue">Синий</string>
     <string name="kcal_saturation">Насыщенность</string>
     <string name="kcal_contrast">Контрастность</string>
+    <string name="menu_reset">Сброс</string>
 
  <!-- Vibrator -->
     <string name="vibrator_category">Вибрация</string>

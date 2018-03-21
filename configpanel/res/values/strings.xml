@@ -65,4 +65,19 @@
     <string name="vibrator_summary">Define the strength of the vibrator</string>
     <string name="vibrator_test">Test</string>
 
+    <!-- QC3.0 Charge limit -->
+    <string name="qc3_category">Charging limit</string>
+    <string name="qc3_title">QC3.0 charging limit</string>
+    <string name="qc3_2000">2000 ma</string>
+    <string name="qc3_2100">2100 ma</string>
+    <string name="qc3_2200">2200 ma</string>
+    <string name="qc3_2300">2300 ma</string>
+    <string name="qc3_2400">2400 ma</string>
+    <string name="qc3_2500">2500 ma (Default)</string>
+    <string name="qc3_2600">2600 ma</string>
+    <string name="qc3_2700">2700 ma</string>
+    <string name="qc3_2800">2800 ma</string>
+    <string name="qc3_2900">2900 ma</string>
+    <string name="qc3_3000">3000 ma (Not recommended)</string>
+
 </resources>

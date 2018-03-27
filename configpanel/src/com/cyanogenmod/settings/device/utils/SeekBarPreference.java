@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.cyanogenmod.settings.device.R;
+import com.cyanogenmod.settings.device.Utils;
 
 public class SeekBarPreference extends Preference {
 
@@ -83,7 +84,7 @@ public class SeekBarPreference extends Preference {
                     monitorBox.setSelection(monitorBox.getText().length());
             }
         });
-        monitorBox.setFilters(new InputFilter[]{new InputFilterMinMax(minimum, maximum)});
+
         monitorBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int keyCode, KeyEvent event) {
@@ -91,7 +92,8 @@ public class SeekBarPreference extends Preference {
                     v.clearFocus();
                     InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    currentValue = Integer.parseInt(v.getText().toString());
+                    currentValue = (int) Utils.clamp(Integer.parseInt(v.getText().toString()),minimum,maximum);
+                    monitorBox.setText(String.valueOf(currentValue));
                     bar.setProgress(currentValue - minimum, true);
                     changer.onPreferenceChange(SeekBarPreference.this, Integer.toString(currentValue));
                     return true;
@@ -137,8 +139,13 @@ public class SeekBarPreference extends Preference {
     }
 
     public int reset() {
-        currentValue = def;
+        currentValue = (int) Utils.clamp(def, minimum, maximum);
         notifyChanged();
-        return def;
+        return currentValue;
+    }
+
+    public void setValue(int progress) {
+        currentValue = (int) Utils.clamp(progress, minimum, maximum);
+        notifyChanged();
     }
 }

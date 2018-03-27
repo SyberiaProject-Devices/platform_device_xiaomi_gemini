@@ -44,12 +44,14 @@ public class DisplayCalibration extends PreferenceActivity implements
     public static final String KEY_KCAL_BLUE = "kcal_blue";
     public static final String KEY_KCAL_SATURATION = "kcal_saturation";
     public static final String KEY_KCAL_CONTRAST = "kcal_contrast";
+    public static final String KEY_KCAL_COLOR_TEMP = "kcal_color_temp";
 
     private SeekBarPreference mKcalRed;
     private SeekBarPreference mKcalBlue;
     private SeekBarPreference mKcalGreen;
     private SeekBarPreference mKcalSaturation;
     private SeekBarPreference mKcalContrast;
+    private SeekBarPreference mKcalColorTemp;
     private SharedPreferences mPrefs;
     private SwitchPreference mKcalEnabled;
     private boolean mEnabled;
@@ -99,6 +101,10 @@ public class DisplayCalibration extends PreferenceActivity implements
         mKcalContrast = (SeekBarPreference) findPreference(KEY_KCAL_CONTRAST);
         mKcalContrast.setInitValue(mPrefs.getInt(KEY_KCAL_CONTRAST, mKcalContrast.def));
         mKcalContrast.setOnPreferenceChangeListener(this);
+
+        mKcalColorTemp = (SeekBarPreference) findPreference(KEY_KCAL_COLOR_TEMP);
+        mKcalColorTemp.setInitValue(mPrefs.getInt(KEY_KCAL_COLOR_TEMP, mKcalColorTemp.def));
+        mKcalColorTemp.setOnPreferenceChangeListener(this);
 
         mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, mKcalRed.def));
         mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, mKcalGreen.def));
@@ -174,6 +180,9 @@ public class DisplayCalibration extends PreferenceActivity implements
         Utils.writeValue(COLOR_FILE, storedValue);
         Utils.writeValue(COLOR_FILE_SATURATION, Integer.toString(saturation));
         Utils.writeValue(COLOR_FILE_CONTRAST, Integer.toString(contrast));
+
+        int cct = Utils.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
+        mKcalColorTemp.setValue(cct);
     }
 
     @Override
@@ -193,6 +202,9 @@ public class DisplayCalibration extends PreferenceActivity implements
             Utils.writeValue(COLOR_FILE, storedValue);
             Utils.writeValue(COLOR_FILE_SATURATION, mSaturation);
             Utils.writeValue(COLOR_FILE_CONTRAST, mContrast);
+
+            int cct = Utils.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
+            mKcalColorTemp.setValue(cct);
             return true;
         } else if (preference == mKcalRed) {
             float val = Float.parseFloat((String) newValue);
@@ -201,6 +213,9 @@ public class DisplayCalibration extends PreferenceActivity implements
             mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
             String strVal = ((String) newValue + " " + mGreen + " " +mBlue);
             Utils.writeValue(COLOR_FILE, strVal);
+
+            int cct = Utils.KfromRGB(val, mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
+            mKcalColorTemp.setValue(cct);
             return true;
         } else if (preference == mKcalGreen) {
             float val = Float.parseFloat((String) newValue);
@@ -209,6 +224,9 @@ public class DisplayCalibration extends PreferenceActivity implements
             mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, 256));
             String strVal = ((String) mRed + " " + newValue + " " +mBlue);
             Utils.writeValue(COLOR_FILE, strVal);
+
+            int cct = Utils.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), val, mPrefs.getInt(KEY_KCAL_BLUE, 256));
+            mKcalColorTemp.setValue(cct);
             return true;
         } else if (preference == mKcalBlue) {
             float val = Float.parseFloat((String) newValue);
@@ -217,6 +235,9 @@ public class DisplayCalibration extends PreferenceActivity implements
             mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, 256));
             String strVal = ((String) mRed + " " + mGreen + " " +newValue);
             Utils.writeValue(COLOR_FILE, strVal);
+
+            int cct = Utils.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), val);
+            mKcalColorTemp.setValue(cct);
             return true;
         } else if (preference == mKcalSaturation) {
             float val = Float.parseFloat((String) newValue);
@@ -230,6 +251,23 @@ public class DisplayCalibration extends PreferenceActivity implements
             String strVal = (String) newValue;
             Utils.writeValue(COLOR_FILE_CONTRAST, strVal);
             return true;
+        } else if (preference == mKcalColorTemp) {
+            int val = Integer.parseInt((String) newValue);
+            int[] colorTemp = Utils.RGBfromK(val);
+            int red = colorTemp[0];
+            int green = colorTemp[1];
+            int blue = colorTemp[2];
+
+            mKcalRed.setValue(red);
+            mKcalGreen.setValue(green);
+            mKcalBlue.setValue(blue);
+
+            mPrefs.edit().putInt(KEY_KCAL_RED, red).commit();
+            mPrefs.edit().putInt(KEY_KCAL_GREEN, green).commit();
+            mPrefs.edit().putInt(KEY_KCAL_BLUE, blue).commit();
+
+            String storedValue = Integer.toString(red) + " " + Integer.toString(green) + " " +  Integer.toString(blue);
+            Utils.writeValue(COLOR_FILE, storedValue);
         }
         return false;
     }

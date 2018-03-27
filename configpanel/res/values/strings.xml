@@ -58,7 +58,7 @@
     <string name="kcal_saturation">Saturation</string>
     <string name="kcal_contrast">Constrast</string>
     <string name="menu_reset">Reset</string>
-
+    <string name="kcal_color_temp">Colorful temperature (K)</string>
 
     <!-- Vibrator -->
     <string name="vibrator_category">Vibrator</string>

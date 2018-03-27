@@ -50,6 +50,7 @@
     <string name="kcal_saturation">Насыщенность</string>
     <string name="kcal_contrast">Контрастность</string>
     <string name="menu_reset">Сброс</string>
+    <string name="kcal_color_temp">Цветовая температура (K)</string>
 
  <!-- Vibrator -->
     <string name="vibrator_category">Вибрация</string>

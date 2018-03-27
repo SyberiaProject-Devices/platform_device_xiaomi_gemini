@@ -102,6 +102,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=480 \
     sdm.debug.disable_rotator_split=1 \
     sdm.debug.disable_skip_validate=1 \
+    sdm.debug.rotator_downscale=1 \
     sdm.perf_hint_window=50
 
 #property to specify the number of frames to skip before setting hint

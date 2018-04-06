@@ -11,3 +11,5 @@ allow system_app qfp_proxy_service:service_manager add;
 
 allow system_app kcal_dev:file rw_file_perms;
 allow system_app kcal_dev:dir search;
+
+allow system_app sysfs_vibrator:file write;

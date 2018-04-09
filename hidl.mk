@@ -109,10 +109,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl \
     android.hardware.health@1.0-service
 
-# USB HIDL
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
-
 # Vibrator HIDL
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \

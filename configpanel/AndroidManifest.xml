@@ -61,6 +61,9 @@
             <meta-data
                 android:name="com.android.settings.category"
                 android:value="com.android.settings.category.device" />
+             <meta-data
+                 android:name="com.android.settings.summary"
+                 android:resource="@string/summary_empty" />
         </activity>
 
         <activity

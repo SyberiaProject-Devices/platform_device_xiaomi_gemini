@@ -77,4 +77,6 @@
     <string name="qc3_2500">2500 ma (Default)</string>
     <string name="qc3_2600">2600 ma</string>
 
+    <string name="summary_empty" translatable="false"></string>
+
 </resources>

@@ -25,9 +25,6 @@
         <item>@string/qc3_2500</item>
         <item>@string/qc3_2600</item>
         <item>@string/qc3_2700</item>
-        <item>@string/qc3_2800</item>
-        <item>@string/qc3_2900</item>
-        <item>@string/qc3_3000</item>
 
     </string-array>
 
@@ -40,8 +37,5 @@
         <item>2500</item>
         <item>2600</item>
         <item>2700</item>
-        <item>2800</item>
-        <item>2900</item>
-        <item>3000</item>
     </string-array>
 </resources>

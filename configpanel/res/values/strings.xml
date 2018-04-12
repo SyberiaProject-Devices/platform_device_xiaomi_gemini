@@ -76,9 +76,5 @@
     <string name="qc3_2400">2400 ma</string>
     <string name="qc3_2500">2500 ma (Default)</string>
     <string name="qc3_2600">2600 ma</string>
-    <string name="qc3_2700">2700 ma</string>
-    <string name="qc3_2800">2800 ma</string>
-    <string name="qc3_2900">2900 ma</string>
-    <string name="qc3_3000">3000 ma (Not recommended)</string>
 
 </resources>

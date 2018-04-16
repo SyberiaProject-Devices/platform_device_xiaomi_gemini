@@ -89,7 +89,7 @@ PRODUCT_PACKAGES += \
 
 # Power HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service.gemini \
+    android.hardware.power@1.0-service.gemini \
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \

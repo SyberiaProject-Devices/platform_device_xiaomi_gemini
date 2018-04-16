@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.power@1.1-service.gemini"
+#define LOG_TAG "android.hardware.power@1.0-service.gemini"
 
 #include <android/log.h>
 #include <hidl/HidlTransportSupport.h>
@@ -30,15 +30,15 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
-using android::hardware::power::V1_1::IPower;
-using android::hardware::power::V1_1::implementation::Power;
+using android::hardware::power::V1_0::IPower;
+using android::hardware::power::V1_0::implementation::Power;
 
 int main() {
 
     status_t status;
     android::sp<IPower> service = nullptr;
 
-    ALOGI("Power HAL Service 1.1 for Gemini is starting.");
+    ALOGI("Power HAL Service 1.0 for Gemini is starting.");
 
     service = new Power();
     if (service == nullptr) {

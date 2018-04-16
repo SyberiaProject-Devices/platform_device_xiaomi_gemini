@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.power@1.1-service.gemini"
+#define LOG_TAG "android.hardware.power@1.0-service.gemini"
 
 #include <android/log.h>
 #include <utils/Log.h>
@@ -30,14 +30,13 @@
 namespace android {
 namespace hardware {
 namespace power {
-namespace V1_1 {
+namespace V1_0 {
 namespace implementation {
 
 using ::android::hardware::power::V1_0::Feature;
 using ::android::hardware::power::V1_0::PowerHint;
 using ::android::hardware::power::V1_0::PowerStatePlatformSleepState;
 using ::android::hardware::power::V1_0::Status;
-using ::android::hardware::power::V1_1::PowerStateSubsystem;
 using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
@@ -130,67 +129,8 @@ done:
 }
 
 
-// Methods from ::android::hardware::power::V1_1::IPower follow.
-
-static int get_wlan_low_power_stats(struct PowerStateSubsystem &subsystem) {
-
-    uint64_t stats[WLAN_PARAM_COUNT] = {0};
-    struct PowerStateSubsystemSleepState *state;
-    int ret;
-
-    ret = extract_wlan_stats(stats);
-    if (ret)
-        return ret;
-
-    subsystem.name = "wlan";
-    subsystem.states.resize(WLAN_STATE_COUNT);
-
-    /* Update statistics for Active State */
-    state = &subsystem.states[WLAN_STATE_ACTIVE];
-    state->name = "Active";
-    state->residencyInMsecSinceBoot = stats[wlan_param_id::CUMULATIVE_TOTAL_ON_TIME_MS];
-    state->totalTransitions = stats[wlan_param_id::DEEP_SLEEP_ENTER_COUNTER];
-    state->lastEntryTimestampMs = 0; //FIXME need a new value from Qcom
-    state->supportedOnlyInSuspend = false;
-
-    /* Update statistics for Deep-Sleep state */
-    state = &subsystem.states[WLAN_STATE_DEEP_SLEEP];
-    state->name = "Deep-Sleep";
-    state->residencyInMsecSinceBoot = stats[wlan_param_id::CUMULATIVE_SLEEP_TIME_MS];
-    state->totalTransitions = stats[wlan_param_id::DEEP_SLEEP_ENTER_COUNTER];
-    state->lastEntryTimestampMs = stats[wlan_param_id::LAST_DEEP_SLEEP_ENTER_TSTAMP_MS];
-    state->supportedOnlyInSuspend = false;
-
-    return 0;
-}
-
-Return<void> Power::getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl_cb) {
-
-    hidl_vec<PowerStateSubsystem> subsystems;
-    int ret;
-
-    subsystems.resize(subsystem_type::SUBSYSTEM_COUNT);
-
-    //We currently have only one Subsystem for WLAN
-    ret = get_wlan_low_power_stats(subsystems[subsystem_type::SUBSYSTEM_WLAN]);
-    if (ret != 0) {
-        goto done;
-    }
-
-    //Add query for other subsystems here
-
-done:
-    _hidl_cb(subsystems, Status::SUCCESS);
-    return Void();
-}
-
-Return<void> Power::powerHintAsync(PowerHint hint, int32_t data) {
-    // just call the normal power hint in this oneway function
-    return powerHint(hint, data);
-}
-
 }  // namespace implementation
-}  // namespace V1_1
+}  // namespace V1_0
 }  // namespace power
 }  // namespace hardware
 }  // namespace android

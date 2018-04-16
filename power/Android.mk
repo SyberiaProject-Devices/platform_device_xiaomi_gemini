@@ -22,8 +22,8 @@ LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_OWNER := qcom
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := android.hardware.power@1.1-service.gemini
-LOCAL_INIT_RC := android.hardware.power@1.1-service.gemini.rc
+LOCAL_MODULE := android.hardware.power@1.0-service.gemini
+LOCAL_INIT_RC := android.hardware.power@1.0-service.gemini.rc
 LOCAL_SRC_FILES := service.cpp Power.cpp power-helper.c metadata-parser.c utils.c list.c hint-data.c
 
 # Include target-specific files.
@@ -46,7 +46,8 @@ LOCAL_SHARED_LIBRARIES := \
     libhidltransport \
     liblog \
     libutils \
-    android.hardware.power@1.1 \
+    android.hardware.power@1.0
+
 
 include $(BUILD_EXECUTABLE)
 endif

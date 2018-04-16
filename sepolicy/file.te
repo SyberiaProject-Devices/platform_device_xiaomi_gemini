@@ -39,5 +39,3 @@ type debugfs_ufs, debugfs_type, fs_type;
 
 type proc_kernel_sched, fs_type;
 type proc_irq, fs_type;
-type kcal_dev, sysfs_type, file_type;
-type thermal_data_file, data_file_type, file_type;

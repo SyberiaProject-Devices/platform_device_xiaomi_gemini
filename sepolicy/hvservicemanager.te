@@ -1,0 +1,4 @@
+allow hwservicemanager hal_dumpstate_impl:binder call;
+allow hwservicemanager hal_dumpstate_impl:dir search;
+allow hwservicemanager hal_dumpstate_impl:file { open read };
+allow hwservicemanager hal_dumpstate_impl:process getattr;

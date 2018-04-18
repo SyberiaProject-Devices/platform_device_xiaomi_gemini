@@ -92,8 +92,8 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/online 1
 
     # Re-enable thermal hotplug
-    write /sys/module/msm_thermal/core_control/enabled 1
-    write /sys/module/msm_thermal/parameters/enabled N
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_thermal/parameters/enabled Y
 
     # Enable bus-dcvs
     write /sys/class/devfreq/soc:qcom,cpubw/governor "bw_hwmon"
@@ -127,7 +127,7 @@ on enable-low-power
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_clock_mhz 624
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
 
-    write /sys/module/workqueue/parameters/power_efficient Y
+    write /sys/module/workqueue/parameters/power_efficient N
 
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
@@ -140,11 +140,11 @@ on enable-low-power
     write /sys/block/dm-0/queue/read_ahead_kb 256
     write /sys/block/sda/queue/read_ahead_kb 256
     write /sys/block/sde/queue/read_ahead_kb 256
-    write /sys/block/dm-0/queue/scheduler cfq
-    write /sys/block/sda/queue/scheduler cfq
-    write /sys/block/sde/queue/scheduler cfq
+    write /sys/block/dm-0/queue/scheduler maple
+    write /sys/block/sda/queue/scheduler maple
+    write /sys/block/sde/queue/scheduler maple
 
-    write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/core_control/enabled 0
 
     # Set nice Level to 9
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
@@ -156,7 +156,7 @@ on property:sys.boot_completed=1
     trigger enable-low-power
 
     # Set I/O squeduler
-    setprop sys.io.scheduler "cfq"
+    setprop sys.io.scheduler "maple"
 
 on property:init.svc.recovery=running
     trigger enable-low-power

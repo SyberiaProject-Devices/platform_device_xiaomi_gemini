@@ -102,8 +102,8 @@ on enable-low-power
 
     # configure governor settings for gold cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "pwrutilx"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 250
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 1500
+    write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 250
+    write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/down_rate_limit_us 1500
 
     # Re-enable thermal hotplug
     write /sys/module/msm_thermal/core_control/enabled 0

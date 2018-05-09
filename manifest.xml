@@ -354,7 +354,8 @@
     <hal format="hidl">
         <name>com.quicinc.cne.api</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <impl level="generic"></impl>
+        <version>1.1</version>
         <interface>
             <name>IApiService</name>
             <instance>cnd</instance>
@@ -363,7 +364,8 @@
     <hal format="hidl">
         <name>com.quicinc.cne.server</name>
         <transport>hwbinder</transport>
-        <version>2.0</version>
+        <impl level="generic"></impl>
+        <version>2.1</version>
         <interface>
             <name>IServer</name>
             <instance>cnd</instance>

@@ -15,7 +15,7 @@
 /dev/block/platform/soc/624000.ufshc/by-name/userdata       /data              ext4    nosuid,nodev,noatime,barrier=1,noauto_da_alloc              latemount,wait,check,encryptable=footer,quota,formattable
 /dev/block/platform/soc/624000.ufshc/by-name/system         /system            ext4    ro,barrier=1                                                wait,recoveryonly
 /dev/block/platform/soc/624000.ufshc/by-name/cust           /vendor            ext4    ro,barrier=1                                                wait,recoveryonly
-/dev/block/platform/soc/624000.ufshc/by-name/persist        /persist           ext4    nosuid,nodev,noatime,barrier=1                              wait
+/dev/block/platform/soc/624000.ufshc/by-name/persist        /mnt/vendor/persist       ext4    nosuid,nodev,noatime,barrier=1                              wait
 /dev/block/platform/soc/624000.ufshc/by-name/dsp            /venodr/dsp               ext4    ro,nosuid,nodev,barrier=1,context=u:object_r:adsprpcd_file:s0                          			wait
 /dev/block/platform/soc/624000.ufshc/by-name/modem          /vendor/firmware_mnt      vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0           	wait
 /dev/block/platform/soc/624000.ufshc/by-name/bluetooth      /vendor/bt_firmware       vfat    ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0         wait

@@ -150,7 +150,7 @@ on enable-low-power
     write /dev/cpuset/system-background/cpus 0-2
 
     # Set swappiness and cache pressure
-    write /proc/sys/vm/swappiness 5
+    write /proc/sys/vm/swappiness 35
     write /proc/sys/vm/vfs_cache_pressure 10
 
     write /sys/block/dm-0/queue/read_ahead_kb 1024

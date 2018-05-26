@@ -193,6 +193,9 @@ on property:sys.boot_completed=1
     # Set I/O squeduler
     setprop sys.io.scheduler "cfq"
 
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1
+
 on property:init.svc.recovery=running
     trigger enable-low-power
 

@@ -391,7 +391,7 @@ on boot
     # Access permission for QC3.0 charging current limit
     chown system system /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma
 
-    setprop ro.boot.wificountrycode JP
+    setprop ro.boot.wificountrycode VE
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete

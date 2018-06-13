@@ -74,10 +74,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Display (Qualcomm AD)
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.cabl=0 \
     ro.qcom.ad=1 \
     ro.qcom.ad.calib.data=/system/etc/calib.cfg \
-    ro.qcom.ad.sensortype=2
+    ro.qcom.ad.sensortype=2 \
+    ro.vendor.display.cabl=0
 
 # DPM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -119,10 +119,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.rotator_downscale=1 \
     vendor.display.perf_hint_window=50 \
     vendor.display.enable_default_color_mode=0
-
-# Property to enable display default color mode
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.display.cabl=2
+    vendor.display.disable_rotator_split=1 \
 
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \

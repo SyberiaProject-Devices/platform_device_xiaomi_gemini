@@ -4,6 +4,7 @@
 /dev/lirc[0-9]*                       u:object_r:lirc_device:s0
 /dev/pn548                            u:object_r:nfc_device:s0
 /dev/sysmatdrv                        u:object_r:sysmatdrv_device:s0
+/dev/dts_eagle			      u:object_r:audio_device:s0
 
 # Sys files
 /sys/devices/soc/75b7000\.i2c/i2c-9/9-[0-9a-f]+/leds(/.*)?    u:object_r:sysfs_leds:s0

@@ -76,21 +76,22 @@ on charger
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_setspeed 300000
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/module/msm_thermal/parameters/enabled "N"
+    #write /sys/module/msm_thermal/parameters/enabled "N"
     start hvdcp_opti
     start thermal-engine
 
 on enable-low-power
 
      # Disable thermal hotplug to switch governor
-    write /sys/module/msm_thermal/core_control/enabled 0
+    #write /sys/module/msm_thermal/core_control/enabled 0
 
     # Set sync wakee policy tunable
     # write /proc/sys/kernel/sched_prefer_sync_wakee_to_waker 1
+    write /proc/sys/kernel/sched_boost 1
 
     # Enable Adaptive LMK
     # write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 80640
 
     write /sys/devices/system/cpu/cpu0/online 1
 
@@ -119,8 +120,8 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_ms 100
 
     # Re-enable thermal hotplug
-    #write /sys/module/msm_thermal/core_control/enabled 0
-    #write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_thermal/parameters/enabled Y
 
     # Set thermal restrictions
     write /sys/kernel/msm_thermal/enabled 0
@@ -166,7 +167,7 @@ on enable-low-power
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_clock_mhz 624
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
 
-    write /sys/module/workqueue/parameters/power_efficient N
+    write /sys/module/workqueue/parameters/power_efficient Y
 
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
@@ -176,15 +177,18 @@ on enable-low-power
     write /dev/cpuset/system-background/cpus 0-2
 
     # Set swappiness and cache pressure
-    write /proc/sys/vm/swappiness 35
-    write /proc/sys/vm/vfs_cache_pressure 10
+    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/vfs_cache_pressure 75
+    write /proc/sys/vm/dirty_ratio 80
+    write /proc/sys/vm/dirty_background_ratio 50
 
-    write /sys/block/dm-0/queue/read_ahead_kb 1024
-    write /sys/block/sda/queue/read_ahead_kb 1024
-    write /sys/block/sde/queue/read_ahead_kb 1024
-    write /sys/block/dm-0/queue/scheduler fiops
-    write /sys/block/sda/queue/scheduler fiops
-    write /sys/block/sde/queue/scheduler fiops
+
+    write /sys/block/dm-0/queue/read_ahead_kb 512
+    write /sys/block/sda/queue/read_ahead_kb 512
+    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/scheduler cfq
+    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sde/queue/scheduler cfq
 
     write /sys/module/msm_thermal/core_control/enabled 0
 
@@ -198,7 +202,7 @@ on property:sys.boot_completed=1
     trigger enable-low-power
 
     # Set I/O squeduler
-    setprop sys.io.scheduler "fiops"
+    setprop sys.io.scheduler "cfq"
 
 on property:init.svc.recovery=running
     trigger enable-low-power

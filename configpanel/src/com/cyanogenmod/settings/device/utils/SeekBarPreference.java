@@ -144,6 +144,12 @@ public class SeekBarPreference extends Preference {
         return currentValue;
     }
 
+    public int reset(int value) {
+        currentValue = (int) Utils.clamp(value, minimum, maximum);
+        notifyChanged();
+        return currentValue;
+    }
+
     public void setValue(int progress) {
         currentValue = (int) Utils.clamp(progress, minimum, maximum);
         notifyChanged();

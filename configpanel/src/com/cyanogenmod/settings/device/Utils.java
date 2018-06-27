@@ -31,6 +31,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.Math;
 import android.util.Log;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.InputStream;
+import java.io.IOException;
+import java.lang.ProcessBuilder;
 
 public class Utils {
 
@@ -229,5 +234,25 @@ public class Utils {
             return max;
         }
         return x;
+    }
+
+    public static String getPanelName() {
+        StringBuilder cmdReturn = new StringBuilder();
+        try {            
+            ProcessBuilder processBuilder = new ProcessBuilder("sh","-c","(cat /sys/class/graphics/fb0/msm_fb_panel_info | grep panel_name)");
+            Process process = processBuilder.start();
+            InputStream inputStream = process.getInputStream();
+            int c;
+            while ((c = inputStream.read()) != -1) {
+                cmdReturn.append((char) c);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }        
+        return cmdReturn.toString();
+    }
+
+    public static boolean isLGDPanel() {
+        return getPanelName().toLowerCase().trim().contains("panel_name=lgd fhd cmd incell dsi panel".toLowerCase().trim());
     }
 }

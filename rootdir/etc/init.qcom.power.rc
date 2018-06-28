@@ -178,9 +178,9 @@ on enable-low-power
 
     # Set swappiness and cache pressure
     write /proc/sys/vm/swappiness 100
-    write /proc/sys/vm/vfs_cache_pressure 75
-    write /proc/sys/vm/dirty_ratio 80
-    write /proc/sys/vm/dirty_background_ratio 50
+    write /proc/sys/vm/vfs_cache_pressure 10
+    write /proc/sys/vm/dirty_ratio 20
+    write /proc/sys/vm/dirty_background_ratio 5
 
 
     write /sys/block/dm-0/queue/read_ahead_kb 512

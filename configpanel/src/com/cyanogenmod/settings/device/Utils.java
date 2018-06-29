@@ -255,4 +255,52 @@ public class Utils {
     public static boolean isLGDPanel() {
         return getPanelName().toLowerCase().trim().contains("panel_name=lgd fhd cmd incell dsi panel".toLowerCase().trim());
     }
+
+    public static boolean isSharpPanel() {
+        return getPanelName().toLowerCase().trim().contains("panel_name=sharp fhd cmd incell dsi panel".toLowerCase().trim());
+    }
+
+    private static final KKalParams LGDPanel = new KKalParams(230, 230, 244, 268, 255);
+    private static final KKalParams sharpPanel = new KKalParams(242, 242, 255, 256, 255);
+    private static final KKalParams defaultPanel = new KKalParams();
+
+    public static KKalParams getDefaultParams() {
+        return defaultPanel;
+    }
+
+    public static KKalParams getParams() {
+        if(isLGDPanel())
+            return LGDPanel;
+        else if(isSharpPanel())
+            return sharpPanel;
+        else 
+            return defaultPanel;
+    }
+
+    public static boolean isNotDefaultPanel() {
+        if(isLGDPanel())
+            return true;
+        else if(isSharpPanel())
+            return true;
+        else 
+            return false;
+    }
+
+    public static class KKalParams {
+        public int red = 256;
+        public int green = 256;
+        public int blue = 256;
+        public int saturation = 256;
+        public int contrast = 255;
+
+        public KKalParams(){}
+
+        public KKalParams(int r, int g, int b, int s, int c){
+            red = r;
+            green = g;
+            blue = b;
+            saturation = s;
+            contrast = c;
+        }
+    }
 }

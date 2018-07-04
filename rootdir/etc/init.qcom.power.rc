@@ -88,6 +88,7 @@ on enable-low-power
     # Set sync wakee policy tunable
     # write /proc/sys/kernel/sched_prefer_sync_wakee_to_waker 1
     write /proc/sys/kernel/sched_boost 1
+    #write /proc/sys/kernel/sched_autogroup_enabled 0
 
     # Enable Adaptive LMK
     # write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
@@ -177,15 +178,15 @@ on enable-low-power
     write /dev/cpuset/system-background/cpus 0-2
 
     # Set swappiness and cache pressure
-    write /proc/sys/vm/swappiness 100
+    #write /proc/sys/vm/swappiness 100
     write /proc/sys/vm/vfs_cache_pressure 10
     write /proc/sys/vm/dirty_ratio 20
     write /proc/sys/vm/dirty_background_ratio 5
 
 
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/sda/queue/read_ahead_kb 512
-    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/read_ahead_kb 128
     write /sys/block/dm-0/queue/scheduler cfq
     write /sys/block/sda/queue/scheduler cfq
     write /sys/block/sde/queue/scheduler cfq

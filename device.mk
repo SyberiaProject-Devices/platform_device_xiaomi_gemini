@@ -361,7 +361,8 @@ PRODUCT_PACKAGES += \
 
 # Additional packages
 PRODUCT_PACKAGES += \
-    libclcore_hax
+    libclcore_hax \
+    libclcore_neon_hax \
     #Spectrum
 
 PRODUCT_COPY_FILES += \

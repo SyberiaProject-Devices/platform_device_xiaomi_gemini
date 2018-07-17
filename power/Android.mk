@@ -39,6 +39,10 @@ ifneq ($(TARGET_USES_AOSP),true)
     LOCAL_CFLAGS += -DEXTRA_POWERHAL_HINTS
 endif
 
+ifeq ($(TARGET_USES_LAUNCH_BOOST),true)
+    LOCAL_CFLAGS += -DLAUNCH_HINTS
+endif
+
 LOCAL_SHARED_LIBRARIES := \
     libbase \
     libcutils \

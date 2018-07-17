@@ -287,9 +287,11 @@ int power_hint_override(power_hint_t hint, void *data)
         case POWER_HINT_VIDEO_ENCODE:
             ret_val = process_video_encode_hint(data);
             break;
+#ifdef LAUNCH_HINTS
         case POWER_HINT_LAUNCH:
             ret_val = process_activity_launch_hint(data);
             break;
+#endif
         default:
             break;
     }

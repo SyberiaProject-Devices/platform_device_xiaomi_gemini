@@ -14,7 +14,7 @@ include $(BUILD_PREBUILT)
 LOCAL_PATH :=
 include $(CLEAR_VARS)
 LOCAL_MODULE := libclcore_hax
-LOCAL_SRC_FILES := $(ANDROID_BUILD_TOP)/prebuilts/sdk/renderscript/lib/arm64/libclcore.bc
+LOCAL_SRC_FILES := ./prebuilts/sdk/renderscript/lib/arm64/libclcore.bc
 LOCAL_MODULE_SUFFIX := .bc
 LOCAL_MODULE_CLASS := SHARED_LIBRARY
 LOCAL_PRELINK_MODULE := true

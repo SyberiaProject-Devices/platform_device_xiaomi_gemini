@@ -12,4 +12,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_gemini.mk 
+    $(LOCAL_DIR)/syberia_gemini.mk 

@@ -23,10 +23,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/gemini/device.mk)
 
 # Inherit some common AEX stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/syberia/common.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := aosp_gemini
+PRODUCT_NAME := syberia_gemini
 PRODUCT_DEVICE := gemini
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 5
@@ -46,5 +46,3 @@ TARGET_VENDOR := Xiaomi
 
 TARGET_BOOT_ANIMATION_RES := 1080
 export SKIP_ABI_CHECKS := true
-
-#JDC_BUILD_TYPE := ALPHA-EAS

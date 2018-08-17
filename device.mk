@@ -158,8 +158,8 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig
 
 # ConfigPanel
-PRODUCT_PACKAGES += \
-    ConfigPanel \
+#PRODUCT_PACKAGES += \
+#    ConfigPanel \
 
 # Default permissions
 PRODUCT_COPY_FILES += \
@@ -181,8 +181,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/calib.cfg:system/etc/calib.cfg
 
 # Doze mode
-PRODUCT_PACKAGES += \
-    XiaomiDoze
+#PRODUCT_PACKAGES += \
+#    XiaomiDoze
 
 # For config.fs
 PRODUCT_PACKAGES += \
@@ -228,9 +228,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl
 
 # IPA Manager
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
+#PRODUCT_PACKAGES += \
+#    ipacm \
+#    IPACM_cfg.xml
 
 # IPC router config
 PRODUCT_COPY_FILES += \

@@ -83,8 +83,7 @@ PRODUCT_PACKAGES += \
 
 # NFC HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl \
-    android.hardware.nfc@1.0-service
+    android.hardware.nfc@1.1-service
 
 # Power HIDL
 PRODUCT_PACKAGES += \

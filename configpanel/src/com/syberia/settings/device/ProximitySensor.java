@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.pocketmode;
+package com.syberia.settings.device;
 
 import android.content.Context;
 import android.hardware.Sensor;

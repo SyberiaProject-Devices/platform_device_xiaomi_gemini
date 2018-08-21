@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.os.UserHandle;
 import android.util.Log;
 
 import java.io.File;
@@ -73,6 +74,8 @@ public class Startup extends BroadcastReceiver {
                         prefs.getBoolean(Constants.FP_POCKETMODE_KEY, false);
                 Utils.broadcastCustIntent(context, shouldEnablePocketMode);
             }
+
+            context.startServiceAsUser(new Intent(context, PocketModeService.class), UserHandle.CURRENT);
         }
     }
 

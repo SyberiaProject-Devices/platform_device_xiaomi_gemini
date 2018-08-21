@@ -35,6 +35,7 @@
         android:icon="@mipmap/ic_launcher_settings"
         android:label="@string/device_settings_app_name"
         android:theme="@style/XiaomiPartsTheme"
+        android:persistent="true"
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true">
 
@@ -73,6 +74,10 @@
                 <action android:name="android.intent.action.PRE_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <service android:name=".PocketModeService"
+                 android:permission="PocketModeService">
+        </service>
     </application>
 
 </manifest>

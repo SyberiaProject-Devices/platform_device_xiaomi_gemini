@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package com.syberia.settings.device;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,8 +25,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import android.content.SharedPreferences;
 import android.os.UserHandle;
-import android.support.v14.preference.SwitchPreference;
-import android.support.v7.preference.PreferenceManager;
+import android.preference.SwitchPreference;
+import android.preference.PreferenceManager;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.Math;

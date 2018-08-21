@@ -16,10 +16,10 @@
             android:layout_width="match_parent"
             android:layout_height="265dp"
             android:src="@drawable/calibration_png" />
-        <com.cyanogenmod.settings.device.utils.NonScrollListView
+        <com.syberia.settings.device.utils.NonScrollListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </com.cyanogenmod.settings.device.utils.NonScrollListView>
+        </com.syberia.settings.device.utils.NonScrollListView>
     </LinearLayout>
 </ScrollView>

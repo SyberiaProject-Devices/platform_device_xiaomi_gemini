@@ -16,19 +16,20 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cyanogenmod.settings.device"
-    android:versionCode="6"
-    android:versionName="2.5"
+    package="com.syberia.settings.device"
+    android:versionCode="1"
+    android:versionName="1.0"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INJECT_EVENTS"/>
-    <protected-broadcast android:name="com.cyanogenmod.settings.device.CUST_UPDATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <protected-broadcast android:name="com.syberia.settings.device.CUST_UPDATE" />
+
     <uses-sdk
-        android:minSdkVersion="27" />
+        android:minSdkVersion="28" />
 
     <application
         android:icon="@mipmap/ic_launcher_settings"
@@ -37,20 +38,8 @@
         android:defaultToDeviceProtectedStorage="true"
         android:directBootAware="true">
 
-        <provider
-            android:name=".ConfigPanelSearchIndexablesProvider"
-            android:authorities="com.cyanogenmod.settings.device"
-            android:multiprocess="false"
-            android:grantUriPermissions="true"
-            android:permission="android.permission.READ_SEARCH_INDEXABLES"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
-            </intent-filter>
-        </provider>
-
         <activity
-            android:name=".ButtonSettingsActivity"
+            android:name="com.syberia.settings.device.ButtonSettingsActivity"
             android:label="@string/button_panel_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
@@ -67,7 +56,7 @@
         </activity>
 
         <activity
-            android:name="com.cyanogenmod.settings.device.DisplayCalibration"
+            android:name="com.syberia.settings.device.DisplayCalibration"
             android:exported="true"
             android:label="@string/kcal_title" >
             <intent-filter>
@@ -76,9 +65,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".KeyHandler" />
+        <activity android:name="com.syberia.settings.device.KeyHandler" />
 
-        <receiver android:name=".Startup" >
+        <receiver android:name="com.syberia.settings.device.Startup" >
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.PRE_BOOT_COMPLETED" />

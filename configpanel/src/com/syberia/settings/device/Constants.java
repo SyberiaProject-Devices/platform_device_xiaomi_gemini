@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package com.syberia.settings.device;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.settings.device;
+package com.syberia.settings.device;
 
 import android.util.Log;
 

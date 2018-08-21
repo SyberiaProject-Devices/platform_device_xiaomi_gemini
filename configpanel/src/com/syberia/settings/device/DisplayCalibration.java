@@ -15,7 +15,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package com.cyanogenmod.settings.device;
+package com.syberia.settings.device;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -33,8 +33,8 @@ import android.view.MenuInflater;
 import android.util.Log;
 
 import android.app.ActionBar;
-import com.cyanogenmod.settings.device.utils.SeekBarPreference;
-import com.cyanogenmod.settings.device.R;
+import com.syberia.settings.device.utils.SeekBarPreference;
+import com.syberia.settings.device.R;
 
 public class DisplayCalibration extends PreferenceActivity implements
         OnPreferenceChangeListener {

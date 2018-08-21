@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.syberia.settings.device;
+package com.syberia.settings.device.utils;
 
 import android.util.Log;
 

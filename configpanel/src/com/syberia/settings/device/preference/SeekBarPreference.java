@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-package com.syberia.settings.device.utils;
+package com.syberia.settings.device.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -36,7 +36,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.syberia.settings.device.R;
-import com.syberia.settings.device.Utils;
+import com.syberia.settings.device.utils.Utils;
 
 public class SeekBarPreference extends Preference {
 

@@ -28,6 +28,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.syberia.settings.device.utils.ProximitySensor;
+
 public class PocketModeService extends Service {
     private static final String TAG = "PocketModeService";
     private static final boolean DEBUG = false;

@@ -36,6 +36,9 @@ import android.view.MenuItem;
 import java.io.File;
 
 import com.syberia.settings.device.R;
+import com.syberia.settings.device.preference.VibratorStrengthPreference;
+import com.syberia.settings.device.utils.FileUtils;
+import com.syberia.settings.device.utils.Utils;
 
 public class ButtonSettingsActivity extends PreferenceActivity implements OnPreferenceChangeListener{
 

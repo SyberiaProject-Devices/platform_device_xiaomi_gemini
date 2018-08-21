@@ -63,7 +63,7 @@ limitations under the License.
 
     <PreferenceCategory
         android:title="@string/vibrator_category">
-        <com.syberia.settings.device.VibratorStrengthPreference
+        <com.syberia.settings.device.preference.VibratorStrengthPreference
             android:key="vibrator_key"
             android:title="@string/vibrator_title"
             android:summary="@string/vibrator_summary" />

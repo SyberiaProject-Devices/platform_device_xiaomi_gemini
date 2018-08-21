@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.syberia.settings.device;
+package com.syberia.settings.device.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +36,8 @@ import java.io.InputStreamReader;
 import java.io.InputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder;
+
+import com.syberia.settings.device.Constants;
 
 public class Utils {
 

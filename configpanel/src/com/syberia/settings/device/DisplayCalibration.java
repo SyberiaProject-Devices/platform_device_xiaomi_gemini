@@ -33,7 +33,8 @@ import android.view.MenuInflater;
 import android.util.Log;
 
 import android.app.ActionBar;
-import com.syberia.settings.device.utils.SeekBarPreference;
+import com.syberia.settings.device.preference.SeekBarPreference;
+import com.syberia.settings.device.utils.Utils;
 import com.syberia.settings.device.R;
 
 public class DisplayCalibration extends PreferenceActivity implements

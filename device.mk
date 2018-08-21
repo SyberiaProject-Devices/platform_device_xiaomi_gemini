@@ -158,8 +158,8 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig
 
 # ConfigPanel
-#PRODUCT_PACKAGES += \
-#    ConfigPanel \
+PRODUCT_PACKAGES += \
+    ConfigPanel \
 
 # Default permissions
 PRODUCT_COPY_FILES += \

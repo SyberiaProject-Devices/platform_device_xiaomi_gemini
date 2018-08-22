@@ -113,6 +113,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #property to specify the number of frames to skip before setting hint
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.enable_fb_ubwc=1 \
+    vendor.gralloc.disable_wb_ubwc=1 \
     vendor.display.disable_skip_validate=1 \
     vendor.display.perf_hint_window=50 \
     vendor.display.enable_default_color_mode=1

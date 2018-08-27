@@ -34,7 +34,7 @@ public class PocketModeService extends Service {
     private static final String TAG = "PocketModeService";
     private static final boolean DEBUG = false;
 
-    private static final String CUST_INTENT = "com.cyanogenmod.settings.device.CUST_UPDATE";
+    private static final String CUST_INTENT = "com.syberia.settings.device.CUST_UPDATE";
     private static final String CUST_INTENT_EXTRA = "pocketmode_service";
 
     private static List<BroadcastReceiver> receivers = new ArrayList<BroadcastReceiver>();

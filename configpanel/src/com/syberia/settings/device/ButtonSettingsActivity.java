@@ -82,7 +82,6 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
             Boolean value = (Boolean) newValue;
             FileUtils.writeLine(node, value ? "1" : "0");
             if (Constants.FP_WAKEUP_KEY.equals(preference.getKey())) {
-                value &= prefs.getBoolean(Constants.FP_POCKETMODE_KEY, false);
                 Utils.broadcastCustIntent(this, value);
             }
             return true;
@@ -92,12 +91,6 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
             FileUtils.writeLine(node, (String) newValue);
             return true;
         }
-
-        if (Constants.FP_POCKETMODE_KEY.equals(preference.getKey())) {
-            Utils.broadcastCustIntent(this, (Boolean) newValue);
-            return true;
-        }
-
         
         if (preference == mVibratorStrength) {
             return true;
@@ -133,10 +126,6 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
                 l.setEnabled(false);
             }
         }
-
-        // Initialize other preferences whose keys are not associated with nodes
-        SwitchPreference b = (SwitchPreference) findPreference(Constants.FP_POCKETMODE_KEY);
-        b.setOnPreferenceChangeListener(this);
     }
 
     private void updatePreferencesBasedOnDependencies() {

@@ -25,7 +25,6 @@ public class Constants {
     // Preference keys
     public static final String BUTTON_SWAP_KEY = "button_swap";
     public static final String FP_HOME_KEY = "fp_home";
-    public static final String FP_POCKETMODE_KEY = "fp_pocketmode";
     public static final String FP_WAKEUP_KEY = "fp_wakeup";
     public static final String DT2W_KEY = "dt2w";
     public static final String CHARGE_LIMIT_KEY = "hvdcp3";

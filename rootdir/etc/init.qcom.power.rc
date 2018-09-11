@@ -193,11 +193,6 @@ on property:sys.boot_completed=1
     # Set I/O squeduler
     setprop sys.io.scheduler "cfq"
 
-    # Setup permission for powerHAL
-    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count
-    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hist_memory
-    chown system system /sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_length
-
 on property:init.svc.recovery=running
     trigger enable-low-power
 

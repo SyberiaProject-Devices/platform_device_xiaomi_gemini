@@ -57,21 +57,6 @@ enum subsystem_type {
     SUBSYSTEM_COUNT
 };
 
-enum wlan_param_id {
-    CUMULATIVE_SLEEP_TIME_MS,
-    CUMULATIVE_TOTAL_ON_TIME_MS,
-    DEEP_SLEEP_ENTER_COUNTER,
-    LAST_DEEP_SLEEP_ENTER_TSTAMP_MS,
-     //Don't add any lines after that line
-    WLAN_PARAM_COUNT
-};
- enum wlan_state_id {
-    WLAN_STATE_ACTIVE = 0,
-    WLAN_STATE_DEEP_SLEEP,
-     //Don't add any lines after that line
-    WLAN_STATE_COUNT
-};
-
 #define PLATFORM_SLEEP_MODES_COUNT RPM_MODE_MAX
 
 #define MAX_RPM_PARAMS 2
@@ -89,7 +74,6 @@ void power_init(void);
 void power_hint(power_hint_t hint, void *data);
 void power_set_interactive(int on);
 int extract_platform_stats(uint64_t *list);
-int extract_wlan_stats(uint64_t *list);
 
 #ifdef __cplusplus
 }

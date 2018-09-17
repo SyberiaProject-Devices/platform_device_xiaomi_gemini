@@ -17,7 +17,7 @@
 #ifndef ANDROID_HARDWARE_POWER_V1_1_POWER_H
 #define ANDROID_HARDWARE_POWER_V1_1_POWER_H
 
-#include <android/hardware/power/1.0/IPower.h>
+#include <android/hardware/power/1.1/IPower.h>
 #include <hidl/MQDescriptor.h>
 #include <hidl/Status.h>
 #include <hardware/power.h>

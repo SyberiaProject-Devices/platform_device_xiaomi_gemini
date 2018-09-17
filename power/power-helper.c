@@ -749,13 +749,3 @@ static int extract_stats(uint64_t *list, char *file,
 int extract_platform_stats(uint64_t *list) {
     return extract_stats(list, RPM_SYSTEM_STAT, rpm_stat_map, ARRAY_SIZE(rpm_stat_map));
 }
-
-int extract_wlan_stats(uint64_t *list) {
-     int ret;
-     ret = extract_stats(list, WLAN_POWER_STAT, wlan_param_names, WLAN_PARAM_COUNT, false);
-    if (ret) {
-        for (size_t i=0; i < WLAN_PARAM_COUNT; i++)
-            list[i] = 0;
-    }
-     return 0;
-}

@@ -207,8 +207,8 @@ TARGET_RIL_VARIANT := caf
 TARGET_BT_VENDOR_VARIANT := caf
 
 # SELinux
-#BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
-#include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
+include device/qcom/sepolicy/sepolicy.mk
 
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_gemini

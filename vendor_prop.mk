@@ -91,7 +91,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
-    debug.gralloc.enable_fb_ubwc=1 \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
     dev.pm.dyn_samplingrate=1 \
@@ -99,19 +98,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.enable_vds=1 \
     persist.sys.wfd.virtual=0 \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=480 \
-    sdm.debug.disable_rotator_split=1 \
-    sdm.debug.disable_skip_validate=1 \
-    sdm.debug.rotator_downscale=1 \
-    sdm.perf_hint_window=50
+    ro.sf.lcd_density=480
 
 #property to specify the number of frames to skip before setting hint
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.gralloc.enable_fb_ubwc=1 \
     vendor.gralloc.disable_wb_ubwc=1 \
     vendor.display.disable_skip_validate=1 \
+    vendor.display.rotator_downscale=1 \
     vendor.display.perf_hint_window=50 \
-    vendor.display.enable_default_color_mode=1
+    vendor.display.enable_default_color_mode=0
 
 # Property to enable display default color mode
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -1,6 +1,0 @@
-userdebug_or_eng(`
-allow dumpstate smlog_dump_file:dir create_dir_perms;
-allow dumpstate smlog_dump_file:file create_file_perms;
-')
-allow hal_dumpstate_impl hwservicemanager:binder { call transfer };
-allow hal_dumpstate_impl hwservicemanager_prop:file { getattr open read };

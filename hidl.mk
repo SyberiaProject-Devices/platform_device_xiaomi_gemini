@@ -85,10 +85,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service.gemini \
 
-# Dumpstate HAL
-PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.gemini
-
 # RenderScript HIDL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl

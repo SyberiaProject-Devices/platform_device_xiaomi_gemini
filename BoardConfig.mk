@@ -49,7 +49,7 @@ DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 cma=32M@0-0xffffffff androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 cma=32M@0-0xffffffff
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100

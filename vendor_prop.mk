@@ -222,3 +222,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.upgrade_pressure=100 \
     ro.lmk.downgrade_pressure=100 \
     ro.lmk.kill_heaviest_task=true
+
+# ro.location properties below are used in conjunction
+# with NLP_MODE setting in /vendor/etc/izat.conf
+# either as the main network provider or as a fallback
+# provider depending on NLP_MODE that is set
+# These properties are optional and will not cause
+# issues if not set to existing packages.
+# ro.location.osnlp.package sets the name of default
+# OS sepecific network location provider package to use
+# ro.location.osnlp.region.package is set to the name
+# of the alternative network location provider package
+# to be used for a particular region where the default
+# network location provider is not functional
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.location.osnlp.package=com.google.android.gms \
+    ro.location.osnlp.region.package=

@@ -26,3 +26,4 @@ allow init sysfs_kgsl:dir write;
 allow init video_device:chr_file { ioctl write };
 allow init vndbinder_device:chr_file { ioctl open read write };
 allow init wcnss_filter:unix_stream_socket connectto;
+allow init sysfs:file setattr;

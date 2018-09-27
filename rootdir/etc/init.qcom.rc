@@ -316,7 +316,6 @@ on boot
     chown system system /sys/class/timed_output/vibrator/vtg_level
     chmod 0660 /sys/class/timed_output/vibrator/vtg_level
 
-
     # Access permission for fingerprint
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
     chown system system /sys/devices/soc/soc:fpc_fpc1020/enable_key_events
@@ -399,9 +398,6 @@ on boot
 
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
-
-    # Access permission for QC3.0 charging current limit
-    chown system system /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma
 
     setprop ro.boot.wificountrycode VE
 

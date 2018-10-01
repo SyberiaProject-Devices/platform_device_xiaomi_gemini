@@ -178,7 +178,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.df.dev_name=rmnet_usb0
     
 # Tethering
-net.tethering.noprovisioning=true
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tethering.noprovisioning=true
 
 # TimeService
 PRODUCT_PROPERTY_OVERRIDES += \

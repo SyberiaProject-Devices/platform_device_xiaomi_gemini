@@ -74,6 +74,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qcom.ad.calib.data=/system/etc/calib.cfg \
     ro.qcom.ad.sensortype=2
 
+# DPM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.dpm.feature=5
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -120,18 +124,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.nfc.port=I2C \
     persist.nfc.smartcard.config=SIM1,SIM2,eSE1
     
-# NITZ
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rild.nitz_plmn="" \
-    persist.rild.nitz_long_ons_0="" \
-    persist.rild.nitz_long_ons_1="" \
-    persist.rild.nitz_long_ons_2="" \
-    persist.rild.nitz_long_ons_3="" \
-    persist.rild.nitz_short_ons_0="" \
-    persist.rild.nitz_short_ons_1="" \
-    persist.rild.nitz_short_ons_2="" \
-    persist.rild.nitz_short_ons_3=""
-
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
@@ -148,6 +140,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     DEVICE_PROVISIONED=1 \
+    persist.radio.VT_ENABLE=1 \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
     ro.telephony.call_ring.multiple=false \
@@ -159,10 +152,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.force_on_dc=true \
     persist.radio.multisim.config=dsds \
     persist.radio.redir_party_num=1 \
+    persist.radio.data_ltd_sys_ind=1 \
+    persist.radio.csvt.enabled=false \
     persist.radio.add_power_save=1 \
     persist.radio.aosp_usr_pref_sel=true \
     persist.vendor.radio.custom_ecc=1 \
+    persist.vendor.radio.cs_srv_type=1 \
+    persist.vendor.radio.redir_party_num=1 \
     persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.facnotsup_as_nonw=1 \
+    persist.vendor.radio.force_on_dc=true \
+    persist.vendor.radio.ignore_dom_time=5 \
+    telephony.lteOnCdmaDevice=1 \
     persist.vendor.radio.sib16_support=1
 
 # RmNet Data

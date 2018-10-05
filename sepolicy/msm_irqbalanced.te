@@ -1,0 +1,4 @@
+allow msm_irqbalanced proc_irq:dir search;
+allow msm_irqbalanced self:capability sys_admin;
+allow msm_irqbalanced proc_irq:dir r_dir_perms;
+allow msm_irqbalanced proc_irq:file rw_file_perms;

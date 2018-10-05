@@ -67,4 +67,7 @@
     <string name="vibrator_title">Strength</string>
     <string name="vibrator_summary">Define the strength of the vibrator</string>
     <string name="vibrator_test">Test</string>
+
+    <string name="fix_volte_title">Enable VoLTE hack</string>
+    <string name="fix_volte_summary">This will apply VoLTE hack after reboot</string>
 </resources>

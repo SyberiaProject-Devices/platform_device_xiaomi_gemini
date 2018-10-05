@@ -61,4 +61,7 @@
   <string name="vibrator_summary">Установить силу вибрации</string>
   <string name="vibrator_test">Тест</string>
 
+  <string name="fix_volte_title">Включить хак VoLTE</string>
+  <string name="fix_volte_summary">VoLTE хак будет применён после перезагрузки</string>
+
 </resources>

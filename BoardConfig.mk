@@ -124,6 +124,9 @@ BOARD_HARDWARE_CLASS += \
     $(VENDOR_PATH)/cmhw
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
+# Command Line Tools
+BOARD_INCLUDE_CMDLINE_TOOLS := true
+
 # Display
 BOARD_USES_ADRENO := true
 MAX_VIRTUAL_DISPLAY_DIMENSION := 4096

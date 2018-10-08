@@ -25,4 +25,7 @@
 
     <!-- ManualSubProvisioning -->
     <bool name="config_enableManualSubProvisioning">true</bool>
+
+    <!-- Whether to add AGPS parameter settings -->
+    <bool name="config_agps_enabled">true</bool>
 </resources>

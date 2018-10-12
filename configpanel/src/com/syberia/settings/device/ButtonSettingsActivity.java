@@ -17,8 +17,6 @@
 
 package com.syberia.settings.device;
 
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,8 +33,6 @@ import android.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.view.MenuItem;
 
-import android.provider.Settings;
-
 import java.io.File;
 
 import com.syberia.settings.device.R;
@@ -48,9 +44,6 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
 
 	private Preference mKcalPref;
     private VibratorStrengthPreference mVibratorStrength;
-    private SwitchPreference fixVolte;
-
-    private SharedPreferences mPrefs;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +65,6 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
             mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
             mVibratorStrength.setOnPreferenceChangeListener(this);
         }
-
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-        fixVolte = (SwitchPreference) findPreference("fix_volte");
-        fixVolte.setChecked(mPrefs.getBoolean("fix_volte", false));
-        fixVolte.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -107,22 +94,6 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
         
         if (preference == mVibratorStrength) {
             return true;
-        }
-
-        if(preference == fixVolte){
-            Boolean enabled = (Boolean) newValue;
-            if(enabled){
-                int val = Settings.Global.getInt(getContentResolver(), Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION, -1);
-                mPrefs.edit().putInt("MULTI_SIM_DATA_CALL_SUBSCRIPTION", val).commit();
-                Settings.Global.putInt(getContentResolver(), Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION, -1);
-            } else {
-                int val = Settings.Global.getInt(getContentResolver(), Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION, -1);
-                if(val == -1){                    
-                    Settings.Global.putInt(getContentResolver(), Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION, mPrefs.getInt("MULTI_SIM_DATA_CALL_SUBSCRIPTION", -1));
-                }
-            }
-            mPrefs.edit().putBoolean("fix_volte", enabled).commit();
-            return true;   
         }
 
         return false;
@@ -179,12 +150,4 @@ public class ButtonSettingsActivity extends PreferenceActivity implements OnPref
             super.onDisplayPreferenceDialog(preference);
         }
     }*/
-
-    public static void restoreFixVolte(Context context) {
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean val = pref.getBoolean("fix_volte", false);
-        if(val==true){
-            Settings.Global.putInt(context.getContentResolver(), Settings.Global.MULTI_SIM_DATA_CALL_SUBSCRIPTION, -1);
-        }
-    }
 }

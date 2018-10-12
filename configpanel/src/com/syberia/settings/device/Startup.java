@@ -40,9 +40,8 @@ public class Startup extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent intent) {
         final String action = intent.getAction();
 
-        ButtonSettingsActivity.restoreFixVolte(context);
         DisplayCalibration.restore(context);
-        KeyHandler.setButtonSetting(context);
+	KeyHandler.setButtonSetting(context);
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(action)
                 || Intent.ACTION_PRE_BOOT_COMPLETED.equals(action)) {

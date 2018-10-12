@@ -64,9 +64,4 @@ limitations under the License.
             android:summary="@string/vibrator_summary" />
     </PreferenceCategory>
 
-    <SwitchPreference
-            android:key="fix_volte"
-            android:title="@string/fix_volte_title"
-            android:summary="@string/fix_volte_summary" />
-
 </PreferenceScreen>

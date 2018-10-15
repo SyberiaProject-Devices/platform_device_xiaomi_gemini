@@ -5,11 +5,9 @@
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
-    ro.af.client_heap_size_kbyte=7168 \
     audio.deep_buffer.media=true \
-    audio.offload.min.duration.secs=30 \
+    audio.offload.min.duration.secs=15 \
     audio.offload.video=true \
-    audio.deep_buffer.media=true \
     persist.vendor.audio.fluence.speaker=true \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \

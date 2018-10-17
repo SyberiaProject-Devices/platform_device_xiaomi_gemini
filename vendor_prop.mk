@@ -12,6 +12,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.bt.enable.splita2dp=false \
+    persist.vendor.audio.hw.binder.size_kbyte=1024 \
     ro.af.client_heap_size_kbyte=7168 \
     ro.config.media_vol_steps=25 \
     ro.config.vc_call_vol_steps=7 \
@@ -31,7 +32,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.safx.pbe.enabled=true \
     vendor.audio.tunnel.encode=false \
     vendor.voice.path.for.pcm.voip=true \
-    vendor.audio.use.dts_eagle=true
+    vendor.audio.use.sw.alac.decoder=true \
+    vendor.audio.use.sw.ape.decoder=true \
+    vendor.audio.flac.sw.decoder.24bit=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -117,7 +120,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.ims_volte_enable=1  \
+    persist.dbg.wfc_avail_ovr=1
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -160,6 +165,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.redir_party_num=1 \
     persist.radio.data_ltd_sys_ind=1 \
     persist.radio.csvt.enabled=false \
+    persist.radio.calls.on.ims=1 \
     persist.radio.add_power_save=1 \
     persist.radio.aosp_usr_pref_sel=true \
     persist.vendor.radio.custom_ecc=1 \
@@ -169,6 +175,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.facnotsup_as_nonw=1 \
     persist.vendor.radio.force_on_dc=true \
     persist.vendor.radio.ignore_dom_time=5 \
+    persist.vendor.radio.calls.on.ims=1 \
     telephony.lteOnCdmaDevice=1 \
     persist.vendor.radio.sib16_support=1
 

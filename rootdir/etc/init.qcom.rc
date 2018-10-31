@@ -106,8 +106,6 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    setprop sys.usb.ffs.aio_compat 1
-
     mount_all /system/vendor/etc/fstab.qcom --early
 
     # Start HW service manager early

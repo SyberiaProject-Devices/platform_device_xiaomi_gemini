@@ -16,16 +16,58 @@
 
 #include <health2/service.h>
 #include <healthd/healthd.h>
+#include <hidl/HidlTransportSupport.h>
+#include <android-base/file.h>
+#include <android-base/strings.h>
+#include <android-base/logging.h>
+#include <vector>
+#include <string>
+#include <sys/stat.h>
 
-void healthd_board_init(struct healthd_config*) {
+#include "CycleCountBackupRestore.h"
+#include "LearnedCapacityBackupRestore.h"
+
+using ::device::xiaomi::gemini::health::CycleCountBackupRestore;
+using ::device::xiaomi::gemini::health::LearnedCapacityBackupRestore;
+
+static constexpr int kBackupTrigger = 20;
+
+static CycleCountBackupRestore ccBackupRestore;
+static LearnedCapacityBackupRestore lcBackupRestore;
+
+ int cycle_count_backup(int battery_level)
+{
+    static int saved_soc = 0;
+    static int soc_inc = 0;
+    static bool is_first = true;
+     if (is_first) {
+        is_first = false;
+        saved_soc = battery_level;
+        return 0;
+    }
+     if (battery_level > saved_soc) {
+        soc_inc += battery_level - saved_soc;
+    }
+     saved_soc = battery_level;
+     if (soc_inc >= kBackupTrigger) {
+        ccBackupRestore.Backup();
+        soc_inc = 0;
+    }
+    return 0;
 }
 
-int healthd_board_battery_update(struct android::BatteryProperties*) {
-    // Implementation-defined update logic goes here. An implementation
-    // can make modifications to prop before broadcasting it to all callbacks.
+// See : hardware/interfaces/health/2.0/README
+void healthd_board_init(struct healthd_config*) 
+{
+    ccBackupRestore.Restore();
+    lcBackupRestore.Restore();
+}
 
-    // return 0 to log periodic polled battery status to kernel log
-    return 1;
+int healthd_board_battery_update(struct android::BatteryProperties *props)
+{
+    cycle_count_backup(props->batteryLevel);
+    lcBackupRestore.Backup();
+    return 0;
 }
 
 int main() {

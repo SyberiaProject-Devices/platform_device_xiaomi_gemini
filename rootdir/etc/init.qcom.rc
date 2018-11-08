@@ -197,6 +197,9 @@ on post-fs-data
     mkdir /dev/socket/location/mq 0770 gps gps
     mkdir /dev/socket/location/xtra 0770 gps gps
 
+    # for android.hardware.health@2.0-service.gemini cycle count backup
+    mkdir /persist/battery 0700 system system
+
     # SSC/SLPI sensors
     mkdir /persist/sensors
     chown root system /persist/sensors
@@ -263,6 +266,16 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
     chown root audio /sys/kernel/boot_adsp/boot
+
+    # vendor.health-hal needs to be able to RW
+    chown system system /sys/devices/soc/qpnp-fg-22/cycle_counts_bins
+    # HardwareInfo needs to be able to read CC bins
+    chmod 644 /sys/devices/soc/qpnp-fg-22/cycle_counts_bins
+
+    # dumpstate needs to read, vendor.health-hal needs to be able to RW
+    chown system system /sys/devices/soc/qpnp-fg-22/power_supply/bms/charge_full
+    # HardwareInfo needs to be able to read charge_full
+    chmod 644 /sys/devices/soc/qpnp-fg-22/power_supply/bms/charge_full
 
     # SSR setup
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"

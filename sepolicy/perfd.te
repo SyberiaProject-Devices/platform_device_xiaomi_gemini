@@ -33,6 +33,9 @@ allow perfd gpu_device:chr_file rw_file_perms;
 allow perfd sysfs_devfreq:file write;
 allow perfd sysfs_msm_power:file write;
 
+allow perfd sysfs_kgsl:file write;
+allow perfd sysfs_lib:file write;
+
 # perfd uses kill(pid, 0) to determine if a process exists.
 # Determining if a process exists does not require the kill capability
 # since a permission denied indicates the process exists.

@@ -1,3 +1,6 @@
 allow hal_camera_default camera_data_file:sock_file write;
 allow hal_camera_default hal_power_hwservice:hwservice_manager find;
 allow hal_camera_default perfd_data_file:dir search;
+allow hal_camera_default perfd_data_file:sock_file write;
+allow hal_camera_default perfd:unix_stream_socket connectto;
+allow hal_camera_default hal_power_default:binder call;

@@ -5,3 +5,4 @@ allow hal_health_default persist_battery_file:file create_file_perms;
 allow hal_health_default persist_battery_file:dir rw_dir_perms;
 allow hal_health_default persist_file:dir search;
 allow hal_health_default sysfs_msm_subsys:file { write };
+allow hal_health_default mnt_vendor_file:dir {search open read};

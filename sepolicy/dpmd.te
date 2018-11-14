@@ -1,0 +1,1 @@
+allow dpmd system_file:dir {search open read};

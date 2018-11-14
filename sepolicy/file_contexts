@@ -38,11 +38,11 @@
 /data/vendor/location/xtra/socket_hal_xtra    u:object_r:location_socket:s0
 
 # Persist files
-/persist/audio/us_cal                 u:object_r:persist_usf_cal_file:s0
-/persist/PRSensorData\.txt            u:object_r:sensors_persist_file:s0
-/persist/PSensor3cm_ct\.txt           u:object_r:sensors_persist_file:s0
-/persist/qc_senseid(/.*)?             u:object_r:persist_qc_senseid_file:s0
-/persist/battery(/.*)?  	      u:object_r:persist_battery_file:s0
+/(mnt/vendor)/persist/audio/us_cal                 u:object_r:persist_usf_cal_file:s0
+/(mnt/vendor)/persist/PRSensorData\.txt            u:object_r:sensors_persist_file:s0
+/(mnt/vendor)/persist/PSensor3cm_ct\.txt           u:object_r:sensors_persist_file:s0
+/(mnt/vendor)/persist/qc_senseid(/.*)?             u:object_r:persist_qc_senseid_file:s0
+/(mnt/vendor)/persist/battery(/.*)?		   u:object_r:persist_battery_file:s0
 
 # Binaries
 /(vendor|system/vendor)/bin/readfem   u:object_r:readfem_exec:s0

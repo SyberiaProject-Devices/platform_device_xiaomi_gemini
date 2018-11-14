@@ -240,7 +240,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.location.osnlp.package=com.google.android.gms \
     ro.location.osnlp.region.package=
-
-#WFD
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.enable_hwc_vds=1

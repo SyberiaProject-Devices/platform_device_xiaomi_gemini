@@ -505,6 +505,9 @@ etc/permissions/org.simalliance.openmobileapi.xml
 framework/org.simalliance.openmobileapi.jar
 -priv-app/SmartcardService/SmartcardService.apk
 
+# msm_irqbalance - from sailfish - PPR2.181005.003
+vendor/bin/msm_irqbalance|3f7a923d9d01dbfda40ebdfdd27a62167df69c13
+
 # Perf from - from wahoo
 vendor/lib/libqti-perfd-client.so|f277daf9632b4d4c22a27abec2c4d0ccf776892d
 vendor/lib64/libqti-perfd-client.so|eaf678de5d7d0de194a263db1835b1f582452419

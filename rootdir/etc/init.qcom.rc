@@ -495,6 +495,13 @@ service vendor.start_hci_filter /vendor/bin/wcnss_filter
     group bluetooth diag system wakelock
     disabled
 
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
+    socket msm_irqbalance seqpacket 660 root system
+    class core
+    user root
+    group root
+    writepid /dev/cpuset/system-background/tasks
+
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system

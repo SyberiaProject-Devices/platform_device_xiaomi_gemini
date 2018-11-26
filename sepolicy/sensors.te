@@ -1,1 +1,2 @@
 get_prop(sensors, system_panel_prop)
+allow sensors sysfs:file read;

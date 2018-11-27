@@ -144,6 +144,8 @@ on post-fs-data
     # Create directory used for dump collection
     mkdir /data/vendor/ssrdump 0770 root system
 
+    mkdir /data/vendor/oemnvitems  0771 radio radio
+
     # Create directory used by display clients
     mkdir /data/vendor/display 0770 system graphics
 

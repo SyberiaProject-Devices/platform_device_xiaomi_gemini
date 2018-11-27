@@ -71,22 +71,20 @@ vendor/lib/libaudioalsa.so
 vendor/lib/libmdsprpc.so
 vendor/lib/libqtigef.so
 
-# Bluetooth
-vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
-vendor/bin/wcnss_filter
-vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
-vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
-vendor/lib64/libbtnv.so
-vendor/lib64/libbt-hidlclient.so
+# Bluetooth - from enchilada PKQ1.180716.001
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|d269f76a32c840827f17cc4b6b4f2d03683a7341
+vendor/bin/wcnss_filter|65c276e8ed95b55d337534411add48806e034a84
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc|a979981c55f3dcaf6cf2212e71b901ca4d58b959
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so|d6753f625bec4d3cd49e429a2bb16f5755e3f642
+vendor/lib64/libbtnv.so|0dfa39bd4f70e39d0ff7c789b2958edd8e3463dd
+vendor/lib64/libbt-hidlclient.so|d44900db10a43a46cdb50dced28c191c6a08c486
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|1c643a855c99d18be368d57142e04d5d2f032b9f
 
 # Bluetooth (aptX) - from marlin - OPM1.171019.011
 lib64/libaptX_encoder.so|0cebad28afcf29f931bdc2d24fce2730dc882ecf
 lib64/libaptXHD_encoder.so|90f47f10af28b3ead143200cb4370b847c513127
 lib/libaptX_encoder.so|984739a0bc968e18f75ced205733fe3f51c2d4f0
 lib/libaptXHD_encoder.so|974c486e4ca03faa0713553d9dfe2995ac93e01c
-
-# Bluetooth (shared dependencies)
-vendor/lib64/vendor.qti.hardware.fm@1.0_vendor.so
 
 # Camera
 vendor/bin/mm-qcamera-daemon

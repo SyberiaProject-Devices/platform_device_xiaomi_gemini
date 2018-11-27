@@ -240,4 +240,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # network location provider is not functional
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.location.osnlp.package=com.google.android.gms \
-    ro.location.osnlp.region.package=
+    ro.location.osnlp.region.package= \
+
+#QTI Performance
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.iop.enable_uxe=1 \
+    vendor.perf.iop_v3.enable=1 \
+    ro.vendor.at_library=libqti-at.so \
+    persist.vendor.qti.games.gt.prof=1

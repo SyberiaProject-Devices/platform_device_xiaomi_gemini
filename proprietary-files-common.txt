@@ -691,8 +691,6 @@ vendor/lib64/libsensor_reg.so|fc339a65dafb44a629e6d83c13e8af71c293c53b
 # Sensors device specific
 vendor/lib/sensors.ssc.so
 vendor/lib64/sensors.ssc.so
-vendor/lib64/hw/activity_recognition.msm8996.so
-vendor/lib/hw/activity_recognition.msm8996.so
 
 # Thermal - from tissot - OPR1.170623.026
 vendor/bin/thermal-engine|10089a9b451069e67264533ba680a9ab48e78689

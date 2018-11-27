@@ -729,11 +729,12 @@ vendor/lib64/libsensor_reg.so|fc339a65dafb44a629e6d83c13e8af71c293c53b
 vendor/lib/sensors.ssc.so|c89ba6bdc8867f1a43314d76022328e38d01dc5c
 vendor/lib64/sensors.ssc.so|0414a81cee2ca081479b97814d0b973f73e0577e
 
-# Thermal - from tissot - OPR1.170623.026
-vendor/bin/thermal-engine|10089a9b451069e67264533ba680a9ab48e78689
--vendor/lib64/libthermalclient.so|5b5dcfc714a31a65e1757ef786e697b1a69e012e
-vendor/lib64/libthermalioctl.so|ddd3d6bfcc6c8ef1122c6565365221c0d9fa208d
--vendor/lib/libthermalclient.so|a516e6f9c8000f5a2dabc6b9a1e8d69e9d2d1374
+# Thermal - from jasmine PKQ1.180904.001
+vendor/bin/thermal-engine|f750e90af4a73df3dd51ccb87e150d971c5bef7d
+vendor/lib64/libthermalclient.so|54121e31e4a5170f8c50e36ddb57685b6c538a21
+vendor/lib64/libthermalioctl.so|0edca2e89fbd872d8595517254669ea7feb1e0b0
+vendor/lib64/libthermalfeature.so|655a4b39b45a80069d7d8706a921ee0ace3a4865
+vendor/lib/libthermalclient.so|4579096edb376b06827f8e90a49480cf121030f0
 
 # Time services - from B2N_sprout - PPR1.180610.011
 -vendor/app/TimeService/TimeService.apk|25337e4160093a998c0e4cfced1c1a6c51177dff

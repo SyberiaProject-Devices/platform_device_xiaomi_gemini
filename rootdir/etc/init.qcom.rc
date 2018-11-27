@@ -208,7 +208,7 @@ on post-fs-data
     mkdir /dev/socket/location/xtra 0770 gps gps
 
     # for android.hardware.health@2.0-service.gemini cycle count backup
-    mkdir /persist/battery 0700 system system
+    mkdir /mnt/vendor/persist/battery 0700 system system
 
     # SSC/SLPI sensors
     mkdir /mnt/vendor/persist/sensors
@@ -376,14 +376,14 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    mkdir /persist/drm 0770 system system
-    mkdir /persist/misc 0770 system system
-    mkdir /persist/alarm 0770 system system
-    mkdir /persist/data/sfs 0700 system system
-    mkdir /persist/data/tz 0700 system system
-    mkdir /persist/qc_senseid 0700 system system
-    mkdir /persist/wlan_bt 0770 system system
-    mkdir /persist/audio 0777 media audio
+    mkdir /mnt/vendor/persist/drm 0770 system system
+    mkdir /mnt/vendor/persist/misc 0770 system system
+    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/data/sfs 0700 system system
+    mkdir /mnt/vendor/persist/data/tz 0700 system system
+    mkdir /mnt/vendor/persist/qc_senseid 0700 system system
+    mkdir /mnt/vendor/persist/wlan_bt 0770 system system
+    mkdir /mnt/vendor/persist/audio 0777 media audio
 
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio

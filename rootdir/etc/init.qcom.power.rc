@@ -185,7 +185,7 @@ on enable-low-power
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
     # Set perfd properties
-    setprop sys.post_boot.parsed 1
+    setprop vendor.post_boot.parsed 1
 
 on property:sys.boot_completed=1
     trigger enable-low-power

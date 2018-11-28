@@ -43,6 +43,14 @@ PRODUCT_GENERIC_PROPERTIES += \
     use.dts_eagle=true \
     hpx_send_params=1
 
+#QTI Performance
+PRODUCT_GENERIC_PROPERTIES += \
+    vendor.iop.enable_uxe=0 \
+    vendor.iop.enable_prefetch_ofr=0 \
+    ro.vendor.at_library=libqti-at.so \
+    persist.vendor.qti.games.gt.prof=1
+
+
 # HWUI and Dalvik VM overrides
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 

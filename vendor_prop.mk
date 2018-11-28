@@ -58,6 +58,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=1 \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
     persist.camera.gyro.disable=0 \
+    persist.camera.eis.enable=1 \
     persist.camera.imglib.fddsp=1
 
 # CNE

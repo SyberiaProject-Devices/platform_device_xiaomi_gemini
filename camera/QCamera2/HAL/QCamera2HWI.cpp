@@ -412,7 +412,7 @@ void QCamera2HardwareInterface::stop_preview(struct camera_device *device)
              hw->getCameraId());
 
     // Disable power Hint for preview
-    hw->m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
+    hw->m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
 
     hw->m_perfLock.lock_acq();
     hw->lockAPI();
@@ -1680,18 +1680,25 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(uint32_t cameraId)
     mCameraDevice.ops = &mCameraOps;
     mCameraDevice.priv = this;
 
+
+    pthread_condattr_t mCondAttr;
+
+    pthread_condattr_init(&mCondAttr);
+    pthread_condattr_setclock(&mCondAttr, CLOCK_MONOTONIC);
+
+
     pthread_mutex_init(&m_lock, NULL);
-    pthread_cond_init(&m_cond, NULL);
+    pthread_cond_init(&m_cond, &mCondAttr);
 
     m_apiResultList = NULL;
 
     pthread_mutex_init(&m_evtLock, NULL);
-    pthread_cond_init(&m_evtCond, NULL);
+    pthread_cond_init(&m_evtCond, &mCondAttr);
     memset(&m_evtResult, 0, sizeof(qcamera_api_result_t));
 
-
     pthread_mutex_init(&m_int_lock, NULL);
-    pthread_cond_init(&m_int_cond, NULL);
+    pthread_cond_init(&m_int_cond, &mCondAttr);
+    pthread_condattr_destroy(&mCondAttr);
 
     memset(m_channels, 0, sizeof(m_channels));
 
@@ -3532,10 +3539,8 @@ int QCamera2HardwareInterface::startPreview()
     m_perfLock.lock_rel();
 
     if (rc == NO_ERROR) {
-        if (!mParameters.isSeeMoreEnabled()) {
-            // Set power Hint for preview
-            m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
-        }
+        // Set power Hint for preview
+        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
     }
 
     LOGI("X rc = %d", rc);
@@ -3568,7 +3573,7 @@ int QCamera2HardwareInterface::stopPreview()
     mActiveAF = false;
 
     // Disable power Hint for preview
-    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
+    m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
 
     m_perfLock.lock_acq();
 
@@ -3735,10 +3740,8 @@ int QCamera2HardwareInterface::startRecording()
     }
 
     if (rc == NO_ERROR) {
-        if (!mParameters.isSeeMoreEnabled()) {
-            // Set power Hint for video encoding
-            m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, true);
-        }
+        // Set power Hint for video encoding
+        m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, true);
     }
 
     LOGI("X rc = %d", rc);
@@ -3768,8 +3771,7 @@ int QCamera2HardwareInterface::stopRecording()
 
     m_cbNotifier.flushVideoNotifications();
     // Disable power hint for video encoding
-    m_perfLock.powerHint(PowerHint::VIDEO_ENCODE, false);
-    mVideoMem = NULL;
+    m_perfLock.powerHint(POWER_HINT_VIDEO_ENCODE, false);
     LOGI("X rc = %d", rc);
     return rc;
 }
@@ -5155,10 +5157,12 @@ void QCamera2HardwareInterface::checkIntPicPending(bool JpegMemOpt, char *raw_fo
     int rc = NO_ERROR;
 
     struct timespec   ts;
-    struct timeval    tp;
-    gettimeofday(&tp, NULL);
+    struct timespec   tp;
+    if( clock_gettime(CLOCK_MONOTONIC, &tp) < 0) {
+        LOGE("Error reading the monotonic time clock, cannot use timed wait");
+    }
     ts.tv_sec  = tp.tv_sec + 5;
-    ts.tv_nsec = tp.tv_usec * 1000;
+    ts.tv_nsec = tp.tv_nsec;
 
     if (true == m_bIntJpegEvtPending ||
         (true == m_bIntRawEvtPending)) {
@@ -6564,6 +6568,8 @@ int32_t QCamera2HardwareInterface::processPrepSnapshotDoneEvent(
 int32_t QCamera2HardwareInterface::processASDUpdate(
         __unused cam_asd_decision_t asd_decision)
 {
+
+#ifndef VANILLA_HAL
     if ( msgTypeEnabled(CAMERA_MSG_META_DATA) ) {
         size_t data_len = sizeof(cam_auto_scene_t);
         size_t buffer_len = 1 *sizeof(int)       //meta type
@@ -6582,7 +6588,6 @@ int32_t QCamera2HardwareInterface::processASDUpdate(
             return UNKNOWN_ERROR;
         }
 
-#ifndef VANILLA_HAL
         pASDData[0] = CAMERA_META_DATA_ASD;
         pASDData[1] = (int)data_len;
         pASDData[2] = asd_decision.detected_scene;
@@ -6600,8 +6605,8 @@ int32_t QCamera2HardwareInterface::processASDUpdate(
             LOGE("fail sending notification");
             asdBuffer->release(asdBuffer);
         }
-#endif
     }
+#endif
     return NO_ERROR;
 }
 

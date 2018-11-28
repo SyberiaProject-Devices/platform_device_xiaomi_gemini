@@ -2173,14 +2173,14 @@ typedef enum {
     CAM_INTF_META_TOUCH_AE_RESULT,
     /* Param for updating initial exposure index value*/
     CAM_INTF_PARM_INITIAL_EXPOSURE_INDEX,
+    /* Hack 1 to make proper enum */
+    XIAOMI_DUMMY1,
     /* Gain applied post raw captrue.
        ISP digital gain */
     CAM_INTF_META_ISP_SENSITIVITY,
-    /*Hack 1 to make proper enum */
-    XIAOMI_DUMMY1,
     /* Param for enabling instant aec*/
     CAM_INTF_PARM_INSTANT_AEC,
-    /*Hack 2 to make proper enum */
+    /* Hack 2 to make proper enum */
     XIAOMI_DUMMY2,
     /* Param for tracking previous reprocessing activity */
     CAM_INTF_META_REPROCESS_FLAGS,
@@ -2190,6 +2190,7 @@ typedef enum {
     CAM_INTF_PARM_JPEG_SCALE_DIMENSION,
     /*Param for updating Quadra CFA mode */
     CAM_INTF_PARM_QUADRA_CFA,
+    /* Hack 3 to make proper enum */
     XIAOMI_DUMMY3,
     CAM_INTF_PARM_MAX
 } cam_intf_parm_type_t;

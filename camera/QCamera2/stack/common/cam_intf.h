@@ -591,7 +591,7 @@ typedef struct {
 } cam_stream_img_prop_t;
 
 typedef struct {
-    uint8_t enableStream; /*0 – stop and 1-start */
+    uint8_t enableStream; /*0 stop and 1-start */
 } cam_request_frames;
 
 typedef struct {
@@ -983,14 +983,15 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_MANUAL_CAPTURE_TYPE,          cam_manual_capture_type,     1);
     INCLUDE(CAM_INTF_AF_STATE_TRANSITION,               uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_INITIAL_EXPOSURE_INDEX,       uint32_t,                    1);
-    volatile char         xiaomi_reserved1[4];
+    INCLUDE(XIAOMI_DUMMY1,                              uint8_t,                     4);
     INCLUDE(CAM_INTF_PARM_INSTANT_AEC,                  uint8_t,                     1);// BAD +36 OK
-    volatile char         xiaomi_reserved2[7];
     INCLUDE(CAM_INTF_META_REPROCESS_FLAGS,              uint8_t,                     1);//BAD stock +43 OK
-    volatile char         xiaomi_reserver3[4]; //not sure about this  and below
+    volatile char         xiaomi_reserved3[2];
+    INCLUDE(XIAOMI_DUMMY2,                              uint8_t,                     4);
     INCLUDE(CAM_INTF_PARM_JPEG_ENCODE_CROP,             cam_stream_crop_info_t,      1); // BAD + 4 ?
     INCLUDE(CAM_INTF_PARM_JPEG_SCALE_DIMENSION,         cam_dimension_t,             1); //BAD stock +44
-    INCLUDE(XIAOMI_DUMMY3,                              uint8_t,                     5);
+    volatile char         xiaomi_reserved4[4];
+    INCLUDE(XIAOMI_DUMMY3,                              uint8_t,                     12);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to

@@ -106,7 +106,9 @@ public:
                 uint32_t /*frameNumber*/,
                 camera3_stream_buffer_t* /*pInputBuffer*/,
                 metadata_buffer_t* /*metadata*/,
-                int & /*indexUsed*/){ return 0;};
+                int & /*indexUsed*/,
+                __unused bool internalRequest = false,
+                __unused bool meteringOnly = false){ return 0;};
     virtual void streamCbRoutine(mm_camera_super_buf_t *super_frame,
                             QCamera3Stream *stream) = 0;
 
@@ -200,7 +202,8 @@ public:
     virtual int32_t request(buffer_handle_t *buffer,
             uint32_t frameNumber,
             camera3_stream_buffer_t* pInputBuffer,
-            metadata_buffer_t* metadata, int &indexUsed);
+            metadata_buffer_t* metadata, int &indexUsed,
+            __unused bool internalRequest, __unused bool meteringOnly);
     virtual void streamCbRoutine(mm_camera_super_buf_t *super_frame,
             QCamera3Stream *stream);
     virtual QCamera3StreamMem *getStreamBufs(uint32_t len);
@@ -436,7 +439,7 @@ public:
             uint32_t frameNumber,
             camera3_stream_buffer_t* pInputBuffer,
             metadata_buffer_t* metadata, bool &needMetadata,
-            int &indexUsed);
+            int &indexUsed, bool internalRequest, bool meteringOnly);
     virtual reprocess_type_t getReprocessType();
     virtual void streamCbRoutine(mm_camera_super_buf_t *super_frame,
             QCamera3Stream *stream);
@@ -502,7 +505,7 @@ public:
             uint32_t frameNumber,
             camera3_stream_buffer_t* pInputBuffer,
             metadata_buffer_t* metadata,
-            int &indexUsed);
+            int &indexUsed, bool internalRequest, bool meteringOnly);
     virtual void streamCbRoutine(mm_camera_super_buf_t *super_frame,
             QCamera3Stream *stream);
 
@@ -559,7 +562,7 @@ public:
     virtual int32_t stop();
     int32_t doReprocessOffline(qcamera_fwk_input_pp_data_t *frame,
             bool isPriorityFrame = false);
-    int32_t doReprocess(int buf_fd, size_t buf_length, int32_t &ret_val,
+    int32_t doReprocess(int buf_fd,void *buffer, size_t buf_length, int32_t &ret_val,
                         mm_camera_super_buf_t *meta_buf);
     int32_t overrideMetadata(qcamera_hal3_pp_buffer_t *pp_buffer,
             mm_camera_buf_def_t *meta_buffer,
@@ -597,8 +600,6 @@ private:
     int32_t resetToCamPerfNormal(uint32_t frameNumber);
     android::List<OfflineBuffer> mOfflineBuffers;
     android::List<OfflineBuffer> mOfflineMetaBuffers;
-    Mutex mOfflineBuffersLock;
-    Mutex mOfflineMetaBuffersLock;
     int32_t mOfflineBuffersIndex;
     int32_t mOfflineMetaIndex;
     uint32_t mFrameLen;

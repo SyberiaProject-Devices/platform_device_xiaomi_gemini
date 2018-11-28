@@ -749,6 +749,7 @@ vendor/bin/cnss-daemon|01ce2fa8f4852305bea2af33f59e41e7f05f44ad
 bin/wfdservice|edeb291221024401cbae69c2fa4e58733b7efc4c
 etc/wfdconfig.xml|60a210d323f3f65dd1424cfd517295c522824b7b
 etc/wfdconfigsink.xml|f180a45f69fa2ff01dbaf98c905cff1e9eba903e
+etc/init/wfdservice.rc|311bfdd1675e56499662f39455536b75b78477bb
 -framework/WfdCommon.jar|b2159eb253236ceba5a7ce0f8c140252116c738d
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so|93487a83a35f0fa3fe37445edd3ff22fcc52e4fc
 lib/extractors/libmmparser.so|158f0c92a7edacb06b954f8bdc7a855f933eb9e7

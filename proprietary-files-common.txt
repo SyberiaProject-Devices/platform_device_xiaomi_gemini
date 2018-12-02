@@ -426,8 +426,8 @@ vendor/firmware/a530v3_gpmu.fw2
 vendor/firmware/a530v3_seq.fw2
 
 # IMS
--vendor/app/ims/ims.apk
--vendor/app/imssettings/imssettings.apk
+-priv-app/ims/ims.apk
+-app/imssettings/imssettings.apk
 -app/uceShimService/uceShimService.apk
 etc/permissions/com.qualcomm.qti.imscmservice.xml
 etc/permissions/qti-vzw-ims-internal.xml

@@ -661,7 +661,7 @@ vendor/lib/sensors.ssc.so|c89ba6bdc8867f1a43314d76022328e38d01dc5c
 vendor/lib64/sensors.ssc.so|0414a81cee2ca081479b97814d0b973f73e0577e
 
 # Thermal - from daisy - PKQ1.180917.001
-vendor/bin/thermal-engine|f750e90af4a73df3dd51ccb87e150d971c5bef7d
+vendor/bin/thermal-engine|e24c041613a4a522e15d54f700e1d1befe7e171e
 -vendor/lib64/libthermalclient.so|54121e31e4a5170f8c50e36ddb57685b6c538a21
 vendor/lib64/libthermalioctl.so|0edca2e89fbd872d8595517254669ea7feb1e0b0
 -vendor/lib/libthermalclient.so|4579096edb376b06827f8e90a49480cf121030f0

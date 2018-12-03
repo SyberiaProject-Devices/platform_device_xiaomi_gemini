@@ -69,4 +69,4 @@ extract "$MY_DIR"/proprietary-files-common.txt "$SRC" "$SECTION"
 #    extract "$MY_DIR"/../$DEVICE/proprietary-files-common.txt "$SRC" "$SECTION"
 #fi
 
-"$MY_DIR"/setup-makefiles.sh
+"$MY_DIR"/setup-makefiles-common.sh

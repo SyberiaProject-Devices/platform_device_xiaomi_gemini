@@ -92,11 +92,16 @@ on init
     write /dev/stune/rt/schedtune.prefer_idle 1
 
     # Mount and use blkio cgroup
-    mount tmpfs cgroup_root /sys/fs/cgroup mode=0750,uid=0,gid=1000
-    mkdir /sys/fs/cgroup/blkio root system
-    mount cgroup none /sys/fs/cgroup/blkio blkio
-    chown root system /sys/fs/cgroup/blkio
-    chmod 0660 /sys/fs/cgroup/blkio
+    mkdir /dev/blkio
+    mount cgroup none /dev/blkio blkio
+    chown system system /dev/blkio
+    chown system system /dev/blkio/tasks
+    chmod 0664 /dev/blkio/tasks
+    mkdir /dev/blkio/bg 0755 system system
+    chown system system /dev/blkio/bg/tasks
+    chmod 0664 /dev/blkio/bg/tasks
+    write /dev/blkio/blkio.weight 1000
+    write /dev/blkio/bg/blkio.weight 100
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}

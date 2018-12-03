@@ -498,6 +498,11 @@ vendor/lib/libOmxWmaDec.so|41f9565c2690b2d392e5a1a70eac5f0e3254b964
 vendor/lib/libvpplibrary.so|84642e912f18636527f385a49a804e7df08d2555
 vendor/lib/libvqzip.so|c1c4f35456ff34b4baba373f18ed034a7d1e2721
 
+# NFC - SmartCardService
+etc/permissions/org.simalliance.openmobileapi.xml
+framework/org.simalliance.openmobileapi.jar
+-priv-app/SmartcardService/SmartcardService.apk
+
 # Perf from - from enchilada PKQ1.180716.001
 lib/vendor.qti.hardware.iop@1.0.so|f2b5c17ce9690569d2a74f5b01a345e383f0c20d
 lib/vendor.qti.hardware.iop@2.0.so|767246e2fc7fafe9c61c86a939f2fa99504c359e

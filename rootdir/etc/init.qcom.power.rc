@@ -93,15 +93,15 @@ on enable-low-power
 
     # configure governor settings for silver cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 20000
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 1000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 6000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
 
     # configure governor settings for gold cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 20000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 6000
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
 
     # Set CPU Input Boost parameters
     #write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 556800
@@ -157,7 +157,7 @@ on enable-low-power
 
     # Set schedTune boost values (only affects EAS)
     #write /dev/stune/schedtune.sched_boost 10
-    #write /dev/stune/rt/schedtune.sched_boost 30
+    write /dev/stune/rt/schedtune.sched_boost 30
 
     # update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
@@ -178,6 +178,9 @@ on enable-low-power
     write /sys/block/dm-0/queue/scheduler cfq
     write /sys/block/sda/queue/scheduler cfq
     write /sys/block/sde/queue/scheduler cfq
+    write /sys/block/dm-0/queue/iosched/group_idle 0
+    write /sys/block/sda/queue/iosched/group_idle 0
+    write /sys/block/sde/queue/iosched/group_idle 0
 
     write /sys/module/msm_thermal/core_control/enabled 0
 

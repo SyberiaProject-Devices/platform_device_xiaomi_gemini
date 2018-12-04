@@ -16,7 +16,6 @@
     <PerfBoost>
 
     <!--app lauch boost-->
-        <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
@@ -26,11 +25,10 @@
         <!-- Type="1", main launch boost of 2sec -->
         <Config
             Id="0x00001081" Type="1" Enable="true" Timeout="2000" Target="msm8996"
-            Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000, 0xFFF,
+            Resources="0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000, 0xFFF,
                          0x42C10000, 0x1" />
 
     <!--resume boost-->
-        <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
@@ -40,7 +38,7 @@
 
         <Config
             Id="0x00001082" Type="1" Enable="true" Timeout="400" Target="msm8996"
-            Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000, 0x8C6,
+            Resources="0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000, 0x8C6,
                        0x40800100, 0xFFF, 0x40400000, 0x1, 0x42C10000, 0x1" />
 
     <!--app lauch boost (disabling packing)-->
@@ -51,11 +49,10 @@
             Resources="" />
 
     <!-- config_enableLaunchBoostv2-->
-        <!-- SCHEDBOOST resource opcode, value-->
       <!-- Type="3", FA launch boost of 15sec -->
         <Config
             Id="0x00001081" Type="3" Enable="true" Timeout="15000" Target="msm8996"
-            Resources="0x40C00000, 0x3" />
+            Resources="" />
 
     <!--Vertical Scroll boost-->
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
@@ -70,43 +67,37 @@
     <!--Prefling Scroll boost-->
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
-        <!-- SCHEDBOOST resource opcode, value-->
-        <!-- L3_MEMLAT_MIN_FREQ resource opcode, value -->
         <!-- TIMEOUT 80ms -->
         <!-- Type="4", Prefling boost -->
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="80" Target="msm8996"
-            Resources="0x40800000, 1000, 0x40800100, 1000, 0x40C00000, 0x2" />
+            Resources="0x40800000, 1000, 0x40800100, 1000" />
 
     <!--webview Scroll boost-->
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
-        <!-- SCHEDBOOST resource opcode, value-->
         <!-- Type="5", webview Scroll boost -->
         <Config
             Id="0x00001080" Type="5" Enable="true" Timeout="2500" Target="msm8996"
-            Resources="0x40800000, 1000, 0x40800100, 1000, 0x40C00000, 0x2" />
+            Resources="0x40800000, 1000, 0x40800100, 1000" />
 
     <!--Horizontal Scroll boost-->
-        <!-- SCHEDBOOST resource opcode, value-->
 
         <!-- Type="2", Horizontal Scroll boost -->
         <Config
             Id="0x00001080" Type="2" Enable="true" Target="msm8996"
-            Resources="0x40C00000, 0x2" />
+            Resources="" />
 
     <!--Drag boost-->
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
-        <!-- SCHEDBOOST resource opcode, value-->
 
         <!-- Type="1", Drag boost -->
         <Config
             Id="0x00001087" Type="1" Enable="true" Timeout="0" Target="msm8996"
-            Resources="0x40800000, 1000, 0x40800100, 1000, 0x40C00000, 0x2" />
+            Resources="0x40800000, 1000, 0x40800100, 1000" />
 
     <!--PackageInstall boost-->
-        <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
@@ -115,11 +106,10 @@
 
         <Config
             Id="0x00001088" Enable="true" Target="msm8996"
-            Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000,0xFFF,
+            Resources="0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000,0xFFF,
                        0x40800100,0xFFF,0x43000000,0xFF,0x43400000,0xFF,0x40400000,1" />
 
     <!--Rotation latency boost-->
-        <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
@@ -128,7 +118,7 @@
 
         <Config
             Id="0x00001089" Enable="true" Timeout="1500" Target="msm8996"
-            Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000,0xFFF,
+            Resources="0x40804000, 0xFFF, 0x40804100, 0xFFF, 0x40800000,0xFFF,
                        0x40800100,0xFFF" />
 
     <!--Rotation animation boost-->
@@ -141,13 +131,12 @@
             Resources="0x40800100, 1000, 0x4280C000, 270" />
 
     <!--XiaoMi bluetooth boost-->
-        <!-- SCHEDBOOST resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MAX_FREQ LITTLE Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ BIG Core resource opcode, value-->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value-->
         <Config
             Id="0x00011C0" Type="1" Enable="true" Timeout="3000" Target="msm8996"
-            Resources="0x40C00000, 0x1, 0x40804000, 0xFFF, 0x40804100, 0xFFF" />
+            Resources="0x40804000, 0xFFF, 0x40804100, 0xFFF" />
     </PerfBoost>
 </BoostConfigs>

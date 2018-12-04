@@ -278,6 +278,7 @@ done:
     return Void();
 }
 
+#ifndef NO_WLAN_STATS
 static int get_wlan_low_power_stats(struct PowerStateSubsystem &subsystem) {
 
     uint64_t stats[WLAN_POWER_PARAMS_COUNT] = {0};
@@ -309,11 +310,17 @@ static int get_wlan_low_power_stats(struct PowerStateSubsystem &subsystem) {
 
     return 0;
 }
+#endif
 
 // Methods from ::android::hardware::power::V1_1::IPower follow.
 Return<void> Power::getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl_cb) {
 
     hidl_vec<PowerStateSubsystem> subsystems;
+#ifdef NO_WLAN_STATS
+    subsystems.resize(0);
+    _hidl_cb(subsystems, Status::SUCCESS);
+    return Void();
+#else
     int ret;
 
     subsystems.resize(SUBSYSTEM_COUNT);
@@ -328,6 +335,7 @@ Return<void> Power::getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl
 done:
     _hidl_cb(subsystems, Status::SUCCESS);
     return Void();
+#endif
 }
 
 bool Power::isSupportedGovernor() {

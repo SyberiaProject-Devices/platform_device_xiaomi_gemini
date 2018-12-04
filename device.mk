@@ -121,6 +121,7 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
+    libaacwrapper \
     tinymix
 
 PRODUCT_COPY_FILES += \

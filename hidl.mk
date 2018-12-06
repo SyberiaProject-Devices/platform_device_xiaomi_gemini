@@ -55,8 +55,8 @@ PRODUCT_PACKAGES += \
 
 # GPS HIDL
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.1-impl-qti \
-    android.hardware.gnss@1.1-service-qti
+    android.hardware.gnss@1.0-impl-qti \
+    android.hardware.gnss@1.0-service-qti
 
 # Keymaster HIDL
 PRODUCT_PACKAGES += \

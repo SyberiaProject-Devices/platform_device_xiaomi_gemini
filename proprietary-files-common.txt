@@ -1,33 +1,32 @@
-# ADSP
-vendor/bin/adsprpcd
-vendor/lib64/libadsprpc.so
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libfastcvadsp_stub.so
-vendor/lib64/libfastcvopt.so
-vendor/lib/libadsprpc.so
-vendor/lib/libadsp_default_listener.so
-vendor/lib/libadsp_hvx_callback_skel.so
-vendor/lib/libadsp_hvx_stub.so
-vendor/lib/libfastcvadsp_stub.so
-vendor/lib/libfastcvopt.so
+# ADSP - from Mi A2 jasmine_sprout 9 PKQ1.180904.001 V10.0.1.0.PDIMIFJ release-keys
+vendor/bin/adsprpcd|8b439846f016decb7519e5fd5cb2c86e192af036
+vendor/lib64/libadsprpc.so|66ac8f836101bc7563432d168890827d878acd42
+vendor/lib64/libadsp_default_listener.so|d28ea3a0509c13ff75c700efe1107bb2d2481eb6
+vendor/lib64/libfastcvadsp_stub.so|0cbdc83819780d8aa7cb8707633439db330b655d
+vendor/lib64/libfastcvopt.so|39423b9830f4eee217d9a4064a0c7449ff78acfb
+vendor/lib/libadsprpc.so|756fc8ea0395866ee578030ac72fddedba288f97
+vendor/lib/libadsp_default_listener.so|ca63c1b2c34bbde74c2b1fc6009ca244a1ffa535
+vendor/lib/libadsp_hvx_callback_skel.so|dc7080c68699f69f76260891ebcedcd68a093d40
+vendor/lib/libadsp_hvx_stub.so|4fa14ca235ace82551549b571f767f475fbf4b67
+vendor/lib/libfastcvadsp_stub.so|7811d12d68ec3f9fcbd05f55264b6dcec61bc75b
+vendor/lib/libfastcvopt.so|d76563220d8d504a9dce1091a52482a8d932858d
 
-# ADSP modules
-vendor/lib/rfsa/adsp/libadsp_fd_skel.so
-vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so
-vendor/lib/rfsa/adsp/libadsp_hvx_skel.so
-vendor/lib/rfsa/adsp/libadsp_hvx_stats.so
-vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_BGGR.so
-vendor/lib/rfsa/adsp/libadsp_hvx_zzhdr_RGGB.so
-vendor/lib/rfsa/adsp/libapps_mem_heap.so
-vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
-vendor/lib/rfsa/adsp/libscveT2T_skel.so
-vendor/lib/rfsa/adsp/libdspCV_skel.so
-vendor/lib/rfsa/adsp/libexternal_dog_skel.so
-vendor/lib/rfsa/adsp/libfastcvadsp.so
-vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
-vendor/lib/rfsa/adsp/libvpp_svc_skel.so
-vendor/lib/rfsa/adsp/libvpp_frc.so
-vendor/lib/rfsa/adsp/us-syncproximity.so
+# ADSP modules - from Mi A2 jasmine_sprout 9 PKQ1.180904.001 V10.0.1.0.PDIMIFJ release-keys
+vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so|8305c614ebf13f84f15989631b8fdfdb9828d9be
+vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so|26fb64a92d48e801a31a867976d325efa366a255
+vendor/lib/rfsa/adsp/libadsp_hvx_skel.so|05776246445316aea822eaa9cb6ae7a47b23c9aa
+vendor/lib/rfsa/adsp/libdspCV_skel.so|a788855fe98d5f6ea73d2693c983efb29165eae1
+vendor/lib/rfsa/adsp/libadsp_fd_skel.so|677d2932dac248049f031fc5893163e22b49439a
+vendor/lib/rfsa/adsp/libvpp_svc_skel.so|2da97f61c1d14f1f9a38aecd8ab89a1f6fa8d991
+vendor/lib/rfsa/adsp/libapps_mem_heap.so|fd362c6b0e30f62cc3fc4566855f46706d2c3c50
+vendor/lib/rfsa/adsp/dirac_resource.dar|7728d5b2ee2927a01df5bd6d7edae3736186c844
+vendor/lib/rfsa/adsp/libdirac-capiv2.so|e56031dfaee094d5267e3cc16625cfceaa07cc27
+vendor/lib/rfsa/adsp/libfastcvadsp.so|603711dc1af1f1952d8978a5b494b1541b24c54c
+vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so|eb0e912d25b06f977d5a89345c72d142b7ffb8ae
+vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|a06a3f52e89d219d2da0c7205e714cd7429b267c
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|99752b14bc669589f598b2c555af96834147e41e
+vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so|d2174a2a4a680e93ee4262b5e6d99fd3c398620c
+vendor/lib/rfsa/adsp/libscveT2T_skel.so|487f830aca26c85ef79c8b599b2f03668ab732b5
 
 # ANT+ (system) - from enchilada - PKQ1.180716.001
 lib64/com.qualcomm.qti.ant@1.0.so|199481b290856fb63f5c5bf6def426b43309becb
@@ -39,37 +38,40 @@ lib/com.qualcomm.qti.ant@1.0.so|fcd6a7130c480bfe4e4d9cc00702ed8444cddc82
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so
 vendor/lib64/com.qualcomm.qti.ant@1.0_vendor.so
 
-# Audio libraries
-etc/permissions/audiosphere.xml
-framework/audiosphere.jar
-vendor/lib64/soundfx/libasphere.so
-vendor/lib64/soundfx/libqcbassboost.so
-vendor/lib64/soundfx/libqcreverb.so
-vendor/lib64/soundfx/libqcvirt.so
-vendor/lib64/soundfx/libshoebox.so
+# Audio libraries - from Mi A2 jasmine_sprout 9 PKQ1.180904.001 V10.0.1.0.PDIMIFJ release-keys
+etc/permissions/audiosphere.xml|3c6d8f14bd99e52a424282fd5d0a5b9b06485dea
+framework/audiosphere.jar|4450751aad4c268c686fe9bc93da595e14c009d9
+vendor/lib64/soundfx/libqcomvisualizer.so|44f9bb53adbad7465239ab1fe3f8df3e45886a8f
+vendor/lib64/soundfx/libasphere.so|8b34e5df3f9070cdfead48f064a3135a719503c7
+vendor/lib64/soundfx/libqcbassboost.so|16f6b74db3b24ee82674c40498bcc1b319770b50
+vendor/lib64/soundfx/libqcvirt.so|6c21052f294765efb9188454a78791911da919dd
+vendor/lib64/soundfx/libqcreverb.so|a6cd5c47e29ed21a1a5e1aef14df38737d5fb991
+vendor/lib64/soundfx/libqcompostprocbundle.so|9360e05e42b009d2723f403069740ac5bc164bfd
+vendor/lib64/soundfx/libqcomvoiceprocessing.so|afc01c7a2ad147e70a91885dd50c9056770485df
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
-vendor/lib64/libadiertac.so
-vendor/lib64/libaudcal.so
-vendor/lib64/libaudioalsa.so
-vendor/lib64/libmdsprpc.so
-vendor/lib64/libqtigef.so
-vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libdirac.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcreverb.so
-vendor/lib/soundfx/libqcvirt.so
-vendor/lib/soundfx/libshoebox.so
+vendor/lib64/libadiertac.so|0b74e27dc0cb22033008a775e93761c6ff384a30
+vendor/lib64/libaudcal.so|7fd578685988950c5729f0d0e19c3f6058e5ab62
+vendor/lib64/libaudioalsa.so|422fe0d9b76362810878b146dada0a48b77096c1
+vendor/lib64/libmdsprpc.so|8b2040f7d12774157fcd82de35ddd73349fbfade
+vendor/lib64/libqtigef.so|78a9a0e4a47a1d3d019045d68032f604cbdcae6d
+vendor/lib/soundfx/libqcomvisualizer.so|6950659398ea74c482116e9a3933b9e0f1a68b13
+vendor/lib/soundfx/libasphere.so|504dd71419302f4c49de59429c79f13710b713cf
+vendor/lib/soundfx/libqcbassboost.so|1edabd3cdf2ad7ad1078e8b9c745a9897a4a3020
+vendor/lib/soundfx/libqcvirt.so|e9dcee3e95ae4c32a904eebfaa9736509b127ea6
+vendor/lib/soundfx/libqcreverb.so|a6cd5c47e29ed21a1a5e1aef14df38737d5fb991
+vendor/lib/soundfx/libqcompostprocbundle.so|598b645f5639394993cf0ad59e92ec15d3524cbb
+vendor/lib/soundfx/libqcomvoiceprocessing.so|34c551795cf8a460a6c126b68ea89f40dcbb1547
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
-vendor/lib/libadiertac.so
-vendor/lib/libadm.so
-vendor/lib/libaudcal.so
-vendor/lib/libaudioalsa.so
-vendor/lib/libmdsprpc.so
-vendor/lib/libqtigef.so
+vendor/lib/libadiertac.so|25ae1c15162116bfb482e677343c33c6009ec62c
+vendor/lib/libadm.so|8db603b99c5c5fe1d2ca4fcc6663bf3eb0ff325d
+vendor/lib/libaudcal.so|04247071e078e8e182728f72241873ef2f27dffc
+vendor/lib/libaudioalsa.so|f54cb672d8db10702f6d46980b049a89242b5409
+vendor/lib/libmdsprpc.so|e4f96f313d58eeb845e5f65815f0d5871cdabfbd
+vendor/lib/libqtigef.so|adf2bfcc4892e4d09d197e6643f639a429fea882
 
 # Bluetooth - from enchilada PKQ1.180716.001
 vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|d269f76a32c840827f17cc4b6b4f2d03683a7341

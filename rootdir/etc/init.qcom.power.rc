@@ -93,15 +93,15 @@ on enable-low-power
 
     # configure governor settings for silver cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 1000
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 6000
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
 
     # configure governor settings for gold cluster
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 6000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 1
 
     # Set CPU Input Boost parameters
     #write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 556800

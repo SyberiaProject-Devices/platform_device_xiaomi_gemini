@@ -104,10 +104,10 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 1
 
     # Set CPU Input Boost parameters
-    #write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 556800
-    #write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 480000
-    #write /sys/module/cpu_input_boost/parameters/dynamic_stune_boost 0
-    #write /sys/module/cpu_input_boost/parameters/input_boost_duration 20
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 556800
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 480000
+    write /sys/module/cpu_input_boost/parameters/dynamic_stune_boost 0
+    write /sys/module/cpu_input_boost/parameters/input_boost_duration 20
 
     # Set thermal restrictions
     write /sys/kernel/msm_thermal/enabled 0
@@ -156,7 +156,7 @@ on enable-low-power
     write /sys/module/workqueue/parameters/power_efficient Y
 
     # Set schedTune boost values (only affects EAS)
-    #write /dev/stune/schedtune.sched_boost 10
+    write /dev/stune/schedtune.sched_boost 10
     write /dev/stune/rt/schedtune.sched_boost 30
 
     # update cpusets now that boot is complete and we want better load balancing
@@ -187,7 +187,7 @@ on enable-low-power
     # Set nice Level to 9
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
-    # Set perfd properties
+    # Set PowerHal property
     setprop vendor.post_boot.parsed 1
 
 on property:sys.boot_completed=1

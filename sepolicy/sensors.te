@@ -1,2 +1,4 @@
 get_prop(sensors, system_panel_prop)
 allow sensors mnt_vendor_file:file rw_file_perms;
+allow sensors sensors_persist_file:dir r_dir_perms;
+allow sensors sensors_persist_file:file rw_file_perms;

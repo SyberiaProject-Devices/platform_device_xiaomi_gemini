@@ -1,1 +1,2 @@
 allow hal_rcsservice sysfs:file r_file_perms;
+set_prop(hal_rcsservice, system_prop)

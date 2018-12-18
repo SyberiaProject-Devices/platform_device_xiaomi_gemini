@@ -1,1 +1,2 @@
 allow cnd sysfs:file r_file_perms;
+set_prop(cnd, system_prop)

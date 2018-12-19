@@ -619,16 +619,16 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib/libmdmdetect.so
 vendor/radio/qcril_database/qcril.db
 
-# Sensors
-vendor/bin/sensors.qcom
-vendor/lib64/libsensor1.so
-vendor/lib64/libsensor_reg.so
-vendor/lib64/libsensor_user_cal.so
-vendor/lib64/sensors.ssc.so
-vendor/lib/libsensor1.so
-vendor/lib/libsensor_reg.so
-vendor/lib/libsensor_user_cal.so
-vendor/lib/sensors.ssc.so
+# Sensors - from jasmine PKQ1.180904.001
+vendor/bin/sensors.qti|b30ad4fdc8ecab0f7e3b9ede664dbecf204241b7
+vendor/lib/libsdsprpc.so|979a7a2a7bb5622d0ff404d0151536437c0c381b
+vendor/lib/libsensor1.so|a34ac1e81a8eb93efe434829d74809a5aa307d3c
+vendor/lib/libsensor_reg.so|af6296fe9495b370300634c008c02d356ce38092
+vendor/lib64/libsdsprpc.so|fc1325b8e76a125f6608a0086712dba894151c11
+vendor/lib64/libsensor1.so|322bd23852df0a0d6bfebf854e76f0181aa5ca7b
+vendor/lib64/libsensor_reg.so|fc339a65dafb44a629e6d83c13e8af71c293c53b
+vendor/lib/sensors.ssc.so|c89ba6bdc8867f1a43314d76022328e38d01dc5c
+vendor/lib64/sensors.ssc.so|0414a81cee2ca081479b97814d0b973f73e0577e
 
 # Thermal - from daisy - PKQ1.180917.001
 vendor/bin/thermal-engine|e24c041613a4a522e15d54f700e1d1befe7e171e

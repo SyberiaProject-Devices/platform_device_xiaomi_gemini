@@ -48,9 +48,9 @@ vendor/lib64/soundfx/libqcvirt.so|6c21052f294765efb9188454a78791911da919dd
 vendor/lib64/soundfx/libqcreverb.so|a6cd5c47e29ed21a1a5e1aef14df38737d5fb991
 vendor/lib64/soundfx/libqcompostprocbundle.so|9360e05e42b009d2723f403069740ac5bc164bfd
 vendor/lib64/soundfx/libqcomvoiceprocessing.so|afc01c7a2ad147e70a91885dd50c9056770485df
-vendor/lib64/libacdb-fts.so
-vendor/lib64/libacdbloader.so
-vendor/lib64/libacdbrtac.so
+vendor/lib64/libacdb-fts.so|adff5df616f83351583028a506e5e9abe2860915
+vendor/lib64/libacdbloader.so|909eb3b0bcf3b0db40d2f855a4689293467ccd50
+vendor/lib64/libacdbrtac.so|ea05df263ea3ddee88edb570d43fb8a7b98519de
 vendor/lib64/libadiertac.so|0b74e27dc0cb22033008a775e93761c6ff384a30
 vendor/lib64/libaudcal.so|7fd578685988950c5729f0d0e19c3f6058e5ab62
 vendor/lib64/libaudioalsa.so|422fe0d9b76362810878b146dada0a48b77096c1
@@ -63,9 +63,9 @@ vendor/lib/soundfx/libqcvirt.so|e9dcee3e95ae4c32a904eebfaa9736509b127ea6
 vendor/lib/soundfx/libqcreverb.so|a6cd5c47e29ed21a1a5e1aef14df38737d5fb991
 vendor/lib/soundfx/libqcompostprocbundle.so|598b645f5639394993cf0ad59e92ec15d3524cbb
 vendor/lib/soundfx/libqcomvoiceprocessing.so|34c551795cf8a460a6c126b68ea89f40dcbb1547
-vendor/lib/libacdb-fts.so
-vendor/lib/libacdbloader.so
-vendor/lib/libacdbrtac.so
+vendor/lib/libacdb-fts.so|e5ca100252ef517cd46bc314224f5d4f544dbbb2
+vendor/lib/libacdbloader.so|be45395be21d69e9810827cdec2c6d7c383ce143
+vendor/lib/libacdbrtac.so|ec997fedc418316b4f233ee3ccfd865e527fd7b0
 vendor/lib/libadiertac.so|25ae1c15162116bfb482e677343c33c6009ec62c
 vendor/lib/libadm.so|8db603b99c5c5fe1d2ca4fcc6663bf3eb0ff325d
 vendor/lib/libaudcal.so|04247071e078e8e182728f72241873ef2f27dffc
@@ -619,16 +619,33 @@ vendor/lib64/vendor.qti.hardware.radio.uim_remote_server@1.0_vendor.so
 vendor/lib/libmdmdetect.so
 vendor/radio/qcril_database/qcril.db
 
-# Sensors - from jasmine PKQ1.180904.001
-vendor/bin/sensors.qti|b30ad4fdc8ecab0f7e3b9ede664dbecf204241b7
-vendor/lib/libsdsprpc.so|979a7a2a7bb5622d0ff404d0151536437c0c381b
-vendor/lib/libsensor1.so|a34ac1e81a8eb93efe434829d74809a5aa307d3c
-vendor/lib/libsensor_reg.so|af6296fe9495b370300634c008c02d356ce38092
+# Sensors - from daisy - PKQ1.180917.001
+vendor/bin/sensors.qti|3d6881f1210907aaf53dcc35b8afb55945c4af69
+vendor/etc/sensors/hals.conf|bf3677cbfa5ce5735662e8c259cb027969f65c87
+vendor/etc/sensors/sensor_def_qcomdev.conf|b0d21e39bf33cf88a76d70871cb281cf8c0ac3f6
+vendor/lib/libsdsprpc.so|6ab1f21553ca33514958cdd501c672eab9838e6c
+vendor/lib/libsensor1.so|1ea8cc3968d77ccfc116b30a36cf03ffda0d1338
+vendor/lib/libsensor_reg.so|05a6945627710edc3db074ca523a8e178b2a3e95
+vendor/lib/libsensor_cit.so|154e5f5f6f0f6bf0342768814542d1e6ce1c4a6d
+vendor/lib/libsensor_crosstalk.so|0654699d57a1c278ad72c29007b913f61dda3385
+vendor/lib/libsensor_test.so|ddb9a546d5ceaa0e51f71b59851ff3edc0b29a9c
+vendor/lib/libsensor_user_cal.so|d86ae521c74f9a65cafc219f98d61c16059ad46b
 vendor/lib64/libsdsprpc.so|fc1325b8e76a125f6608a0086712dba894151c11
-vendor/lib64/libsensor1.so|322bd23852df0a0d6bfebf854e76f0181aa5ca7b
-vendor/lib64/libsensor_reg.so|fc339a65dafb44a629e6d83c13e8af71c293c53b
-vendor/lib/sensors.ssc.so|c89ba6bdc8867f1a43314d76022328e38d01dc5c
-vendor/lib64/sensors.ssc.so|0414a81cee2ca081479b97814d0b973f73e0577e
+vendor/lib64/libsensor1.so|03efb9648624844c5bc962a7e5dda7691372cd89
+vendor/lib64/libsensor_reg.so|e48d096044cda0d9e0dac3d3442e9f5d396862e8
+vendor/lib/sensors.ssc.so|ec4ce020a8c61019896d4ff458fefe4537999e3f
+vendor/lib64/sensors.ssc.so|dabcea6d758a88dfabd1837fa4bba9c6085ee465
+vendor/lib64/libsensor_cit.so|01e1b091d80a22567a012cd39e215cdb38a8a2c6
+vendor/lib64/libsensor_crosstalk.so|625995fecf1783e0770c8a5cafec3d04f5ae2537
+vendor/lib64/libsensor_test.so|53bee1f5ba654ac34bc4c4b4c23f9bcf337c5b7c
+vendor/lib64/libsensor_user_cal.so|3965ea663c25ee07897ef003a13b94f0addde8ab
+
+# Sensor Calibration - from daisy - PKQ1.180917.001
+framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar|0f254c05b7c49f8b29fc29b7c69855cb30d096ce
+vendor/lib/vendor.qti.hardware.sensorscalibrate@1.0.so|af3ae6fc597e5fa123c3a2b839e7fa85c3a636be
+vendor/lib/sensor_calibrate.so|39ca3c985d67c296ef21e8ce0822f7fc26023dcd
+vendor/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so|cee30a3b09c02587b55ffe6c04e96aabfe9f918e
+vendor/lib64/sensor_calibrate.so|8d23318acf49b044512af1501407206a727bd978
 
 # Thermal - from daisy - PKQ1.180917.001
 vendor/bin/thermal-engine|e24c041613a4a522e15d54f700e1d1befe7e171e

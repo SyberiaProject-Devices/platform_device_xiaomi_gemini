@@ -205,7 +205,7 @@ on property:init.svc.recovery=running
 service charger /sbin/chargeonlymode
     class charger
     group system graphics
-    seclabel u:r:charger:s0
+    seclabel u:r:healthd:s0
 
 service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main

@@ -620,6 +620,19 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <fqname>@1.0::IDSManager/wifidisplaydshal</fqname>
         <fqname>@1.0::IHDCPSession/wifidisplayhdcphal</fqname>
     </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.livedisplay</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IDisplayModes</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IPictureAdjustment</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <sepolicy>
         <version>0.0</version>
     </sepolicy>

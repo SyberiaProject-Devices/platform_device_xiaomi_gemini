@@ -231,6 +231,9 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 include device/qcom/sepolicy/sepolicy.mk
 
+# Telephony
+TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
+
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_gemini
 TARGET_RECOVERY_DEVICE_MODULES := libinit_gemini

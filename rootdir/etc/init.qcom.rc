@@ -107,6 +107,9 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
+
+    mount_all /system/vendor/etc/fstab.qcom --early
+    
     # Set permissions for persist partition
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
@@ -118,8 +121,6 @@ on fs
     mkdir /mnt/vendor/persist/secnvm 0770 system system
     mkdir /mnt/vendor/persist/time 0770 system system
     restorecon_recursive /mnt/vendor/persist
-
-    mount_all /system/vendor/etc/fstab.qcom --early
 
     # Start HW service manager early
     start hwservicemanager

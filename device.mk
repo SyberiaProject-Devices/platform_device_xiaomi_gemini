@@ -21,8 +21,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/gemini/gemini-vendor.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/msm8996-common/msm8996-common-vendor.mk)
 
-#Miui Apps
-#$(call inherit-product-if-exists, vendor/miui/miui-apps.mk)
+#Miui Camera
+$(call inherit-product-if-exists, $(LOCAL_PATH)/miuicamera/miuicamera.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay

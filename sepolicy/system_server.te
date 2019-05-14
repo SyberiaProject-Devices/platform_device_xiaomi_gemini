@@ -18,3 +18,6 @@ allow system_server mpctl_socket:sock_file write;
 dontaudit system_server dalvikcache_data_file:file { execute write };
 allow system_server diag_device:chr_file { read write open ioctl };
 allow system_server kernel:system { syslog_read };
+
+#Smart charger
+allow system_server sysfs_battery_supply:file rw_file_perms;

@@ -16,8 +16,6 @@
 
 package org.lineageos.hardware;
 
-import org.lineageos.internal.util.FileUtils;
-
 /*
  * Disable capacitive keys
  *

@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_gemini.mk
+    $(LOCAL_DIR)/syberia_gemini.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_gemini-user \
-    lineage_gemini-userdebug \
-    lineage_gemini-eng
+    syberia_gemini-user \
+    syberia_gemini-userdebug \
+    syberia_gemini-eng

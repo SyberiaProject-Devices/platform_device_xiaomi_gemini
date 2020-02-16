@@ -1,0 +1,66 @@
+[
+  {
+    "repository" : "xNombre/msm-4.4",
+    "target_path": "kernel/xiaomi/msm8996",
+    "branch"     : "q-eas-infinity"
+  },
+  {
+    "repository" : "xNombre/vendor_xiaomi",
+    "target_path": "vendor/xiaomi",
+    "branch"     : "q-eas"
+  },
+  {
+    "repository" : "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings"
+  },
+ {
+   "repository" : "LineageOS/android_hardware_qcom_display",
+   "target_path": "hardware/qcom/display-caf/msm8996",
+   "branch"     : "lineage-17.1-caf-msm8996"
+ },
+ {
+   "repository" : "LineageOS/android_hardware_qcom_audio",
+   "target_path": "hardware/qcom/audio-caf/msm8996",
+   "branch"     : "lineage-17.1-caf-msm8996"
+ },
+ {
+   "repository" : "LineageOS/android_hardware_qcom_media",
+   "target_path": "hardware/qcom/media-caf/msm8996",
+   "branch"     : "lineage-17.1-caf-msm8996"
+ },
+ {
+   "repository" : "LineageOS/android_vendor_nxp_interfaces_opensource_nfc",
+   "target_path": "vendor/nxp/opensource/interfaces/nfc",
+   "branch"     : "lineage-17.1"
+ },
+ {
+   "repository" : "LineageOS/android_vendor_nxp_opensource_external_libnfc-nci",
+   "target_path": "vendor/nxp/opensource/commonsys/external/libnfc-nci",
+   "branch"     : "lineage-17.1"
+ },
+ {
+   "repository" : "LineageOS/android_vendor_nxp_opensource_frameworks",
+   "target_path": "vendor/nxp/opensource/commonsys/frameworks",
+   "branch"     : "lineage-17.1"
+ },
+ {
+   "repository" : "LineageOS/android_vendor_nxp_opensource_packages_apps_Nfc",
+   "target_path": "vendor/nxp/opensource/commonsys/packages/apps/Nfc",
+   "branch"     : "lineage-17.1"
+ },
+ {
+   "repository" : "LineageOS/android_vendor_nxp_opensource_halimpl",
+   "target_path": "vendor/nxp/opensource/pn5xx/halimpl",
+   "branch"     : "lineage-17.1-pn5xx"
+ },
+ {
+   "repository" : "LineageOS/android_vendor_nxp_opensource_hidlimpl",
+   "target_path": "vendor/nxp/opensource/hidlimpl",
+   "branch"     : "lineage-17.1-pn5xx"
+ },
+ {
+   "repository" : "LineageOS/android_device_qcom_sepolicy ",
+   "target_path": "device/qcom/sepolicy-legacy-um",
+   "branch"     : "lineage-17.1-legacy-um"
+ },
+]

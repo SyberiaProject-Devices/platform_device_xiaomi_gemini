@@ -26,12 +26,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage/lineage-sdk
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -153,8 +150,7 @@ PRODUCT_PACKAGES += \
     camera.msm8996 \
     libmm-qcamera \
     libfui \
-    libstdc++.vendor \
-    Snap
+    libstdc++.vendor
 
 # ConfigPanel
 PRODUCT_PACKAGES += \
@@ -448,10 +444,6 @@ PRODUCT_BOOT_JARS += \
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \

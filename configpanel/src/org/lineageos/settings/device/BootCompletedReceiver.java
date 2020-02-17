@@ -35,6 +35,8 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
+	KeyHandler.setButtonSetting(context);
+
         // Disable button settings if needed
         if (!hasButtonProcs()) {
             disableComponent(context, ButtonSettingsActivity.class.getName());

@@ -11,7 +11,8 @@
   },
   {
     "repository" : "LineageOS/android_packages_resources_devicesettings",
-    "target_path": "packages/resources/devicesettings"
+    "target_path": "packages/resources/devicesettings",
+    "branch"     : "lineage-17.1"
   },
  {
    "repository" : "LineageOS/android_hardware_qcom_display",
@@ -59,8 +60,13 @@
    "branch"     : "lineage-17.1-pn5xx"
  },
  {
-   "repository" : "LineageOS/android_device_qcom_sepolicy ",
+   "repository" : "LineageOS/android_device_qcom_sepolicy",
    "target_path": "device/qcom/sepolicy-legacy-um",
    "branch"     : "lineage-17.1-legacy-um"
  },
+ {
+   "repository" : "LineageOS/android_hardware_qcom-caf_common",
+   "target_path": "hardware/qcom/common",
+   "branch"     : "lineage-17.1"
+ }
 ]
